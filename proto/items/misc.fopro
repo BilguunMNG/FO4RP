@@ -1142,6 +1142,7 @@ DisableEgg=1
 Stackable=1
 Weight=512
 Volume=40
+Cost=500
 SoundId=48
 Material=7
 Slot=4
@@ -7695,7 +7696,7 @@ SoundId=48
 Cost=75
 Material=2
 
-[Proto] # PID_itplate2 
+[Proto] # PID_DIRTY_BOWL 
 ProtoId=1733
 Type=5
 PicMap=art\items\zplate.frm
@@ -7709,7 +7710,7 @@ SoundId=48
 Cost=10
 Material=2
 
-[Proto] # PID_itplate3
+[Proto] # PID_BOWL
 ProtoId=1734
 Type=5
 PicMap=art\items\zplate.frm
@@ -8042,7 +8043,7 @@ Material=2
 
 [Proto] # PID_SUGAR 
 ProtoId=1768
-Type=5
+Type=22
 PicMap=art\items\ScrapMetal03.FRM
 PicInv=art\inven\sugar.frm
 Flags=134217758
@@ -10238,6 +10239,17 @@ Weight=4535
 Volume=1
 SoundId=48
 Material=2
+
+# PID_PUNCHBAG
+[Proto]
+ProtoId=2537
+Type=5
+PicMap=art\items\punchbag\EXPNCH.fofrm
+PicInv=art\items\punchbag\EXPNCH.fofrm
+Flags=25112
+DisableEgg=1
+SoundId=48
+Material=1
 
 [Proto] 
 ProtoId=2612
@@ -13085,6 +13097,7 @@ DisableEgg=1
 Stackable=1
 Weight=907
 Volume=40
+Cost=500
 SoundId=48
 Material=7
 Slot=4
@@ -13629,7 +13642,7 @@ LightIntensity=50
 LightColor=-16777216
 Flags=151027742
 Stackable=1
-Weight=453
+Weight=650
 DisableEgg=1
 Volume=5
 SoundId=48

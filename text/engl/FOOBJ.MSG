@@ -2007,6 +2007,14 @@ The glasses help correct bad eye-sight, boosting vision to an equivalent of PE 5
 {146001}{}{Questionnaire with graphs of special signs and memorable features}
 {146100}{}{Nightshade Bush}
 {146101}{}{A wild bush that has adapted to growing in the wasteland, the leaves are strangely green}
+{146200}{}{Potato Seeds}
+{146201}{}{Potato seeds, not much different from their ancestor. There is a rumor that somewhere in the West there is a mutated fruit of this plant, a miracle of post-nuclear America or pre-war science crossed with a tomato}
+{146300}{}{Growing Potato}
+{146301}{}{A mutated root vegetable that has adapted to the radiation of the wasteland, possessing unique properties and survival in harsh conditions}
+{146400}{}{Rotten Potato}
+{146401}{}{A softened, moldy and cracked root crop, emitting an unpleasant smell of decomposition, indicating the merciless conditions of the wasteland}
+{146500}{}{Potato}
+{146501}{}{The ripened fruit of a vegetable known as potato or nightshade. Seems like eating it raw isn't a good idea}
 {146800}{}{Bullet blank}
 {146801}{}{This blank will someday make cartridges, it just needs gunpowder and a case}
 {146900}{}{Lead Bar}
@@ -2394,6 +2402,18 @@ The glasses help correct bad eye-sight, boosting vision to an equivalent of PE 5
 {166801}{}{Containers stacked on top of each other}
 {166900}{}{Triple Containers}
 {166901}{}{Containers stacked on top of each other}
+{167000}{}{Baked Potato}
+{167001}{}{Just baked potatoes. It has a loose structure and a dense peel. Cheap, cheerful, satisfying}
+{167100}{}{French Fries}
+{167101}{}{Deep-fried potato slices. It is in great demand throughout the wastelands of post-nuclear America. Most often found in eateries in large cities, such as: New Reno, Shady Sands, Hub...}
+{167200}{}{Potato Pancakes}
+{167201}{}{Grated raw potatoes with the addition of corn flour, subsequently mixed and fried into flat cakes in vegetable oil. This dish became widespread in the “Soviet Corner” of pre-war Reno and Los Angeles, from where it came to the wastelands of California}
+{167300}{}{Potato Chips}
+{167301}{}{Thin slices of potatoes, deep fried. Easily recognizable and also easy to prepare. Bohemians from Vault City call them potato "waffles"}
+{167400}{}{Mashed Potatoes with Cutlet}
+{167401}{}{Peel, boil, turn into a homogeneous mass with the addition of oil... Then add the fried piece of twisted meat, molded into a cutlet. Any food from Modoc farmers}
+{167500}{}{Pancakes}
+{167501}{}{Homemade pancakes, the recipe for which spread throughout California from New Reno. Very tasty and nutritious. And the sweet syrup that was poured on top of these pancakes... Fantastic}
 {167800}{}{Elevator}
 {167801}{}{An elevator seamingly in a good working condition}
 {167900}{}{Carbon Filter}

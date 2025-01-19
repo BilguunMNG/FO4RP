@@ -35,7 +35,7 @@ bool e_UseAutoCloseDoor( Item& door, Critter& cr, int skill )
 uint e_AutoCloseDoor( uint[] @ val )
 {
 	Item@ door = GetItem( val[ 0 ] );
-	if( not valid( door ) )
+	if( !valid( door ) )
 	{
 		return 0;
 	}
@@ -48,7 +48,7 @@ uint e_AutoCloseDoor( uint[] @ val )
 	uint16 x = 0;
 	uint16 y = 0;
 	Map@ map = door.GetMapPosition( x, y );
-	if( not valid( map ) )
+	if( !valid( map ) )
 	{
 		return 0;
 	}
@@ -473,7 +473,7 @@ bool ChargeLamp( Critter& cr, Item& oil, Item& lamp )
 	cr.SayMsg( SAY_EMOTE_ON_HEAD, TEXTMSG_TEXT, STR_RELOAD_LAMP );
 	lamp.ITEM_CHARGE = 120;
 	_SubItem( oil, 1 );
-	cr.AddItem( PID_BOTTLE_GLASS, 1 );
+	cr.AddItem( PID_PHIAL, 1 );
 	return true;
 }
 

@@ -18823,7 +18823,7 @@ ProtoId              2541
 MapX                 267
 MapY                 186
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 270
 MapY                 175
@@ -19167,27 +19167,27 @@ MapY                 184
 OffsetX              16
 OffsetY              13
 
-MapObjType           2
+MapObjType           1
 ProtoId              3824
 MapX                 203
 MapY                 171
 
-MapObjType           2
+MapObjType           1
 ProtoId              3823
 MapX                 203
 MapY                 180
 
-MapObjType           2
+MapObjType           1
 ProtoId              3824
 MapX                 203
 MapY                 182
 
-MapObjType           2
+MapObjType           1
 ProtoId              3824
 MapX                 203
 MapY                 178
 
-MapObjType           2
+MapObjType           1
 ProtoId              3824
 MapX                 204
 MapY                 193
@@ -23862,12 +23862,12 @@ ProtoId              2033
 MapX                 266
 MapY                 182
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 272
 MapY                 175
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 274
 MapY                 175

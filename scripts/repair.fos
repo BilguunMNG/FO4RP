@@ -1301,7 +1301,7 @@ void SetDeterioration( Item& item, int deteriorationProcent )
 
 int GetDeteriorationProcent( Item& item )
 {
-    if( not item.IsDeteriorable() )
+    if( !item.IsDeteriorable() )
 	{
 		return 0;
 	}
@@ -1537,7 +1537,7 @@ class MenuAskAction: CenteredMenuHandler
 void StartMenuAskAction( Critter& cr, Item& item )
 {
     Map@ map = cr.GetMap();
-    if( map is null )
+    if( !valid(map) )
 	{
         return;
     }

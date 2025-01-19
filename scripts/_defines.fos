@@ -253,6 +253,7 @@
 #define ITEM_SUBTYPE_TERMINAL						( 203 )
 #define ITEM_SUBTYPE_BRIEFCASE						( 204 )
 #define ITEM_SUBTYPE_FRIDGE							( 205 )
+#define ITEM_SUBTYPE_STOVE							( 206 )
 #define ITEM_SUBTYPE_CONTAINERS_END					( 210 )
 
 //Other 220+
@@ -298,7 +299,7 @@
 #define ITEM_RADIO                               	( 0x40000000 )
 #define ITEM_HEAR_BLOCK                           	( 0x80000000 )
 
-// food flags
+// Food flags 320 <-> 323 :
 #define FOOD_KNOCKOUT                            	( 0x00000001 )
 #define FOOD_RADIOACTIVE                         	( 0x00000002 )
 #define FOOD_POISONED                            	( 0x00000004 )
@@ -666,7 +667,7 @@
 #define CTE_DYSPNEA                              	( 16 )		// Make cr choke and eventually die
 #define CTE_QUICKHEAL                            	( 17 )		// Stimpak and so on healing time event
 #define CTE_SNEAKING                            	( 18 )		// Sneaking TE for check cover
-//19
+#define CTE_TELEPORT_BETWEEN_PLAYERS              	( 19 )		// ctrl-n hotkey GM teleportation event
 #define CTE_DIRT							     	( 20 )		// Sweating - getting dirty
 #define CTE_THIRST                               	( 21 )		// Thirst time-event
 #define CTE_PA_AUTH                              	( 22 )		// Power Armor Auth
@@ -1281,8 +1282,9 @@
 //853..887
 #define CR_CONTROLLED_GROUP	                     	( 888 )
 #define CR_SPAWNER_ID		                     	( 889 )
-//890..978
+//890..977
 
+#define CR_STA_EQUIPPED								( 978 )		// Marker for STA module
 #define CR_GRID_TRANSFER_X							( 979 )		// Saving prev coordinates for hex transfer X
 #define CR_GRID_TRANSFER_Y							( 980 )		// Saving prev coordinates for hex transfer Y
 #define CR_SELECT_PET_TARGET						( 981 )		// Flag for selecting pet target

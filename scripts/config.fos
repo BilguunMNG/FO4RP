@@ -254,7 +254,9 @@ void InitializeGame()							// Export
 
 #  ifndef __CLIENT
 	
-    SetParameterChangeBehaviour( ADDICTION_DOPE, "consumables@changedParam_ADDICTION_DOPE" );
+    SetParameterChangeBehaviour( ST_MAX_LIFE_EXT, "parameters@changedParam_MaxLifeExt" );
+    
+	SetParameterChangeBehaviour( ADDICTION_DOPE, "consumables@changedParam_ADDICTION_DOPE" );
 	SetParameterChangeBehaviour( ADDICTION_COMBAT_DRUGS, "consumables@changedParam_ADDICTION_COMBAT_DRUGS" );
 	SetParameterChangeBehaviour( ADDICTION_HEAVY_DRUGS, "consumables@changedParam_ADDICTION_HEAVY_DRUGS" );
     SetParameterChangeBehaviour( ADDICTION_HEALING_DRUGS, "consumables@changedParam_ADDICTION_HEALING_DRUGS" );
@@ -307,6 +309,7 @@ void InitializeGame()							// Export
     SetParameterChangeBehaviour( ST_THIRST, "parameters@changedParam_Thrist" );
     SetParameterChangeBehaviour( ST_DYSPNEA, "parameters@changedParam_Dyspnea" );
 	SetParameterChangeBehaviour( ST_DRUNK, "parameters@changedParam_Drunk" );
+    SetParameterChangeBehaviour( CR_HOLD_POSITION, "parameters@changedParam_HoldPosition");
     SetParameterChangeBehaviour( ST_GLOBAL_OVERDOSE, "parameters@changedParam_Overdose");
     SetParameterChangeBehaviour( ST_WETNESS, "parameters@changedParam_Wetness" );
 	SetParameterChangeBehaviour( CR_IS_WINDUPED, "parameters@changedParam_Windup" );

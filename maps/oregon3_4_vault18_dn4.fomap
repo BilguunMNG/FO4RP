@@ -24355,12 +24355,12 @@ ProtoId              5006
 MapX                 236
 MapY                 173
 
-MapObjType           2
+MapObjType           1
 ProtoId              3825
 MapX                 85
 MapY                 323
 
-MapObjType           2
+MapObjType           1
 ProtoId              3824
 MapX                 82
 MapY                 323
@@ -25601,7 +25601,7 @@ ProtoId              5007
 MapX                 227
 MapY                 137
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 227
 MapY                 139
@@ -25681,7 +25681,7 @@ MapY                 138
 OffsetX              -27
 OffsetY              4
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 229
 MapY                 139

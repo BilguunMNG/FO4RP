@@ -111,6 +111,10 @@ PlantCollection@ plants = PlantCollection()
 		.seed( PID_PLANT_CORN_SEED )
 		.loot( PID_CORN )
 		.loot( PID_PLANT_CORN_DEAD )
+	.cplant( PID_PLANT_POTATO,					PLANT_TYPE_FARM, 		3,	 		2,			  4		)
+		.seed( PID_PLANT_POTATO_SEED )
+		.loot( PID_POTATO )
+		.loot( PID_PLANT_POTATO_DEAD )
 	.cplant( PID_PLANTBARREL_RAD,				PLANT_TYPE_BARREL, 		5,	 		6,			  7		)
 		.seed( PID_PLANT_RADCVET_SEED )
 		.loot( PID_RADCVET )
@@ -407,7 +411,7 @@ void PlantMushroom( Critter& cr, Item& seed, Item& plant_bed )
 			}*/
 			
 			uint[] values = { plant_bed.Id };
-			plant_bed.PLANT_EVENT = CreateTimeEvent( AFTER( REAL_SECOND( 1 ) ), "e_PlantGrowth", values, true );
+			plant_bed.PLANT_EVENT = CreateTimeEvent( AFTER( REAL_MINUTE( 1 ) ), "e_PlantGrowth", values, true );
 			_SubItem( seed, 1 );
 			cr.Animate( 0, ANIM2_PICKUP, null, false, true );
 			TryRaiseSkill( cr );
@@ -459,7 +463,7 @@ void PlantHydro( Critter& cr, Item& seed, Item& plant_bed )
 			}*/
 			
 			uint[] values = { plant_bed.Id };
-			plant_bed.PLANT_EVENT = CreateTimeEvent( AFTER( REAL_SECOND( 1 ) ), "e_PlantGrowth", values, true );
+			plant_bed.PLANT_EVENT = CreateTimeEvent( AFTER( REAL_MINUTE( 1 ) ), "e_PlantGrowth", values, true );
 			_SubItem( seed, 1 );
 			cr.Animate( 0, ANIM2_PICKUP, null, false, true );
 			TryRaiseSkill( cr );
@@ -479,7 +483,7 @@ void PlantBarrel( Critter& cr, Item& seed, Item& plant_bed )
 			plant_bed.PLANT_BED_DNA = plant_bed.GetProtoId();
 			plant_bed.ChangeProto( plant.pid );
 			uint[] values = { plant_bed.Id };
-			plant_bed.PLANT_EVENT = CreateTimeEvent( AFTER( REAL_SECOND( 1 ) ), "e_PlantGrowth", values, true );
+			plant_bed.PLANT_EVENT = CreateTimeEvent( AFTER( REAL_MINUTE( 1 ) ), "e_PlantGrowth", values, true );
 			_SubItem( seed, 1 );
 			cr.Animate( 0, ANIM2_PICKUP, null, false, true );
 			TryRaiseSkill( cr );

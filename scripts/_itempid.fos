@@ -47,6 +47,9 @@
 // Generators
 #define PID_COAL_POWERGEN                      		( 1830 )						// Coal Generator
 
+// Sport
+#define PID_PUNCH_BAG								( 2537 )						// Punch bag
+
 //Doors
 #define PID_DOOR_BLOCKER                     		( 854 )							// No shoot through
 #define PID_AUTO_DOOR_RUST_NS	              		( 2142 )						// Rust bunker door 
@@ -312,6 +315,18 @@
 #define PID_WILDFIRE_5								( 8739 )						// Flame
 
 /**************************************************************
+***************			STOVES          		***************
+***************************************************************/
+#define PID_STOVE_01                                ( 2682 )
+#define PID_STOVE_02                                ( 2683 )
+#define PID_STOVE_03                                ( 2684 )
+#define PID_STOVE_04                                ( 2685 )
+#define PID_STOVE_05                                ( 3822 )
+#define PID_STOVE_06                                ( 3823 )
+#define PID_STOVE_07                                ( 3824 )
+#define PID_STOVE_08                                ( 3825 )
+
+/**************************************************************
 ***************				LightSource		***************
 ***************************************************************/
 
@@ -337,6 +352,9 @@
 /**************************************************************
 ***************				Farming			***************
 ***************************************************************/
+#define PID_PLANT_POTATO_SEED                       ( 1462 )                        //Potato Seed
+#define PID_PLANT_POTATO                            ( 1463 )                        //Potato Plant
+#define PID_PLANT_POTATO_DEAD                       ( 1464 )                        //Dead Potato Plan
 
 #define PID_HYDRO_NS_EMPTY							( 1566 )						// A Hydroponic Farm
 #define PID_HYDRO_EW_EMPTY							( 1567 )						// A Hydroponic Farm
@@ -1440,6 +1458,7 @@
 #define PID_MEAT                              		( 539 )							// Meat
 #define PID_RAD_MEAT                          		( 1440 )						// Low Quality Meat
 #define PID_MOLERAT_STOMATCH                  		( 1444 )						// Molerat Stomach
+#define PID_POTATO                                  ( 1465 )                        // Potato
 #define PID_RAT_MEAT       		              		( 1551 )						// Rat Carcass
 #define PID_GECKO_MEAT          	          		( 1552 )						// Gecko Meat
 #define PID_COOKED_MEAT      		          		( 1553 )						// Chunk of Grilled Meat
@@ -1453,6 +1472,12 @@
 #define PID_RAGOUT                            		( 1563 )						// Stew
 #define PID_CABBAGE                           		( 1615 )						// Cabbage
 #define PID_CORN                              		( 1626 )						// Corn
+#define PID_POTATO_BAKED                            ( 1670 )                        // Potato Baked
+#define PID_POTATO_FRIES                            ( 1671 )                        // Potato Fries
+#define PID_POTATO_PANCAKES                         ( 1672 )                        // Potato Pancakes
+#define PID_POTATO_CHIPS                            ( 1673 )                        // Potato Chips
+#define PID_POTATO_MASHED_CUTLET                    ( 1674 )                        // Mashed Potato with Cutlet
+#define PID_PANCAKES                                ( 1675 )                        // Pancakes
 #define PID_FERMENT                            		( 1716 )						// Yeast
 #define PID_SALT                            		( 1717 )						// Salt
 #define PID_PIROG                             		( 1757 )						// Fish Pie
@@ -1743,6 +1768,18 @@
 #define PID_WEDRING_M								( 3980 )						// Wedding Ring
 #define PID_WEDRING_F								( 3981 )						// Wedding Ring with a jewel
 
+// Vynil disks, pack 3
+#define PID_JUKEBOX_DISK_ALL_EYEZ					( 695 )
+#define PID_JUKEBOX_DISK_APPETITE					( 696 )
+#define PID_JUKEBOX_DISK_CHECK_YOSELF				( 697 )
+#define PID_JUKEBOX_DISK_PUSHER						( 698 )
+#define PID_JUKEBOX_DISK_SURVIVAL_OF_FITTEST		( 699 )
+
+// Vynil disks, pack 2
+#define PID_JUKEBOX_DISK_ABDUL						( 1240 )						// Abdulorock, test
+#define PID_JUKEBOX_DISK_CHORDS_BOOM				( 1241 )						// The Chords - Sh Boom
+#define PID_JUKEBOX_DISK_GASOLINA                	( 1242 )                        // Daddy Yankee - Gasolina
+
 // Venil disks
 #define PID_JUKEBOX_DISK_WHO               			( 1900 )						// X-Files Main Theme
 #define PID_JUKEBOX_DISK_TMNT                 		( 1901 )						// Teenage Mutant Ninja Turtles
@@ -1843,18 +1880,6 @@
 #define PID_JUKEBOX_DISK_HOLYDIVER                  ( 1996 )                        // DIO - Holy Diver
 #define PID_JUKEBOX_DISK_HOLDON                     ( 1997 )                        // Sam and Dave - Hold on i'm coming
 #define PID_JUKEBOX_DISK_HEAVENSDOOR                ( 1998 )                        // Bob Dylan - Knocking on Heaven's Door
-
-// Vynil disks, pack 2
-#define PID_JUKEBOX_DISK_ABDUL						( 1240 )						// Abdulorock, test
-#define PID_JUKEBOX_DISK_CHORDS_BOOM				( 1241 )						// The Chords - Sh Boom
-#define PID_JUKEBOX_DISK_GASOLINA                	( 1242 )                        // Daddy Yankee - Gasolina
-
-// Vynil disks, pack 3
-#define PID_JUKEBOX_DISK_ALL_EYEZ					( 695 )
-#define PID_JUKEBOX_DISK_APPETITE					( 696 )
-#define PID_JUKEBOX_DISK_CHECK_YOSELF				( 697 )
-#define PID_JUKEBOX_DISK_PUSHER						( 698 )
-#define PID_JUKEBOX_DISK_SURVIVAL_OF_FITTEST		( 699 )
 
 /**************************************************************
 ***************				Keys				***************
@@ -2524,8 +2549,8 @@
 #define PID_itgloves                          		( 1730 )						// Gloves
 #define PID_itmatchs                          		( 1731 )						// Matches
 #define PID_itmoney                           		( 1732 )						// Batteries
-#define PID_itplate2                          		( 1733 )						// Dirty Bowl
-#define PID_itplate3                          		( 1734 )						// Bowl
+#define PID_DIRTY_BOWL                        		( 1733 )						// Dirty Bowl
+#define PID_BOWL                              		( 1734 )						// Bowl
 #define PID_ITSOAP01                          		( 1737 )						// Soap
 #define PID_ittmpon1                          		( 1739 )						// Printing with ink
 #define PID_ittool02                          		( 1740 )						// Tech Screwdriver

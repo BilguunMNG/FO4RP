@@ -299,7 +299,7 @@ void _OnMessage( Critter& npc, Critter& fromCrit, int message, int value )
 
     if( fromCrit.IsPlayer() )
     {
-        AddAttackPlane( npc, 10, fromCrit );
+		return;
     }
 
     if( message == MSG_GROUP_ATTACK )
@@ -506,6 +506,14 @@ int _PlaneBegin( Critter& npc, NpcPlane& plane, int reason, Critter@ someCr, Ite
 	if( npc.IsDead() )
 	{
 		return PLANE_DISCARD;
+	}
+	
+	if( plane.Type == AI_PLANE_WALK )
+	{
+		if( !npc.IsCanWalk() )
+		{
+			return PLANE_DISCARD;
+		}
 	}
 	
 	Map@ map = npc.GetMap();

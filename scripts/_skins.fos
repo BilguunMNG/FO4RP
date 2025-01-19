@@ -764,6 +764,7 @@
 # define CRTYPE_GHOUL_GRAY							( 155 )		//серый гуль
 # define CRTYPE_GHOUL_RUNNING_GREEN					( 174 )		//бегающий гуль (ленни), зелёный
 # define CRTYPE_GHOUL_RUNNING_GRAY					( 175 )		//бегающий гуль (ленни), серый
+# define CRTYPE_LOBOTOMITE							( 493 )		// Lobotomite
 
 // Super Mutants
 # define CRTYPE_SUPERMUTE_JACKET					( 20 )		// SM jacket

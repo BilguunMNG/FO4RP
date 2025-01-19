@@ -47,8 +47,13 @@ bool AddWalkPlane( Critter& npc, uint entire, uint cut, bool run )
 		return false;
 	}
 	
+    if( !npc.IsCanWalk() )
+	{
+		return false;
+	}
+	
     uint16 hX = 0, hY = 0;
-    Map@   map = npc.GetMap();
+    Map@ map = npc.GetMap();
     if( valid( map ) && map.GetEntireCoords( entire, 0, hX, hY ) )
 	{
         return AddWalkPlane( npc, 0, hX, hY, 6, run, cut );
@@ -64,7 +69,7 @@ bool AddWalkPlane( Critter& npc, uint priority, uint16 hexX, uint16 hexY, uint8 
 		return false;
 	}
 	
-    if( not npc.IsCanWalk() )
+    if( !npc.IsCanWalk() )
 	{
 		return false;
 	}
@@ -408,54 +413,66 @@ uint EraseAttackPlane( Critter& npc, uint critId )
             erased++;
 		}
     }
+	
     return erased;
 }
 
 //AOP AI TECH
-bool TryLetPassage( Critter& cr, Critter& toCr )
+bool TryLetPassage( Critter& npc, Critter& toCr )
 {
-	// requested on new position
-	if( int( MIX_UINT16(cr.HexX, cr.HexY ) ) != cr.AI_PASSAGE_REQUEST_POS )
+	if( npc.IsPlayer() )
 	{
-        cr.AI_PASSAGE_REQUEST_POS = int( MIX_UINT16( cr.HexX, cr.HexY ) );
-        cr.AI_PASSAGE_REQUEST_TIME = GetTick() + AI_REACTION_TIME;
+		return false;
+	}
+
+	if( !npc.IsCanWalk() )
+	{
+		return false;
+	}
+	
+	// requested on new position
+	if( int( MIX_UINT16( npc.HexX, npc.HexY ) ) != npc.AI_PASSAGE_REQUEST_POS )
+	{
+        npc.AI_PASSAGE_REQUEST_POS = int( MIX_UINT16( npc.HexX, npc.HexY ) );
+        npc.AI_PASSAGE_REQUEST_TIME = GetTick() + AI_REACTION_TIME;
         return true; // skip request, tell retry
     }
 	// not enough time since first request
-	if( int( GetTick() ) < cr.AI_PASSAGE_REQUEST_TIME )
+	if( int( GetTick() ) < npc.AI_PASSAGE_REQUEST_TIME )
 	{
 		return true; // skip request, tell retry
 	}
 
-	cr.AI_PASSAGE_REQUEST_TIME = GetTick() + AI_REACTION_TIME;
+	npc.AI_PASSAGE_REQUEST_TIME = GetTick() + AI_REACTION_TIME;
 
-    Map@ map = cr.GetMap();
+    Map@ map = npc.GetMap();
     if( !valid( map ) )
 	{
 		return false;
 	}
 
-    if( IsBlockingChoke( map, cr.HexX, cr.HexY, toCr.HexX, toCr.HexY ) )
+    if( IsBlockingChoke( map, npc.HexX, npc.HexY, toCr.HexX, toCr.HexY ) )
 	{
         uint8[] goDirs = { 0, 1, 5, 2, 4, 3 }; // priority: front, f-right, f-left, b-right, b-left, back
 		uint imax = goDirs.length();
         for( uint i = 0; i < imax; i++ )
 		{
-            uint16 hexX = cr.HexX;
-            uint16 hexY = cr.HexY;
-			uint dir = ( cr.Dir + goDirs[i] ) % 6;
+            uint16 hexX = npc.HexX;
+            uint16 hexY = npc.HexY;
+			uint dir = ( npc.Dir + goDirs[i] ) % 6;
             map.MoveHexByDir( hexX, hexY, dir, 1 );
             if( !map.IsHexPassed( hexX, hexY ) )
 			{
 				continue;
 			}
 
-            RustyGetHexCoordWall( map, cr.HexX, cr.HexY, hexX, hexY, 0, Random( 1, 5 ) );
-            cr.ErasePlane( AI_PLANE_WALK, true );
+            RustyGetHexCoordWall( map, npc.HexX, npc.HexY, hexX, hexY, 0, Random( 1, 5 ) );
+            npc.ErasePlane( AI_PLANE_WALK, true );
 
-            return AddWalkPlane( cr, 0, hexX, hexY, dir, true, 1 );
+            return AddWalkPlane( npc, 0, hexX, hexY, dir, true, 1 );
         }
     }
+	
 	return false;
 }
 
@@ -464,7 +481,7 @@ bool IsBlockingChoke( Map& map, uint16 ox, uint16 oy, uint16 tx, uint16 ty )
     uint8 skipDir =7;
     if( GetDistantion( ox, oy, tx, ty ) == 1 )
 	{
-        skipDir = GetDirection(ox, oy, tx, ty);
+        skipDir = GetDirection( ox, oy, tx, ty );
 	}
 	
     bool[] dirBlocked( 6, false );
@@ -493,4 +510,5 @@ bool IsBlockingChoke( Map& map, uint16 ox, uint16 oy, uint16 tx, uint16 ty )
 	}
     return passageCount > 1;
 }
+
 #endif //NPC_PLANES

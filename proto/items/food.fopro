@@ -300,7 +300,7 @@ Cost=50
 Material=15
 Food_Restore=40
 Food_Flags=6
-Item_Subtype=141
+Item_Subtype=151
 
 # PID_MOLERAT_STOMATCH
 [Proto]
@@ -319,6 +319,24 @@ Material=15
 Food_Restore=80
 Food_Flags=6
 Item_Subtype=141
+
+# PID_POTATO
+[Proto]
+Pid=1465
+Type=22
+PicMap=art\items\plant\potato_itm.fofrm
+PicInv=art\items\plant\potato_inv.png
+Flags=402653214
+DisableEgg=1
+Stackable=1
+Weight=100
+Volume=3
+SoundId=48
+Cost=10
+Material=15
+Food_Restore=10
+Food_Flags=4
+Item_Subtype=144
 
 # PID_RAT_MEAT
 [Proto]
@@ -516,7 +534,7 @@ Cost=15
 Material=15
 Food_Restore=40
 Food_Flags=4
-Item_Subtype=144
+Item_Subtype=154
 
 # PID_RADCVET
 [Proto]
@@ -534,7 +552,7 @@ Cost=10
 Material=15
 Food_Restore=30
 Food_Flags=7
-Item_Subtype=144
+Item_Subtype=153
 
 # PID_CABBAGE
 [Proto]
@@ -569,6 +587,114 @@ SoundId=48
 Cost=10
 Material=15
 Food_Restore=30
+Food_Flags=0
+Item_Subtype=144
+
+# PID_POTATO_BAKED
+[Proto]
+Pid=1670
+Type=22
+PicMap=art\items\food\potato_baked_itm.fofrm
+PicInv=art\inven\food\potato_baked_inv.png
+Flags=402653214
+DisableEgg=1
+Stackable=1
+Weight=100
+Volume=3
+SoundId=48
+Cost=40
+Material=15
+Food_Restore=50
+Food_Flags=0
+Item_Subtype=144
+
+# PID_POTATO_FRIES
+[Proto]
+Pid=1671
+Type=22
+PicMap=art\items\food\potato_fries_itm.fofrm
+PicInv=art\inven\food\potato_fries_inv.png
+Flags=402653214
+DisableEgg=1
+Stackable=1
+Weight=450
+Volume=10
+SoundId=48
+Cost=40
+Material=15
+Food_Restore=75
+Food_Flags=0
+Item_Subtype=144
+
+# PID_POTATO_PANCAKES
+[Proto]
+Pid=1672
+Type=22
+PicMap=art\items\food\potato_pancakes_itm.fofrm
+PicInv=art\inven\food\potato_pancakes_inv.png
+Flags=402653214
+DisableEgg=1
+Stackable=1
+Weight=450
+Volume=10
+SoundId=48
+Cost=40
+Material=15
+Food_Restore=100
+Food_Flags=0
+Item_Subtype=144
+
+# PID_POTATO_CHIPS
+[Proto]
+Pid=1673
+Type=22
+PicMap=art\items\food\potato_chips_itm.fofrm
+PicInv=art\inven\food\potato_chips_inv.png
+Flags=402653214
+DisableEgg=1
+Stackable=1
+Weight=450
+Volume=10
+SoundId=48
+Cost=40
+Material=15
+Food_Restore=50
+Food_Flags=0
+Item_Subtype=144
+
+# PID_POTATO_MASHED_CUTLET
+[Proto]
+Pid=1674
+Type=22
+PicMap=art\items\food\potato_mashed_cutlet_itm.fofrm
+PicInv=art\inven\food\potato_mashed_cutlet_inv.png
+Flags=402653214
+DisableEgg=1
+Stackable=1
+Weight=450
+Volume=10
+SoundId=48
+Cost=40
+Material=15
+Food_Restore=150
+Food_Flags=0
+Item_Subtype=144
+
+# PID_PANCAKES
+[Proto]
+Pid=1675
+Type=22
+PicMap=art\items\food\pancakes_itm.fofrm
+PicInv=art\inven\food\pancakes_inv.png
+Flags=402653214
+DisableEgg=1
+Stackable=1
+Weight=450
+Volume=10
+SoundId=48
+Cost=40
+Material=15
+Food_Restore=500
 Food_Flags=0
 Item_Subtype=144
 
@@ -930,7 +1056,7 @@ Cost=25
 Material=15
 Food_Restore=90
 Food_Flags=20
-Item_Subtype=144
+Item_Subtype=153
 
 # PID_MANTIS_FOOD
 [Proto]
@@ -1020,7 +1146,7 @@ Material=15
 Food_Restore=5
 Food_Thrist=5
 Food_Flags=4
-Item_Subtype=144
+Item_Subtype=154
 
 # PID_POTROHA_SPICED
 [Proto]

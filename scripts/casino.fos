@@ -47,7 +47,7 @@ bool SlotMachineWork( Critter& cr, Item& cash, Item& target )
     }
 	else
 	{
-        bet = _CritCountItem( cr, PID_BOTTLE_CAPS );
+        bet = cr.CountItem( PID_BOTTLE_CAPS );
         if( bet < MIN_BET )
 		{
 			cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_USE_NOTHING );
@@ -93,7 +93,7 @@ bool PlaySlots( Critter& cr, Item& target, uint bet )
 			return false; 
 		}
 		
-		if( _CritCountItem( cr, pid ) >= bet )
+		if( cr.CountItem( pid ) >= bet )
 		{
 			Item@ cash = getItem( cr, pid );
 			MoveItem( cash, bet, target, 0 );
@@ -187,7 +187,7 @@ class MenuSlotMachine: CenteredMenuHandler
         Map@ map = GetMap(map_id);
         Item@ target = GetItem(target_id);
 		
-        if( map is null || target is null )
+        if( !valid(map) || !valid(target) )
 		{
             return false;
         }
@@ -401,7 +401,7 @@ class MenuSlotMachine: CenteredMenuHandler
 void StartMenuSlotMachine( Critter& cr, Item& target )
 {
     Map@ map = cr.GetMap();
-    if( map is null )
+    if( !valid(map) )
 	{
         return;
     }
@@ -751,7 +751,7 @@ class MenuCard: CenteredMenuHandler
         Map@ map = GetMap( map_id );
         Item@ target = GetItem( target_id );
 		
-        if( map is null || target is null )
+        if( !valid(map) || !valid(target) )
 		{
             return false;
         }
@@ -801,7 +801,7 @@ class MenuCard: CenteredMenuHandler
 void StartMenuCard( Critter& cr, Item& target )
 {
     Map@ map = cr.GetMap();
-    if( map is null )
+    if( !valid(map) )
 	{
         return;
     }

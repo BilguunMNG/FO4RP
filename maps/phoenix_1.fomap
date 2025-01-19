@@ -31329,12 +31329,12 @@ ProtoId              2607
 MapX                 174
 MapY                 170
 
-MapObjType           2
+MapObjType           1
 ProtoId              2684
 MapX                 162
 MapY                 171
 
-MapObjType           2
+MapObjType           1
 ProtoId              2685
 MapX                 162
 MapY                 174
@@ -62957,12 +62957,12 @@ ProtoId              2540
 MapX                 165
 MapY                 218
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 171
 MapY                 219
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 171
 MapY                 225

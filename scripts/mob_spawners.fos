@@ -53,6 +53,7 @@ void CreateMobSpawner( Map& map, uint16 hx, uint16 hy, uint teamID, uint mobCoun
 	if(valid(firstMob))
 	{
 		mobSpawner.CRTYPE = firstMob.CrType;
+		firstMob.ParamBase[CR_SPAWNER_ID] = mobSpawner.Id;
 	}
 
 	int[] values = { mobSpawner.Id };
@@ -78,7 +79,7 @@ uint e_processMobSpawner( int[] @ values )
 	Critter@ currMob = null;
 	uint minMobPID = mobSpawner.MIN_MOB_PID;
 	uint maxMobPID = mobSpawner.MAX_MOB_PID;
-	uint pidsLen = maxMobPID - minMobPID;
+	uint pidsLen = 1 + maxMobPID - minMobPID;
 	
 	for( uint i = 0; i < pidsLen; i++ )
 	{
@@ -90,7 +91,7 @@ uint e_processMobSpawner( int[] @ values )
 		@currMob = mobsFound[i];
 		if( valid( currMob ) )
 		{	
-			if( currMob.ParamBase[CR_SPAWNER_ID] == int( mobSpawner.Id ) )
+			if( currMob.Param[CR_SPAWNER_ID] == int( mobSpawner.Id ) )
 			{
 				mobsCount++;
 			}

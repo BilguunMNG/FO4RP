@@ -15465,7 +15465,7 @@ ProtoId              2536
 MapX                 212
 MapY                 291
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 209
 MapY                 286
@@ -18825,7 +18825,7 @@ ProtoId              15346
 MapX                 114
 MapY                 149
 
-MapObjType           2
+MapObjType           1
 ProtoId              2683
 MapX                 113
 MapY                 150
@@ -19071,7 +19071,7 @@ ProtoId              5003
 MapX                 117
 MapY                 149
 
-MapObjType           2
+MapObjType           1
 ProtoId              2683
 MapX                 115
 MapY                 150
@@ -21312,7 +21312,7 @@ ProtoId              2543
 MapX                 114
 MapY                 178
 
-MapObjType           2
+MapObjType           1
 ProtoId              2537
 MapX                 110
 MapY                 178

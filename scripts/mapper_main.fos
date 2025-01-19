@@ -195,6 +195,7 @@
 #include "_mapper_defines.fos"
 #include "_defines.fos"
 #include "_itempid.fos"
+#include "_macros.fos"
 
 #define GRID_COLOR_INNER (0x33000000)
 #define GRID_COLOR_OUTER (0x66000000)
@@ -225,7 +226,7 @@ void InitializeTabs()
 	for( uint16 i = 1; i <= 30000; i++ )
 	{
 		ProtoItem@ protoItem = GetProtoItem( i );
-		if( protoItem is null )
+		if( !valid(protoItem) )
 		{
 			continue;
 		}
@@ -277,7 +278,7 @@ void InitializeTabs()
     pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC0 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -288,7 +289,7 @@ void InitializeTabs()
     pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC5 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -299,7 +300,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC10 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -310,7 +311,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC15 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -321,7 +322,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC20 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -332,7 +333,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC25 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -343,7 +344,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC30 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -354,7 +355,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC35 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -365,7 +366,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC40 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -376,7 +377,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC45 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -387,7 +388,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_ARMOR_AC50 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -402,7 +403,7 @@ void InitializeTabs()
     pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_DRUG ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -417,7 +418,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_PISTOL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -428,7 +429,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_REVOLVER ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -439,7 +440,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_SMG ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -450,7 +451,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -461,7 +462,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_ASSAULT_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -472,7 +473,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_SNIPER_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -483,7 +484,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_SHOTGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -494,7 +495,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_AUTOSHOTGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -505,7 +506,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_LMG ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -516,7 +517,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_MACHINEGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -527,7 +528,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_NADELAUNCHER ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -538,7 +539,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_FLAMETHROWER ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -549,7 +550,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_MINIGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -560,7 +561,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_NORMAL_HEAVY_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -571,7 +572,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_LASER_PISTOL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -582,7 +583,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_LASER_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -593,7 +594,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_LASER_SMG ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -604,7 +605,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_LASER_SNIPER_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -615,7 +616,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_LASER_HEAVY_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -626,7 +627,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_LASER_MINIGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -637,7 +638,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_LASER_MACHINEGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -648,7 +649,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PLASMA_PISTOL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -659,7 +660,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PLASMA_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -670,7 +671,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PLASMA_SMG ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -681,7 +682,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PLASMA_SNIPER_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -692,7 +693,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PLASMA_HEAVY_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -703,7 +704,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PLASMA_MINIGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -714,7 +715,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PULSE_PISTOL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -725,7 +726,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PULSE_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -736,7 +737,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PULSE_SMG ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -747,7 +748,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PULSE_SNIPER_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -758,7 +759,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PULSE_SHOTGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -769,7 +770,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_PULSE_MINIGUN ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -780,7 +781,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_SONIC_PISTOL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -791,7 +792,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_SONIC_RIFLE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -802,7 +803,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_PRIM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -813,7 +814,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_KIFE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -824,7 +825,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_FRAG ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -835,7 +836,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_CONCUSSION ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -846,7 +847,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_FLASH ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -857,7 +858,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_SMOKE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -868,7 +869,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_PLASMA ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -879,7 +880,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_ELECTRO ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -890,7 +891,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_MOLOTOV ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -901,7 +902,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_INCENDIARY ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -912,7 +913,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_GAS ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -923,7 +924,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_ACID ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -934,7 +935,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_MELEE_KNIFE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -945,7 +946,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_MELEE_LONG_KNIFE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -956,7 +957,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_MELEE_SPEAR ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -967,7 +968,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_MELEE_HAMMER ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -978,7 +979,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_MELEE_GLOVE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -989,7 +990,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 		uint8 item_Subtype = protoItem.Item_Subtype;
 		if( item_Subtype == ITEM_SUBTYPE_WEAPON_MELEE_CLUB ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1007,7 +1008,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_ROCKET ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1018,7 +1019,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_FLAMETHROWER_FUEL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1029,7 +1030,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_C_ENERGY_CELL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1040,7 +1041,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_D_ENERGY_CELL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1051,7 +1052,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_223 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1062,7 +1063,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_5MM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1073,7 +1074,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_40 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1084,7 +1085,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_10MM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1095,7 +1096,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_44 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1106,7 +1107,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_14MM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1117,7 +1118,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_12_GAUGE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1128,7 +1129,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_9MM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1139,7 +1140,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_BB ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1150,7 +1151,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_45 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1161,7 +1162,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_2MM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1172,7 +1173,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_4_7MM_CASELESS ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1183,7 +1184,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_HN_NEEDLER ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1194,7 +1195,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_7_62MM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1205,7 +1206,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_DART ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1216,7 +1217,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_SHELLS_40MM ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1227,7 +1228,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_SIGNAL_CARTRIDGES ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1238,7 +1239,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_22 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1249,7 +1250,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_SPIKE ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1260,7 +1261,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_50 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1271,7 +1272,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_338 ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1282,7 +1283,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_44_HENRY ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1293,7 +1294,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_30_SPRIENGFIELD ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1304,7 +1305,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_BOLT ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1315,7 +1316,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Cal = protoItem.Ammo_Caliber;
 		if( item_Cal == CALIBER_NAILS ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1331,7 +1332,7 @@ void InitializeTabs()
     pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_MISC ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1346,7 +1347,7 @@ void InitializeTabs()
     pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_KEY ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1358,7 +1359,7 @@ void InitializeTabs()
     pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_CAR ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1369,7 +1370,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_EFFECT ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1380,7 +1381,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_PLANT ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1391,7 +1392,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_FOOD ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1402,7 +1403,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_DRINK ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1418,7 +1419,7 @@ void InitializeTabs()
     pids.resize( 0 );
 	for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_CONTAINER ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1430,7 +1431,7 @@ void InitializeTabs()
     pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_DOOR ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1447,7 +1448,7 @@ void InitializeTabs()
 	pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_GRID ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1464,7 +1465,7 @@ void InitializeTabs()
     pids.resize( 0 );
     for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_GENERIC ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -1874,7 +1875,7 @@ void InitializeTabs()
 	pids.resize( 0 );
 	    for( uint i = 0; i < ProtoItems.length(); i++ ) {
 		ProtoItem@ protoItem = ProtoItems[i];
-		if( protoItem is null ) { continue; }
+		if( !valid(protoItem) ) { continue; }
 			uint8 item_Type = protoItem.Type;
 		if( item_Type == ITEM_TYPE_WALL ) {
 			pids.insertLast( ProtoItems[i].ProtoId );
@@ -2679,7 +2680,7 @@ string ConvertMaps(string str)
 	for(uint i = 0; i < mapNames.length(); i++)
 	{
 		MapperMap@ map = LoadMap(mapNames[i], PT_SERVER_MAPS);
-		if(not (map is null))
+		if( valid(map))
 		{
 			if(SaveMap(map, mapNames[i], PT_SERVER_MAPS))
 			{
@@ -2707,7 +2708,7 @@ string ConvertMaps(string str)
 string ClearTiles(string str)
 {
 	MapperMap@ map = GetActiveMap();
-	if(map is null) return "Map not loaded.";
+	if(!valid(map)) return "Map not loaded.";
 
 	uint deleted = 0;
 	for(uint hx = 0; hx < map.Width; hx++)
@@ -2738,9 +2739,9 @@ string ClearTiles(string str)
 string MapTime(string str)
 {
 	MapperMap@ map = GetActiveMap();
-	if(map is null) return "Map not loaded.";
+	if(!valid(map)) return "Map not loaded.";
 	int value = 0;
-	if(not StrToInt(str, value)) return "Wrong value.";
+	if(!StrToInt(str, value)) return "Wrong value.";
 
 	map.Time = value;
 	return "Done. Time setted to " + map.Time + ".";
@@ -2749,9 +2750,9 @@ string MapTime(string str)
 string MapNoLogOut(string str)
 {
 	MapperMap@ map = GetActiveMap();
-	if(map is null) return "Map not loaded.";
+	if(!valid(map)) return "Map not loaded.";
 	int value = 0;
-	if(not StrToInt(str, value)) return "Wrong value.";
+	if(!StrToInt(str, value)) return "Wrong value.";
 
 	map.NoLogOut = value != 0 ? true : false;
 	return "Done. NoLogOut setted to " + map.NoLogOut + ".";
@@ -2760,7 +2761,7 @@ string MapNoLogOut(string str)
 string MapScriptModule(string str)
 {
 	MapperMap@ map = GetActiveMap();
-	if(map is null) return "Map not loaded.";
+	if(!valid(map)) return "Map not loaded.";
 
 	map.ScriptModule = str;
 	return "Done. ScriptModule setted to " + map.ScriptModule + ".";
@@ -2769,7 +2770,7 @@ string MapScriptModule(string str)
 string MapScriptFunc(string str)
 {
 	MapperMap@ map = GetActiveMap();
-	if(map is null) return "Map not loaded.";
+	if(!valid(map)) return "Map not loaded.";
 
 	map.ScriptFunc = str;
 	return "Done. ScriptFunc setted to " + map.ScriptFunc + ".";
@@ -2784,14 +2785,14 @@ string MapScriptFunc(string str)
     string setexitval(string str)
     {
         MapperMap@ map = GetActiveMap();
-        if(map !is null)
+        if(valid(map))
         {
             for(uint16 y = 0; y < MAP_LENGTH; ++y)
             {
                 for(uint16 x = 0; x < MAP_LENGTH; ++x)
                 {
                     MapperObject@ obj = map.GetObject(x, y, MAP_OBJECT_ITEM, EXIT_GRID_NEW, 0);
-                    if(obj !is null)
+                    if(valid(obj))
                     {
                         obj.Item_Val1 = obj.Item_Val0;
                         obj.Item_Val0 = 0;
@@ -2820,14 +2821,14 @@ string MapScriptFunc(string str)
         StrToInt(param[0], pid);
         if(pid == 0) {return "not valid protoId";}
         MapperMap@ map = GetActiveMap();
-        if(map !is null)
+        if(valid(map))
         {
             for(uint16 y = 0; y < MAP_LENGTH; ++y)
             {
                 for(uint16 x = 0; x < MAP_LENGTH; ++x)
                 {
                     MapperObject@ obj = map.GetObject(x, y, param[1] == "0" ? MAP_OBJECT_ITEM : MAP_OBJECT_SCENERY, pid, 0);
-                    if(obj !is null)
+                    if(valid(obj))
                     {
                         DeleteObject(obj);
                     }
@@ -2846,20 +2847,20 @@ string MapScriptFunc(string str)
     string convgen(string str)
     {
         MapperMap@ map = GetActiveMap();
-        if(map !is null)
+        if(valid(map))
         {
             for(uint16 y = 0; y < MAP_LENGTH; ++y)
             {
                 for(uint16 x = 0; x < MAP_LENGTH; ++x)
                 {
                     MapperObject@ obj = map.GetObject(x, y, MAP_OBJECT_ITEM, EXIT_GRID_NEW, 0);
-                    if(obj !is null)
+                    if(valid(obj))
                     {
                         int tempVal = obj.Item_Val1;
                         DeleteObject(obj);
                         @obj = map.AddObject(x, y, MAP_OBJECT_SCENERY, EXIT_GRID_NEW_);
                         //obj.MapObjType = 11;
-                        if(obj !is null)
+                        if(valid(obj))
                         {
                             obj.Scenery_Param0 = tempVal;
                             obj.Scenery_ParamsCount = 1;
@@ -2877,7 +2878,7 @@ string MapScriptFunc(string str)
     string ClearClones( string str )
     {
         MapperMap@ map = GetActiveMap();
-        if( map is null )
+        if( !valid(map) )
 		{
             return "Map not loaded.";
 		}
@@ -2902,7 +2903,7 @@ string MapScriptFunc(string str)
 				
 				for( uint i=0; i<len; i++ )
                 {
-                    if( objects[i] is null )
+                    if( !valid(objects[i]) )
 					{
 						continue;
                     }
@@ -2910,7 +2911,7 @@ string MapScriptFunc(string str)
 					uint16 pid = objects[i].ProtoId;
                     for(uint k=i+1; k<len; k++)
                     {
-                        if( ( objects[k] !is null ) && ( objects[k].ProtoId == pid ) )
+                        if( valid(objects[k]) && ( objects[k].ProtoId == pid ) )
                         {
                             DeleteObject(objects[k]);
                             @objects[k]=null;

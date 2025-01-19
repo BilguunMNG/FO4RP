@@ -1804,6 +1804,10 @@ Confirm?}
 {100742}{}{Current Radiation Level}
 {100743}{}{Cur. Rad. Lvl}
 
+# ST_CURRENT_AP
+{100751}{}{Current Action Points}
+{100752}{}{Current Action Points}
+
 # 100760
 # ST_EXPERIENCE
 {100761}{}{Experience}
@@ -1848,7 +1852,10 @@ Confirm?}
 
 # Other Stats
 {101901}{}{Running speed %}
-{101931}{}{AP Regen}
+# ST_APREGEN
+{101921}{}{AP Regeneration}
+{101922}{}{The number of regenerated AP. Regeneration occurs every 250 game ticks.}
+{101923}{}{AP Regen}
 {101931}{}{Drunk %}
 {101951}{}{Overdose %}
 {101991}{}{Crit resistance %}
@@ -2388,7 +2395,7 @@ Confirm?}
 {155590}{}{ |0x3CF8D2 rather large|0x3CF800 }
 {155600}{}{ |0x3CF8FA massive|0x3CF800 }
 {155610}{}{ |0x3CF8D2 lean|0x3CF800 }
-{155620}{}{its movements are}
+{155620}{}{, its movements are}
 {155630}{}{|0x3CF8D2 very agile|0x3CF800 }
 {155640}{}{The dog looks |0x3CF8D2 cute|0x3CF800 .}
 {155650}{}{The dog looks |0x3CF8D2 adorable|0x3CF800 .}

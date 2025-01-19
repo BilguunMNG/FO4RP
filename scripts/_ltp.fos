@@ -55,6 +55,7 @@ funcdef uint PROCESS( Critter@, int&, int&, int& );
 # define LTP_MONEY_TYPE		( 44 )
 # define LTP_CRAFT			( 45 )
 # define LTP_ARMOR_EQUIP	( 46 )
+# define LTP_COOKING        ( 47 )
 
 import bool RegisterProcess( uint8 type, any func ) from "ltp";
 
@@ -68,8 +69,8 @@ import bool checkTDH( Critter& cr ) from "ltp";
 import bool checkTDH( Critter& cr, uint8 type ) from "ltp";
 
 # define LTPREG           # ( ty, fu )        PROCESS @___pfunc = @fu; any ___pany; ___pany.store( @___pfunc ); RegisterProcess( ty, ___pany );
-# define LTPROCESS        # ( c, p, t )                if( p == -1 && (c is null) ) { p = int(t); return BINDCHECK; }
-# define LTPROCESSD       # ( t )            if( param0 == -1 && (cr is null) ) { param0 = int(t); return BINDCHECK; }
+# define LTPROCESS        # ( c, p, t )                if( p == -1 && !valid(c) ) { p = int(t); return BINDCHECK; }
+# define LTPROCESSD       # ( t )            if( param0 == -1 && !valid(cr) ) { param0 = int(t); return BINDCHECK; }
 
 #endif // __LTP_MAIN__
 

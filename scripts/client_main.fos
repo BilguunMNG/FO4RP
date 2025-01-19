@@ -70,6 +70,8 @@ import void AvatarLoop() from "client_avatars";
 import int[]@ GetIniValues2(string& iniKey, int[]@ defaultValues) from "ini_parser";
 import int[]@ GetIniValues4(string& iniKey, int[]@ defaultValues) from "ini_parser";
 
+import void CallCritStatsScreen(uint id) from "client_screen_info";
+
 dictionary chosenContainerItems;
 
 uint prevId = 0; // required for loading saved names
@@ -249,7 +251,7 @@ uint loop()
 
         CritterCl@ ch = GetChosen();
 
-        if( !(ch is null) && ( prevId == ch.Id ) && ( ( result.length() > 0 && result[ result.length() - 1 ] == CLIENT_MAIN_SCREEN_GAME ) || ( result.length() > 1 && result[ result.length() - 2 ] == CLIENT_MAIN_SCREEN_GAME ) ) )
+        if( valid(ch) && ( prevId == ch.Id ) && ( ( result.length() > 0 && result[ result.length() - 1 ] == CLIENT_MAIN_SCREEN_GAME ) || ( result.length() > 1 && result[ result.length() - 2 ] == CLIENT_MAIN_SCREEN_GAME ) ) )
         {
             SaveNames();
         }
@@ -1641,6 +1643,16 @@ bool out_command( string& message, int& sayType )
             return false;
         }
 
+		if( parts[0] == "~stats" ) 
+		{			
+			CritterCl@ target = MouseCritter;
+			if( valid( target ) )
+			{
+				CallCritStatsScreen(target.Id);
+			}
+			return false; 
+		}
+
         return true;
     }
 
@@ -2257,8 +2269,8 @@ string[] generic_description_slot( int slot )
 	// Main inventory screen weapon damage info
 	line = GetMsgStr( TEXTMSG_GAME, STR_INV_DMG );
 	bool isAmmoRegen = FLAG( item.Proto.Weapon_Perk, WEAPON_PERK_RECHARGE );
-	float minDamage = 0; 
-	float maxDamage = 0;
+	float minDamage = _WeaponDmgMin( item.Proto, use );
+	float maxDamage = _WeaponDmgMax( item.Proto, use );
 	uint minDmgMod = 100;
 	uint maxDmgMod = 100;
 	uint16 ammoRound = _WeaponRound( item.Proto, use );
@@ -2269,21 +2281,19 @@ string[] generic_description_slot( int slot )
 	int maxDmgMalus = 0;
 	string burst = "";
 	uint skill = _WeaponSkill( item.Proto, use );
-
-	if( skill == SK_UNARMED || skill == SK_MELEE_WEAPONS )
-	{
-		minDamage = _WeaponDmgMin( item.Proto, use );
-		maxDamage = _WeaponDmgMax( item.Proto, use );
-		dmgBonus = skill / 10 + chosen.Stat[ ST_MELEE_DAMAGE ] / 2;
-	}
-	
 	uint8 weapon_Subtype = item.Proto.Item_Subtype;
+	bool unarmed = ( skill == SK_UNARMED && weapon_Subtype == ITEM_SUBTYPE_UNDEFINED );
 	
-	//Physical thrown weapons ( stones, knives, etc )
-	if( skill == SK_THROWING || isAmmoRegen )
+	if( unarmed )
 	{
-		minDamage = _WeaponDmgMin( item.Proto, use );
-		maxDamage = _WeaponDmgMax( item.Proto, use );
+		dmgBonus = chosen.Stat[ ST_MELEE_DAMAGE ];
+	}
+	else if( skill == SK_UNARMED || skill == SK_MELEE_WEAPONS )
+	{
+		dmgBonus = chosen.Skill[ skill ] / 10 + chosen.Stat[ ST_MELEE_DAMAGE ] / 2;
+	}
+	else if( skill == SK_THROWING || isAmmoRegen )
+	{
 		if( weapon_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_PRIM || weapon_Subtype == ITEM_SUBTYPE_WEAPON_GRENADE_KIFE )
 		{
 			dmgBonus = chosen.Stat[ ST_MELEE_DAMAGE ] / 2;
@@ -2291,17 +2301,19 @@ string[] generic_description_slot( int slot )
 	}
 	
 	//Melee weapons and melee thrown weapons that can deteriorate
-	else if( ( ( weapon_Subtype >= ITEM_SUBTYPE_WEAPON_MELEE_BEGIN && weapon_Subtype <= ITEM_SUBTYPE_WEAPON_MELEE_END ) 
-			|| ( weapon_Subtype >= ITEM_SUBTYPE_WEAPON_GRENADE_BEGIN && weapon_Subtype <= ITEM_SUBTYPE_WEAPON_GRENADE_END ) )
-			&& item.IsDeteriorable() )
+	if( item.IsDeteriorable() )
 	{
-		int deterioration = item.Deterioration * 100 / MAX_DETERIORATION;
-		minDmgMalus = int( ( _WeaponDmgMin( item.Proto, use ) + dmgBonus ) * deterioration * 0.01f );
-		maxDmgMalus = int( ( _WeaponDmgMax( item.Proto, use ) + dmgBonus ) * deterioration * 0.01f );
+		if( ( ( weapon_Subtype >= ITEM_SUBTYPE_WEAPON_MELEE_BEGIN && weapon_Subtype <= ITEM_SUBTYPE_WEAPON_MELEE_END ) 
+				|| ( weapon_Subtype >= ITEM_SUBTYPE_WEAPON_GRENADE_BEGIN && weapon_Subtype <= ITEM_SUBTYPE_WEAPON_GRENADE_END ) )
+		)
+		{
+			int deterioration = item.Deterioration * 100 / MAX_DETERIORATION;
+			minDmgMalus = int( ( _WeaponDmgMin( item.Proto, use ) + dmgBonus ) * deterioration * 0.01f );
+			maxDmgMalus = int( ( _WeaponDmgMax( item.Proto, use ) + dmgBonus ) * deterioration * 0.01f );
+		}
 	}
-	
 	//All other weapons with ammo
-	else if( item.Proto.Weapon_MaxAmmoCount > 0 )
+	if( item.Proto.Weapon_MaxAmmoCount > 0 )
 	{
 		ProtoItem@ ammoProto = GetProtoItem( ammoPid );
 		if( valid ( ammoProto ) )
@@ -2391,7 +2403,7 @@ string[] generic_description_slot( int slot )
 		//}
 		result.insertLast( "|0x3CF800 " + GetMsgStr( TEXTMSG_GAME, STR_YOU_HAVE ) + "|0xFFFF00 " + count );
 	}
-
+	
 	return result;
 }
 
@@ -2405,7 +2417,7 @@ string[] generic_descriptions = { "DESC_INVENTORY_MAIN", "DESC_INVENTORY_SPECIAL
 string generic_description( int descType, int& offsX, int& offsY )
 {
     CritterCl@ chosen = GetChosen();
-    if( not valid( chosen ) || descType < 0 || descType >= int(generic_descriptions.length()) )
+    if( !valid( chosen ) || descType < 0 || descType >= int(generic_descriptions.length()) )
 	{
         return "";
 	}
@@ -2605,7 +2617,7 @@ string item_description( ItemCl& item, int lookType )
 	
 	CritterCl@ chosen = GetChosen();
     // Default error text
-    if( not IsMsgStr( TEXTMSG_ITEM, STR_ITEM_INFO( item ) + ( lookType != ITEM_LOOK_ONLY_NAME ? 1 : 0 ) ) )
+    if( !IsMsgStr( TEXTMSG_ITEM, STR_ITEM_INFO( item ) + ( lookType != ITEM_LOOK_ONLY_NAME ? 1 : 0 ) ) )
 	{
         return GetMsgStr( TEXTMSG_GAME, STR_ITEM_LOOK_NOTHING );
 	}
@@ -3153,7 +3165,7 @@ string critter_description_maker( int lookType, int target_id, int age, int gend
 			if( cr.Param[ QST_MEDIUM ] == 3 )
 			{
 				string@ s_temp = cr.Lexems;
-				if( !(s_temp is null) )
+				if( valid(s_temp) )
 				{
 					name = s_temp;
 				}
@@ -3162,7 +3174,7 @@ string critter_description_maker( int lookType, int target_id, int age, int gend
 			if( cr.Param[ QST_MEDIUM ] >= 4 )
 			{
 				string@ s_temp = GetName( cr.Param[ QST_MEDIUM ] );
-				if( !(s_temp is null) )
+				if( valid(s_temp) )
 				{
 					cr.Name = s_temp;
 					name = s_temp;
@@ -4063,6 +4075,12 @@ string critter_description_stats( CritterCl& cr )
 		{
 			return result;
 		}
+	}
+
+	bool isRobot = cr.StatBase[ST_BODY_TYPE] == BT_ROBOT;
+	if(isRobot)
+	{
+		return result;
 	}
 	
 	CritterCl@ chosen = GetChosen();
@@ -5925,7 +5943,7 @@ void GetIfaceIniPos( string iniKey, uint16& posX, uint16& posY, uint16& lineEnd 
     int[] values( 3 );
     for( int i = 0; i < 3; i++ )
 	{
-        if( not StrToInt( valuesStr[ i ], values[ i ] ) )
+        if( !StrToInt( valuesStr[ i ], values[ i ] ) )
 		{
             return;
 		}
@@ -6785,4 +6803,9 @@ void DrawTextOutLined( string& text, int x, int y, int length, int width, uint c
 	DrawText( text, x - 1, y - 1, length, width, color_outline , FONT_FALLOUT, 0 );
 	DrawText( text, x + 2, y + 2, length, width, color_shadow  , FONT_FALLOUT, 0 );
 	DrawText( text, x    , y    , length, width, color_main    , FONT_FALLOUT, 0 );
+}
+
+void ShowPunchBagDmg( int damage, int hx, int hy, string@, int[] @ )
+{
+	MapMessage( "-" + damage, hx, hy, __DamageHitDelay, 0xFFC80000, true, Random( -5, 5 ), -20 );
 }
