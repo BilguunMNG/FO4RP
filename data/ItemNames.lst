@@ -477,6 +477,7 @@
 477		PID_BROADCAST_HOLODISK					// Disc with a message					 // Диск с сообщением
 478		PID_SIERRA_MISSION_HOLODISK				// Sierra Mission Disc					 // Диск с заданием Сьерра
 479		PID_NAVCOM_PARTS						// Navigation Parts						 // Части навигационного компьютера
+480		PID_BBS_BOARD							// Notice Board							 // Доска объявлений
 483		PID_FALLOUT_2_HINTBOOK					// Fallout II Tips Book					 // Книга советов Fallout II
 484		PID_PLAYERS_EAR							// Ear									 // Ухо
 485		PID_MASTICATORS_EAR						// Grinder's Ear						 // Ухо Дробителя
@@ -763,7 +764,7 @@
 925		PID_TRAP_ELECTRIC						// Gass Marker							 // Маркер Газов
 926		PID_TRAP_ITEM_BREAKER					// Ore marker							 // Маркер руды
 927		PID_TRAP_FIRE_BREATH					// Junk Marker							 // Маркер мусора
-928		PID_TRAP_POISON_BLADE					// Poisoned Blades						 // Отравленые лезвия
+928		PID_TRAP_POISON_BLADE					// Mob Spawner							 // Спавнер Мобов
 929		PID_TRAP_CANISTER_SHOT					// Buckshot Trap						 // Ловушка картечь
 930		PID_TRAP_STAKE							// Trap stake							 // Ловушка кол
 931		PID_TRAP_SLEDGE_HAMMER					// Sledgehammer Trap					 // Ловушка кувалда
@@ -813,7 +814,7 @@
 1223	PID_EKZO_2								// Mk2 Exoskeleton						 // Экзоскелет МК3
 1224	PID_LEATHER_ARMOR_BLACK					// Reinforced Leather Armor				 // Армированная кожаная броня
 1225	PID_CARED								// Handmade Combat Armor				 // Самодельная боевая броня
-1226	PID_LASER_EYE							// Laser eye							 //	Лазерный глаз
+1226	PID_LASER_EYE							// Laser emitter						 // Лазерный излучатель
 1227	PID_SUN									// "Sunbeam"							 // "Солнышко"
 1228	PID_SUN2								// "Sunbeam" Mk.2						 // "Солнышко" МК3
 1229	PID_SUN3								// "Sunbeam" Mk.3						 // "Солнышко" МК3
@@ -829,6 +830,24 @@
 1240	PID_JUKEBOX_DISK_ABDUL					 // Коробка с пластинкой
 1241	PID_JUKEBOX_DISK_CHORDS_BOOM			// Record Box							 // Коробка с пластинкой
 1242	PID_JUKEBOX_DISK_GASOLINA				// Record Box							 // Коробка с пластинкой
+1243	PID_JUKEBOX_DISK_ALABAMA				// Record Box							 // Коробка с пластинкой
+1244	PID_JUKEBOX_DISK_AMERICA				// Record Box							 // Коробка с пластинкой
+1245	PID_JUKEBOX_DISK_UNSHAKEN				// Record Box							 // Коробка с пластинкой
+1246	PID_JUKEBOX_DISK_WAY					// Record Box							 // Коробка с пластинкой
+1247	PID_JUKEBOX_DISK_WHEEL					// Record Box							 // Коробка с пластинкой
+1248	PID_JUKEBOX_DISK_DIXIE					// Record Box							 // Коробка с пластинкой
+1249	PID_JUKEBOX_DISK_TEXAS					// Record Box							 // Коробка с пластинкой
+1250	PID_JUKEBOX_DISK_VALLEY					// Record Box							 // Коробка с пластинкой
+1251	PID_JUKEBOX_DISK_ALABAMA2				// Record Box							 // Коробка с пластинкой
+1252	PID_JUKEBOX_DISK_HATIN					// Record Box							 // Коробка с пластинкой
+1253	PID_JUKEBOX_DISK_DIGGERS				// Record Box							 // Коробка с пластинкой
+1254	PID_JUKEBOX_DISK_DIXIE2					// Record Box							 // Коробка с пластинкой
+1255	PID_JUKEBOX_DISK_MARCHES				// Record Box							 // Коробка с пластинкой
+1256	PID_JUKEBOX_DISK_DIGGER					// Record Box							 // Коробка с пластинкой
+1257	PID_JUKEBOX_DISK_JOHNY					// Record Box							 // Коробка с пластинкой
+1258	PID_JUKEBOX_DISK_BURRY					// Record Box							 // Коробка с пластинкой
+1259	PID_JUKEBOX_DISK_WIND					// Record Box							 // Коробка с пластинкой
+1260	PID_JUKEBOX_DISK_HARD					// Record Box							 // Коробка с пластинкой
 1300	PID_OBJECT_WATERPUMP					// Water Pump							 // Водяной насос
 1302	PID_POWER_NODE							// Power Node							 // Узел питания
 1303	PID_OBJECT_AUTODOC_F					// Autodock								 // Автодок
@@ -944,9 +963,9 @@
 1458	PID_SIGN								// Sign									 // Знак
 1460	PID_INFOPAD								// Questionnaire						 // Анкета
 1461	PID_PLANT_NIGHTSHADE					// Nightshade Bush						 // Куст паслена
-1462	PID_PLANT_POTATO_SEED					// Potato Seed							 // Рассада картофеля
-1463	PID_PLANT_POTATO						// Potato Plant							 // Растущий картофель
-1464	PID_PLANT_POTATO_DEAD					// Dead Potato Plant					 // Картофель сгнивший
+1462	PID_PLANT_POTATO_SEED					// Potato Seeds							 // Рассада картофеля
+1463	PID_PLANT_POTATO						// Growing Potato						 // Растущий картофель
+1464	PID_PLANT_POTATO_DEAD					// Rotten Potato						 // Сгнивший картофель
 1465	PID_POTATO								// Potato								 // Картофель
 1468	PID_BULLET_TIP							// Bullet blank							 // Заготовка под пули
 1469	PID_LEAD_INGOT							// Lead Bar								 // Свинцовый слиток
@@ -1135,12 +1154,12 @@
 1667	PID_IBOX_ONN							// Triple Containers					 // Три контейнера
 1668	PID_IBOX_NON							// Triple Containers					 // Три контейнера
 1669	PID_IBOX_NNO							// Triple Containers					 // Три контейнера
-1670    PID_POTATO_BAKED                        // Potato Baked                          // Печёный картофель
-1671    PID_POTATO_FRIES                        // Potato Fries                          // Картофель фри
-1672    PID_POTATO_PANCAKES                     // Potato Pancakes                       // Картофельные оладьи
-1673    PID_POTATO_CHIPS                        // Potato Chips                          // Картофельные чипсы
-1674    PID_POTATO_MASHED_CUTLET                // Mashed Potato with Cutlet             // Картофельное пюре с котлетой
-1675    PID_PANCAKES                            // Pancakes                              // Панкейк
+1670	PID_POTATO_BAKED						// Baked Potato							 // Печеный картофель
+1671	PID_POTATO_FRIES						// French Fries							 // Картофель фри
+1672	PID_POTATO_PANCAKES						// Potato Pancakes						 // Картофельные оладьи
+1673	PID_POTATO_CHIPS						// Potato Chips							 // Картофельный чипсы
+1674	PID_POTATO_MASHED_CUTLET				// Mashed Potatoes with Cutlet			 // Картофельное пюре с котлетой
+1675	PID_PANCAKES							// Pancakes								 // Панкейк
 1678	PID_LIFT_2								// Elevator								 // Лифт
 1679	PID_BOTTLE_FILTER						// Carbon Filter						 // Угольный фильтр
 1680	PID_REVOLVER_PART						// Revolver Drum						 // Револьверный барабан
@@ -1197,7 +1216,7 @@
 1731	PID_itmatchs							// Matches								 // Спички
 1732	PID_itmoney								// Batteries							 // Батарейки
 1733	PID_DIRTY_BOWL							// Dirty Bowl							 // Грязная миска
-1734	PID_BOWL	    						// Bowl									 // Миска
+1734	PID_BOWL								// Bowl									 // Миска
 1735	PID_WEAPON_PARTS						// Weapon Parts							 // Оружейные детали
 1736	PID_SCREWDRIVER							// Screwdriver							 // Отвёртка
 1737	PID_ITSOAP01							// Soap									 // Мыло
@@ -1431,6 +1450,11 @@
 2362	PID_TENT_DOOR_NS						// Curtains								 // Занавески
 2421	PID_ELEVATOR_DOOR_EW					// Elevator door						 // Дверь лифта
 2470	PID_ELEVATOR_DOOR_OLD_EW				// Elevator door						 // Дверь лифта
+2537	PID_PUNCH_BAG							// Punching Bag							 // Боксерская груша
+2682	PID_STOVE_01							// Stove								 // Плита
+2683	PID_STOVE_02							// Stove								 // Плита
+2684	PID_STOVE_03							// Stove								 // Плита
+2685	PID_STOVE_04							// Stove								 // Плита
 2945	PID_TREE_BS1							// Tree									 // Дерево
 2946	PID_TREE_BS2							// Tree									 // Дерево
 2947	PID_TREE_BS3							// Tree									 // Дерево
@@ -1451,6 +1475,10 @@
 3434	PID_VC_GATE_SMALL_EW					// Door									 // Дверь
 3435	PID_VC_GATE_SMALL_NS					// Door									 // Дверь
 3818	PID_FARM_GATE_EW						// Wooden door							 // Деревянная дверь
+3822	PID_STOVE_05							// Stove								 // Плита
+3823	PID_STOVE_06							// Stove								 // Плита
+3824	PID_STOVE_07							// Stove								 // Плита
+3825	PID_STOVE_08							// Stove								 // Плита
 3842	PID_TREE_GS1							// Tree									 // Дерево
 3843	PID_TREE_GS2							// Tree									 // Дерево
 3852	PID_TRIGGER								
@@ -1681,7 +1709,7 @@
 12009	PID_762MM_AP							// 7.62mm AP Round						 // Патрон 7.62мм, бронебойный
 12010	PID_SPIKEAMMO							// Spike								 // Шип
 12303	PID_50CAL_MAGNUM						// .50 Magnum Round						 // Патрон 0.50 магнум
-12304	PID_44_HENRY							// .44mm Henry Round					 // .44 Henry
+12304	PID_44_HENRY							// .44mm Henry Round					 // .44-40
 12305	PID_30_SPRINGFIELD						// .30-06 Springfield Round				 // .30-06
 12306	PID_12_7MM_MAGNUM						// 12.7mm AP Round						 // Патрон 12.7мм
 12307	PID_12g_SLUG							// 12g Slug Shell						 // Патрон 12 кал. пулевой
@@ -2344,7 +2372,10 @@
 21037	PID_OLD_ROCKWELL40MM					// Old Rockwell Grenade Launcher		 // Старый 40мм гранатомет
 21038	PID_HUNTING_RIFLE_NV					// Hunting Rifle NV						 // Охотничье ружье NV
 21039	PID_ROCKWELL40MM						// Rockwell Grenade Launcher			 // Гранатомет 40мм
+21040	PID_WINCHESTER_RIFLE					// "Winchester" rifle					 // Винтовка «Винчестер»
 21043	PID_FLASHLIGHT_HELMET					// Mining Helmet						 // Шахтёрский шлем
+21044	PID_44_COLT_REVOLVER					// Colt Revolver						 // Револьвер Кольт M1873
+21045	PID_44_COLT_REVOLVER_LONG				// Colt Revolver (lng. brl.)			 // Револьвер Кольт M1873 (удл. ствол)
 22000	PID_CIVIL_GAS_MASK						// Civilian Gas Mask					 // Гражданский противогаз
 22001	PID_MILITARY_CAP						// Military Cap							 // Военная фуражка
 22002	PID_ENCLAVE_OFFICER_CAP					// Enclave Officer Cap					 // Фуражка офицера Анклава

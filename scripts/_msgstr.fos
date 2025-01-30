@@ -21,6 +21,13 @@
 
 #define STR_TOOL_BROKEN						 ( 700 )
 
+// Bulletin Board System
+#define STR_BBS_MENU_OPEN					 ( 995 )
+#define STR_EMOTE_ADD_PAPER					 ( 996 )
+#define STR_EMOTE_REMOVE_PAPER				 ( 997 )
+#define STR_BBS_MENU_LABEL					 ( 998 )
+#define STR_BBS_MENU_REMOVE_PAPER			 ( 999 )
+
 // General interactive machines
 #define STR_INSERT_MONEY					 ( 1000 )
 #define STR_MACHINE_LOCKED					 ( 1001 )
@@ -167,12 +174,14 @@
 
 
 // Cooking
+#define STR_RECIPE_MENU						 ( 6246 )
+#define STR_COOKING_MENU					 ( 6247 )
 #define STR_FRYING_BEGIN					 ( 6248 )
 #define STR_FRYING_FINISH					 ( 6249 )
 #define STR_FRYING_FAIL					 	 ( 6250 )
 #define STR_PRETZEL							 ( 6251 )
 #define STR_PRETZEL_FAIL					 ( 6252 )
-#define STR_PRETZEL_SUCCESS				 	 ( 6254 )
+#define STR_PRETZEL_SUCCESS				 	 ( 6253 )
 #define STR_PRETZEL_INGRIDIENT_1			 ( 6254 )
 #define STR_PRETZEL_INGRIDIENT_2			 ( 6255 )
 #define STR_PRETZEL_INGRIDIENT_3			 ( 6256 )
@@ -1542,6 +1551,7 @@
 #define STR_CHANGE_MONEY_TYPE				( 100624 )
 
 
+#define STR_TERMINAL_MENU_STATE							( 100700 )
 #define STR_TERMINAL_MENU_MAIN							( 100701 )
 #define STR_TERMINAL_MENU_GM_SUBMENU					( 100702 )
 #define STR_TERMINAL_MENU_LASER_FENCE					( 100703 )
