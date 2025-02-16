@@ -24,6 +24,7 @@
 #include "hitchance_h.fos"
 #include "serializator.fos"
 #include "waterworks_h.fos"
+#include "stdlib_h.fos"
 
 import void Actions( Critter& cr, uint8 actionType, uint16 pickType ) from "context_callback";
 import void critter_attack( Critter& cr, Critter& target, ProtoItem& weapon, uint8 weaponMode, ProtoItem@ ammo ) from "main";
@@ -273,15 +274,17 @@ void unsafe_inputDigits( Critter& player, int itemId, int digits, int type, stri
 		
 		RestoreMenu( player, item );
 	}
-	else if( Pid == PID_TNT_PACK_ACTIVE || Pid == PID_REMOTE_DETONATOR )
+	else if( Pid == PID_TNT_PACK_ACTIVE || Pid == PID_REMOTE_DETONATOR || Pid == PID_GM_REMOTE_DETONATOR )
 	{
 		item.Val4 = digits;
 		item.Val2 = player.Id;
+		item.Update();
 		player.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_MSG_NEW_FREQUENCY, "$digits" + digits );
 	}
 	else if( Pid == PID_SLAVE_COLLAR || Pid == PID_SLAVE_COLLAR_SWITCH )
 	{
 		item.Val5 = digits;
+		item.Update();
 		player.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_MSG_NEW_FREQUENCY, "$digits" + digits );
 	}
 	else if( Pid == PID_JUKEBOX1 || Pid == PID_JUKEBOX2 || Pid == PID_JUKEBOX3 || Pid == PID_JUKEBOX4 )
@@ -1243,28 +1246,6 @@ void GetHexProtos( Map@ map, uint16 hexX, uint16 hexY, FindData@[]& array )
 		array.insertLast( FindDataItem( items [i] ) );
 	}
 
-}
-
-bool CanCatch( Critter& cr, Item& item )
-{
-	if( isGM( cr ) )
-	{
-		return true;
-	}
-	
-	uint freeWeight = cr.Stat[ ST_CARRY_WEIGHT ] - ItemsWeight( cr );
-	if( freeWeight < ItemsWeight( item, 1 ) )
-	{
-		return false;
-	}
-	
-	uint volume = cr.ItemsVolume() + item.Proto.Volume;
-	if( volume > CRITTER_MAX_VOLUME )
-	{
-		return false;
-	}
-	
-	return true;
 }
 
 void unsafe_itemthrow ( Critter& player, int hx, int hy, int param2, string@ param3, int[] @ param4 ) 

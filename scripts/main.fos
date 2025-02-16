@@ -135,6 +135,7 @@ bool start()
     //SetSendParameter( ST_PLAYER_KARMA, true );
     // Armor class, uses Agility
     SetSendParameter( ST_ARMOR_CLASS, true );
+	SetSendParameter( ST_ARMOR_CLASS_EXT, true );
     // Agility
     SetSendParameter( ST_AGILITY, true );
     // Hit points, uses Strenght and Endurance
@@ -873,8 +874,10 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 		//Shovel stashing
 		if( valid( item ) && valid( targetItem ) && pid == PID_SHOVEL)
 		{
-			TryDigStash(cr, item, targetItem);
-			return true;
+			if( TryDigStash(cr, item, targetItem) )
+			{
+				return true;
+			}
 		}
 
 		if( valid(item) && guitars.find(pid) != -1 )
@@ -983,10 +986,13 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 		case( PID_TNT_PACK ):
 		case( PID_TNT_PACK_ACTIVE ):
 		case( PID_REMOTE_DETONATOR ):
+		case( PID_GM_REMOTE_DETONATOR ):
 			SetExplosives( cr, item, param );
 			return true;
 		case( PID_COMPAS ):
 			return TryUseCompass(cr, item);
+		case( PID_PERFUME ):
+			return TryUsePerfume( cr, item );
 		case( PID_SMALL_ENERGY_CELL ):
 		case( PID_CUENCELL_LOW ):
 		{
@@ -1086,6 +1092,7 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 			return true;
 		}
 	}
+	
 	// Knife use
 	if( CutCheck( cr, item, useOnSelf ? @cr : @targetCr ) )
 	{
@@ -2249,7 +2256,7 @@ bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetI
 				}
 				
 				uint16 tiPid = targetItem.GetProtoId();
-				if( tiPid == PID_REMOTE_DETONATOR || tiPid == PID_SLAVE_COLLAR_SWITCH || ( tiPid == PID_SLAVE_COLLAR && targetItem.BONDAGE_STATE == BONDAGE_STATE_OFF ) )
+				if( tiPid == PID_REMOTE_DETONATOR || tiPid == PID_GM_REMOTE_DETONATOR || tiPid == PID_SLAVE_COLLAR_SWITCH || ( tiPid == PID_SLAVE_COLLAR && targetItem.BONDAGE_STATE == BONDAGE_STATE_OFF ) )
 				{
 					int[] data = {0};
 					cr.RunClientScript( "client_screen_numberpad@ShowScreen", targetItem.Id, 0, 0, "Input radio frequency", data );
@@ -2372,6 +2379,11 @@ bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetI
 								{
 									targetCr.MoveItem( head.Id, head.GetCount(), SLOT_INV );
 									CrimeLog( cr, crInfo( cr ) + " removes head item from " + crInfo( targetCr ) );
+								}
+								else if( head.GetProtoId() == PID_SLAVE_COLLAR && head.BOND_SLAVE_ID != int( cr.Id ) )
+								{
+									cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_HANDCUFFS_SHOW_FREQ, "$frequency@msg text " + head.BOND_FREQUENCY + "@" );
+									CrimeLog( cr, crInfo( cr ) + " looks at slave collar of " + crInfo( targetCr ) );
 								}
 							}
 							
@@ -3350,6 +3362,7 @@ void items_crafted( Item@[]& items, uint[]& itemsCount, Item@[]& resources, Crit
 		}
     }
 
+	Map@ map = crafter.GetMap();
 	crafter.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_YOU_CRAFTED );
     for( uint i = 0, j = items.length(); i < j; i++ )
     {
@@ -3365,7 +3378,12 @@ void items_crafted( Item@[]& items, uint[]& itemsCount, Item@[]& resources, Crit
 			items[ i ].LockerComplexity = crafter.Skill[ SK_LOCKPICK ];
 		}
 
-        SetDeterioration( items[ i ], maxDeterioration );
+		if( !FLAG( items[i].Flags, ITEM_NO_BLOCK ) && valid( map ) )
+		{
+			MoveItem( items[i], items[i].GetCount(), map, crafter.HexX, crafter.HexY );
+		}
+		
+		SetDeterioration( items[ i ], maxDeterioration );
 		crafter.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_YOU_CRAFTED_PID, "$proto@msg item " + ( items[ i ].Proto.ProtoId * 100 ) + "@" );
 		items[ i ].Update();
 	}

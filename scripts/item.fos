@@ -362,21 +362,6 @@ bool e_WorkBenchPick( Item& item, Critter& cr, int skill )
 		
 		Workplace.SetScript( "_WorkplaceInit" );
 		
-		if( pid == PID_AMMO_WORKBENCH )
-		{
-			if( cr.CountItem( PID_AMMOBENCH_TOKEN ) == 0 )
-			{
-				cr.AddItem( PID_AMMOBENCH_TOKEN, 1 );
-			}
-		}
-		else
-		{
-			if( cr.CountItem( PID_WORKBENCH_TOKEN ) == 0 )
-			{
-				cr.AddItem( PID_WORKBENCH_TOKEN, 1 );
-			}
-		}
-		
 		OpenBenchCraft( cr, item );
     }
 	
@@ -785,13 +770,49 @@ bool TryPlayGuitar(Item@ guitar, Critter@ cr)
 	return true;
 }
 
-bool TryReadHolodisk(Item@ holodisk, Critter@ cr)
+bool TryReadHolodisk( Item@ holodisk, Critter@ cr )
 {
-	if(!valid(holodisk) || !valid(cr))
+	if( !valid( holodisk ) || !valid( cr ) )
 	{
 		return false;
 	}
+	
 	cr.RunClientScript( "client_screen_info@ShowHoloScreen", holodisk.HolodiskNumber, 0, 0, null, null );
+	return true;
+}
+
+bool TryUsePerfume( Critter@ cr, Item@ perfume )
+{
+	if( !valid( cr ) || !valid( perfume ) )
+	{
+		return false;
+	}
+	
+	cr.SayMsg( SAY_EMOTE_ON_HEAD, TEXTMSG_TEXT, STR_USE_PARFUME );
+	
+	uint[] indexes, durations, rates;
+	int eventCount = cr.GetTimeEvents( CTE_SOAP_CHARISMA, indexes, durations, rates );
+	if( eventCount < 1 )
+	{
+		cr.PerkBase[ PE_SOAP_CHARISMA ] += 1;
+		cr.AddTimeEvent( "waterworks@cte_soap_charisma", REAL_MINUTE( Random( 120, 180 ) ), CTE_SOAP_CHARISMA, 0 );
+		cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_USE_PARFUME_EFFECT );
+	}
+	else
+	{
+		cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_USE_PARFUME_NO_EFFECT );
+	}
+
+	perfume.REMAINING_USES--;
+	perfume.Update();
+	
+	if( perfume.REMAINING_USES < 1 )
+	{
+		cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_USE_PARFUME_EMPTY );
+		_SubItem( perfume, 1 );
+		cr.AddItem( PID_PHIAL, 1 );
+	}
+	
 	return true;
 }
 

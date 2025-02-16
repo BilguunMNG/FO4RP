@@ -1328,6 +1328,7 @@ void CheckDragging( Critter& cr )
 		if( !valid( target ) )
 		{
 			cr.ParamBase[ CR_YOU_DRAG ] = 0;
+			return;
 		}
 		
 		Map@ cMap = cr.GetMap();
@@ -1533,7 +1534,7 @@ bool tooMuchWeight( Critter& cr, Critter& target )
 
 bool tooMuchVolume( Critter& cr, Critter& target )
 {
-	float max = CRITTER_MAX_VOLUME * DRAGGING_CARRY_VOLUME_MULTIPLIER;
+	float max = cr.Param[ST_MAX_VOLUME] * DRAGGING_CARRY_VOLUME_MULTIPLIER;
 	float sum = cr.ItemsVolume() + target.ItemsVolume();
 	return( sum > max );
 }

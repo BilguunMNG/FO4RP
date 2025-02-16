@@ -814,6 +814,16 @@ uint GetUseApCost( CritterMutual& cr, Item& item, uint8 mode )
 		}
 	}
 
+	if( cr.Params[ CR_ARMOR_BRISK_EQUIPPED ] > 0 )
+	{
+		apCost = ( apCost * ARMOR_PERK_BRISK_BONUS) / 100;
+	}
+	
+	if( cr.Params[ CR_ARMOR_SLUGGISH_EQUIPPED ] > 0 )
+	{
+		apCost = ( apCost * ARMOR_PERK_SLUGGISH_MALUS) / 100;
+	}
+    
 	if( apCost < 1 )
 	{
 		apCost = 1;

@@ -8,6 +8,8 @@
 #include "firestarter_h.fos"
 #include "critter_skills_h.fos"
 
+import void OpenBenchCraft(Critter& crafter, Item& bench) from "craft";
+
 bool recipes_inited=false;
 
 bool ltp_cooking_inited=false;
@@ -144,11 +146,6 @@ bool GetCraftToken( Critter& cr, Item& fire )
 	
 	Workplace.SetScript( "item@_WorkplaceInit" );
 	
-	if( cr.CountItem( PID_FIREPLACE_TOKEN ) == 0 )
-	{
-		cr.AddItem( PID_FIREPLACE_TOKEN, 1 );
-	}
-	
 	cr.RunClientScript( "client_screen_fixboy@ShowScreen", 0, 0, 0, null, null );
 	return true;
 }
@@ -256,6 +253,12 @@ class CookingMenuMain: CenteredMenuHandler
 			return false;
 		}
 
+		if( menu.ButtonMsg( STR_FURNITURE_MENU_CRAFT ) )
+		{
+			OpenBenchCraft( cr, fire );
+			return false;
+		}
+		
 		return true;
 	}
 	

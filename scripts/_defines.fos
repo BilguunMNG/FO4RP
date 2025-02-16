@@ -202,17 +202,17 @@
 // Item: Armor subtypes 70 <-> 99
 // Armor default subtypes. AC determines armour protection level, where 0 is social clothes, whereas 30 is CA and 50 is APA level of armours.
 #define ITEM_SUBTYPE_ARMOR_BEGIN				    ( 70 )
-#define ITEM_SUBTYPE_ARMOR_AC0					    ( 70 )
-#define ITEM_SUBTYPE_ARMOR_AC5						( 71 )
-#define ITEM_SUBTYPE_ARMOR_AC10                		( 72 )
-#define ITEM_SUBTYPE_ARMOR_AC15                    	( 73 )
-#define ITEM_SUBTYPE_ARMOR_AC20             		( 74 )
-#define ITEM_SUBTYPE_ARMOR_AC25	                 	( 75 )
-#define ITEM_SUBTYPE_ARMOR_AC30           			( 76 )
-#define ITEM_SUBTYPE_ARMOR_AC35           			( 77 )
-#define ITEM_SUBTYPE_ARMOR_AC40           			( 78 )
-#define ITEM_SUBTYPE_ARMOR_AC45           			( 79 )
-#define ITEM_SUBTYPE_ARMOR_AC50           			( 80 )
+#define ITEM_SUBTYPE_ARMOR_AC0					    ( 70 ) // Class 0   Civil clothes
+#define ITEM_SUBTYPE_ARMOR_AC5						( 71 ) // Class 0.5 Heavy clothes
+#define ITEM_SUBTYPE_ARMOR_AC10                		( 72 ) // Class 1   Basic protection
+#define ITEM_SUBTYPE_ARMOR_AC15                    	( 73 ) // Class 1.5 Basic hardned
+#define ITEM_SUBTYPE_ARMOR_AC20             		( 74 ) // Class 2   Basic bullet-proof
+#define ITEM_SUBTYPE_ARMOR_AC25	                 	( 75 ) // Class 2.5 Bullet-proof
+#define ITEM_SUBTYPE_ARMOR_AC30           			( 76 ) // Class 3	Combat armor
+#define ITEM_SUBTYPE_ARMOR_AC35           			( 77 ) // Class 3.5 Advanced combat armor
+#define ITEM_SUBTYPE_ARMOR_AC40           			( 78 ) // Class 4   Assault Armour
+#define ITEM_SUBTYPE_ARMOR_AC45           			( 79 ) // Class 4.5 Advanced Assault Armour
+#define ITEM_SUBTYPE_ARMOR_AC50           			( 80 ) // Class 5   Supremacy
 #define ITEM_SUBTYPE_ARMOR_END               	    ( 80 )
 
 // *****
@@ -222,7 +222,8 @@
 #define ITEM_SUBTYPE_DRUG_ALCOHOL_MEDIUM			( 121 )
 #define ITEM_SUBTYPE_DRUG_ALCOHOL_HEAVY				( 122 )
 #define ITEM_SUBTYPE_DRUG_ALCOHOL_SPIRIT			( 123 )
-#define ITEM_SUBTYPE_DRUG_ALCOHOL_END				( 123 )
+#define ITEM_SUBTYPE_DRUG_ALCOHOL_NONE				( 124 )
+#define ITEM_SUBTYPE_DRUG_ALCOHOL_END				( 124 )
 // -----
 // Food 140 <-> 149
 #define ITEM_SUBTYPE_DRUG_FOOD_BEGIN				( 140 )
@@ -517,7 +518,7 @@
 #define ARMOR_PERK_ST_I	 							( 0x00000001 )	// 1	+1 Strength
 #define ARMOR_PERK_ST_II							( 0x00000002 )	// 2	+2 Strength
 #define ARMOR_PERK_ST_III							( 0x00000004 )	// 3	+3 Strength
-#define ARMOR_PERK_ST_IIII							( 0x00000008 )	// 4	+4 Strength
+#define ARMOR_PERK_ST_IV							( 0x00000008 )	// 4	+4 Strength
 #define ARMOR_PERK_CH_I								( 0x00000010 )	// 5	+1 Charisma
 #define ARMOR_PERK_CH_II							( 0x00000020 )	// 6	+2 Charisma
 #define ARMOR_PERK_CH_III							( 0x00000040 )	// 7	+3 Charisma
@@ -527,7 +528,7 @@
 #define ARMOR_PERK_RAD_RES_I						( 0x00000400 )	// 11	+10 RAD Resist
 #define ARMOR_PERK_RAD_RES_II						( 0x00000800 )	// 12	+30 RAD Resist
 #define ARMOR_PERK_RAD_RES_III						( 0x00001000 )	// 13	+60 RAD Resist
-#define ARMOR_PERK_RAD_RES_IIII						( 0x00002000 )	// 14	+75 RAD Resist
+#define ARMOR_PERK_RAD_RES_IV						( 0x00002000 )	// 14	+75 RAD Resist
 #define ARMOR_PERK_POWERED							( 0x00004000 )	// 15	Allows you to run without AP loss
 #define ARMOR_PERK_ANTIRAD							( 0x00008000 )	// 16	You gain RAD immune if armor has above 5% deterior
 #define ARMOR_PERK_FULLBODY							( 0x00010000 )	// 17	Covers the entire body
@@ -855,10 +856,10 @@
 #define ST_PARALYSIS_LEVEL							( 180 )		// Neurotoxin effect
 #define ST_ARMOR_SKIN								( 181 )		// Storage for armor skin if hidden by robe
 #define ST_AIMING_HEIGHT							( 182 )		// Aiming height
-// 183
+#define ST_MAX_VOLUME								( 183 )		// Max items volume in inventory, Hardcoded
 #define LAST_MEDS_USE_EVENT							( 184 )		// ID of the last event that consumes meds
 #define LAST_ATTACKED                            	( 185 )		// Last attacked char ID
-// 186
+#define ST_KILLER_WEAPON							( 186 )		// Char Killer weapon PID
 #define ST_TALKING_PUPPET							( 187 )		// Marker for talking through NPC
 #define ST_KILLER_PERSON							( 188 )		// Char killer ID
 #define ST_QMAP                                 	( 189 )		// q3: char map sync
@@ -968,7 +969,8 @@
 #define PE_LOOSE_INTELLIGENCE                    	( 311 )
 #define PE_LOOSE_AGILITY                         	( 312 )
 #define PE_LOOSE_LUCK                            	( 313 )
-// 314..315
+#define PE_SOAP_CHARISMA                           	( 314 )
+// 315
 #define PE_SILENT_RUNNING                        	( 316 )		// Hardcoded
 // 317
 #define PE_MASTER_TRADER                         	( 318 )		// Hardcoded
@@ -1283,7 +1285,8 @@
 #define CR_CONTROLLED_GROUP	                     	( 888 )
 #define CR_SPAWNER_ID		                     	( 889 )
 //890..977
-
+#define CR_ARMOR_BRISK_EQUIPPED						( 976 )		// Marker for Brisk armor perk
+#define CR_ARMOR_SLUGGISH_EQUIPPED					( 977 )		// Marker for Sluggish armor perk
 #define CR_STA_EQUIPPED								( 978 )		// Marker for STA module
 #define CR_GRID_TRANSFER_X							( 979 )		// Saving prev coordinates for hex transfer X
 #define CR_GRID_TRANSFER_Y							( 980 )		// Saving prev coordinates for hex transfer Y
@@ -1342,7 +1345,6 @@
 // FORP defines:
 #define CRITTER_LOOT_DELAY							( 5000 )	// MS
 #define SECONDARY_SKILLS_BONUS_CAP    			 	( 125 )		// max bonus from skill
-#define CRITTER_MAX_VOLUME			 			 	( 1000 )	// volume of items carried, hardcoded
 #define SATURATION_SIMPLIFIER					 	( 2 )		// Food satturation multiplier
 #define HUNGER_BASE									( 1000 )
 #define THIRST_BASE									( 1000 )
@@ -1529,7 +1531,7 @@
 
 // Item deterioration info
 #define MAX_DETERIORATION                        	( 10000 )	// Hardcoded
-#define MAX_BROKENS                              	( 10 )
+#define MAX_BROKENS                              	( 5 )
 
 // Broken Information
 #define BI_LOWBROKEN                             	( 0x01 )
@@ -1827,10 +1829,12 @@
 // Armor_perk modifiers
 #define ARMOR_PERK_FRAGILE_MALUS					( 150 )	//	Fragile		x1.5 durability damage
 #define ARMOR_PERK_DURABLE_TRESHOLD					( 4 )	//	Durable		4 Trashold for durability damage
-#define ARMOR_PERK_NIMBLE_MALUS						( 125 )	//	Nimble	+25% AC
+#define ARMOR_PERK_NIMBLE_BONUS						( 125 )	//	Nimble	+25% AC
 #define ARMOR_PERK_CLUMSY_MALUS						( 75 )	//	Clumsy	-25% AC
-#define ARMOR_PERK_QUICK_STANDUP_MALUS				( 75 )	//	Quick Standup	-25% KO
+#define ARMOR_PERK_QUICK_STANDUP_BONUS				( 75 )	//	Quick Standup	-25% KO
 #define ARMOR_PERK_SLOW_STANDUP_MALUS				( 125 )	//	Slow Standup	+25% KO
+#define ARMOR_PERK_BRISK_BONUS						( 90 )	//  AP use modifier -10%
+#define ARMOR_PERK_SLUGGISH_MALUS					( 110 ) //  AP use modifier +10%
 
 // Weapon calibers
 #define CALIBER_NONE                             	( 0 )

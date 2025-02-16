@@ -4,6 +4,7 @@
 #include "_utils.fos"
 #include "_ltp.fos"
 #include "craft_h.fos"
+#include "stdlib_h.fos"
 #include "gathering_h.fos"
 #include "handcuffs_h.fos"
 
@@ -48,14 +49,44 @@ bool IsAbleCraftByParams( Critter& crafter, CraftItem& craft )
 	return true;
 }
 
+uint generic_pid( Item& item )
+{
+	return generic_pid( item.GetProtoId() );
+}
+
+uint generic_pid( uint pid )
+{
+	switch(pid) {
+		case(PID_PORTABLE_WORKBENCH): 
+			return PID_WORKBENCH;
+		case(PID_STOVE_01):
+		case(PID_STOVE_02):
+		case(PID_STOVE_03):
+		case(PID_STOVE_04):
+		case(PID_STOVE_05):
+		case(PID_STOVE_06):
+		case(PID_STOVE_07):
+		case(PID_STOVE_08):
+		case(PID_FIREPLACE):
+		case(PID_FIREPLACE2):
+		case(PID_FIREBARREL):
+			return PID_FIREPLACE_TOKEN;
+	}
+	return pid;
+}
+
 bool CheckHasItemsList( Critter& crafter, Item@ bench, Item@[]@ subItems, uint[]@ subItemsCount, uint16[]& resPids, uint[]& resCounts, bool[]& resOrs )
 {
 	Item@[] crafterInv;
 	crafter.GetItems( -1, crafterInv );
 
-	if( valid( bench ) && bench.GetType() == ITEM_TYPE_CONTAINER && !FLAG( bench.LockerCondition, LOCKER_LOCKED ) )
+	if( valid( bench ) )
 	{
-		bench.GetItems( uint(-1), crafterInv );
+		crafterInv.insertLast( bench );
+		if( bench.GetType() == ITEM_TYPE_CONTAINER && !FLAG( bench.LockerCondition, LOCKER_LOCKED ) )
+		{
+			bench.GetItems( uint(-1), crafterInv );
+		}
 	}
 
 	Item@[] currRes;
@@ -78,9 +109,14 @@ bool CheckHasItemsList( Critter& crafter, Item@ bench, Item@[]@ subItems, uint[]
 				continue;
 			}
 
-			uint16 pid = currInvItem.GetProtoId();
+			uint16 pid = generic_pid(currInvItem);
 			if( pid == resPid )
 			{
+				if( isWorkplace( currInvItem ) && isDisabled( currInvItem ) )
+				{
+					continue;
+				}				
+
 				currRes.insertLast( currInvItem );
 				if( valid( subItems ) )
 				{
@@ -360,6 +396,7 @@ void spawnItems( Critter& cr, uint mult, uint16[] pids, uint[] amount )
 		return;
 	}
 	
+	Map@ map = cr.GetMap();
 	for( uint i = 0, count = pids.length(); i < count; i++ )
 	{
 		Item@ newitem = cr.AddItem( pids[i], amount[i] * mult );
@@ -617,7 +654,38 @@ Item@ getBench( Critter& crafter )
 	return bench;
 }
 
-void unsafe_GetAvaiableCrafts( Critter& crafter, int, int, int, string@, int[]@ )
+//~run craft test 0 0 0
+void test( Critter& cr, int, int, int )
+{
+	cr.RunClientScript( "client_screen_fixboy@EnlistAvailableItems", 0, 0, 0, null, null );
+}
+
+void unsafe_GetAvailableItems( Critter& crafter, int, int, int, string@, int[]@ )
+{
+	Item@[] crafterInv;
+	crafter.GetItems( -1, crafterInv );
+
+	Item@ bench = getBench(crafter);
+	if( valid( bench ) )
+	{
+		crafterInv.insertLast( bench );
+		if( bench.GetType() == ITEM_TYPE_CONTAINER && !FLAG( bench.LockerCondition, LOCKER_LOCKED ) )
+		{
+			bench.GetItems( uint(-1), crafterInv );
+		}
+	}
+	
+	int[] data;
+	for( uint i = 0, l = crafterInv.length(); i < l; i++ )
+	{
+		data.insertLast( generic_pid( crafterInv[i] ) );
+		data.insertLast( crafterInv[i].GetCount() );
+	}
+	
+	crafter.RunClientScript( "client_screen_fixboy@UpdateAvailableItems", 0, 0, 0, null, data );
+}
+
+void unsafe_GetAvailableCrafts( Critter& crafter, int, int, int, string@, int[]@ )
 {
 	Item@ bench = getBench(crafter);
 	
@@ -640,7 +708,7 @@ void unsafe_GetAvaiableCrafts( Critter& crafter, int, int, int, string@, int[]@ 
 		avaiableCrafts.insertLast(i);
 	}
 	
-	crafter.RunClientScript( "client_screen_fixboy@UpdateAvaiableCrafts", 0, 0, 0, null, avaiableCrafts );
+	crafter.RunClientScript( "client_screen_fixboy@UpdateAvailableCrafts", 0, 0, 0, null, avaiableCrafts );
 }
 
 void unsafe_StartCraft( Critter& crafter, int craftNum, int iterations, int, string@, int[]@ )
@@ -651,7 +719,7 @@ void unsafe_StartCraft( Critter& crafter, int craftNum, int iterations, int, str
 void unsafe_ForgetBench( Critter& crafter, int, int, int, string@, int[]@ )
 {
 	craftData.set( "" + crafter.Id + "b", 0 );
-	unsafe_GetAvaiableCrafts( crafter, 0, 0, 0, null, null );
+	unsafe_GetAvailableCrafts( crafter, 0, 0, 0, null, null );
 }
 
 void OpenBenchCraft( Critter& crafter, Item& bench )

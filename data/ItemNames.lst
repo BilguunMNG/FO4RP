@@ -478,6 +478,8 @@
 478		PID_SIERRA_MISSION_HOLODISK				// Sierra Mission Disc					 // Диск с заданием Сьерра
 479		PID_NAVCOM_PARTS						// Navigation Parts						 // Части навигационного компьютера
 480		PID_BBS_BOARD							// Notice Board							 // Доска объявлений
+481		PID_NAPALM_40MM							// 40mm grenades napalm					 // Снаряды 40мм, напалмовые
+482		PID_FLASHNADE_40MM						// 40mm grenades flashbang				 // Снаряды 40мм, светошумовые
 483		PID_FALLOUT_2_HINTBOOK					// Fallout II Tips Book					 // Книга советов Fallout II
 484		PID_PLAYERS_EAR							// Ear									 // Ухо
 485		PID_MASTICATORS_EAR						// Grinder's Ear						 // Ухо Дробителя
@@ -491,6 +493,7 @@
 493		PID_ELRON_TEACH_HOLO					// Education Disc						 // Обучающий диск
 494		PID_KOKOWEEF_MINE_SCRIP					// Paper ticket							 // Бумажная облигация
 495		PID_PRES_ACCESS_KEY						// Presidential Level Access Card		 // Карта доступа президентского уровня
+496		PID_GM_REMOTE_DETONATOR					// Remote Detonator (Mod.)				 // Дистанционный Детонатор (усил.)
 498		PID_GUN_TURRET_WEAPON					// Dual Plasma Cannon					 // Спаренная плазменная пушка
 499		PID_DERMAL_PIP_BOY_DISK					// Pip-Boy Linguistic Amplifier			 // Лингвистический усилитель Pip Boy
 500		PID_FN_FAL_HPFA							// FN FAL HPFA							 // FN FAL HPFA
@@ -971,7 +974,7 @@
 1469	PID_LEAD_INGOT							// Lead Bar								 // Свинцовый слиток
 1470	PID_GOLDEN_BAR							// Gold Ingot							 // Золотой слиток
 1471	PID_GOLDEN_JEWELRY						// Jewelry Blank						 // Ювелирная заготовка
-1472	PID_GOLDEN_COIN							// Gold Eagle							 // Золотой Орел
+1472	PID_GOLDEN_COIN							// Golden Coins							 // Золотые монеты
 1473	PID_METAL_SHEET							// Iron Sheet							 // Лист железа
 1474	PID_IRON_BAR							// Iron Bar								 // Железный брус
 1475	PID_IRON_DETALS							// Iron Stock							 // Железная заготовка
@@ -1313,9 +1316,12 @@
 1830	PID_COAL_POWERGEN						// Fossil Fuel Power Station			 // Электростанция на ископаемом топливе
 1832	PID_CRUSHER_2000						// Electric Grinder						 // Электродробилка
 1835	PID_AMMO_WORKBENCH						// Ammo Workbench						 // Патронный верстак
+1842	PID_BASIC_MILL							// Hand Mill							 // Ручная мельница
 1844	PID_FURNACE_SMALL						// Small Furnace						 // Малая печь
 1848	PID_PORTABLE_WORKBENCH					// Portable Workbench					 // Самодельный рабочий стол
 1850	PID_ANVIL								// Anvil								 // Наковальня
+1866	PID_WOOD_CUTTER							// Wood Cutter							 // Деревообрабатывающий станок
+1869	PID_MILLING_CUTTER						// Milling Machine						 // Фрезировочный станок
 1882	PID_LR_SNIPER_RIFLE						// Long Range Sniper Rifle				 // Дальнобойная снайперская винтовка
 1884	PID_AMMO_BELT							// Ammo belt							 // Патронташ
 1885	PID_HANDWRITINGS						// Ledger								 // Рукопись
@@ -1786,9 +1792,9 @@
 15007	PID_SWITCH3_DIR3						// Switch								 // Рубильник
 15008	PID_LIGHT_SOURCE						// Light source - tech item				 // Источник света - тех айтем
 15009	PID_AXE2								// Quality Axe							 // Качественный топор
-15010	PID_PREWAR_DOLLAR_20					// Prewar 20$ coin						 // Серебряная монета
+15010	PID_PREWAR_DOLLAR_20					// Rare silver coin						 // Редкая серебряная монета
 15011	PID_audiop								// Audio Equipment						 // Аудиооборудование
-15012	PID_bcoin								// Prewar 5$ coin						 // Редкая серебряная монета
+15012	PID_bcoin								// Silver coin							 // Серебряная монета
 15013	PID_blucat								// Cat's Paw Special Edition			 // Спецвыпуск "Кошачьей лапки"
 15014	PID_bookeli								// Fiction Book							 // Художественная книга
 15016	PID_compas1								// Wristwatch							 // Наручный компас
@@ -1804,7 +1810,7 @@
 15027	PID_RANGER1								// Ranger badge							 // Значок рейнджера
 15028	PID_RESPIRATOR2							// Chemical respirator					 // Химический респиратор
 15029	PID_replic								// Replicator							 // Репликатор
-15030	PID_SHAMP								// Shampoo								 // Шампунь
+15030	PID_PERFUME								// Perfume								 // Духи
 15031	PID_TIPSBOOK							// Formula Book							 // Книга с формулами
 15032	PID_wavelgic							// Radio Engineering Manual				 // Книга по радиотехнике
 15033	PID_zvirus								// Super Virus							 // Супервирус
@@ -2231,6 +2237,8 @@
 20170	PID_TESLA_LANCE							// Technological Blacksmith Spear		 // Технологичное копье кузнеца
 20171	PID_FORGED_SPEAR						// Forged Spear							 // Кованое копье
 20172	PID_HUNTING_SPEAR						// Hunting Spear						 // Деревянное копье
+20173	PID_WINE								// Peyote wine							 // Пейотливое вино
+20174	PID_WINE_PRT							// Peyote wine							 // Пейотливое вино
 20175	PID_H_SPIKED_KNUCKLES					// Heavy Spiked Knuckles				 // Тяжелый шипованный кастет
 20183	PID_SM_CLUB								// Supermutant's club					 // Дубинка супермутантов
 20185	PID_SHOCK_CLUB							// Shock Club							 // Электродубинка охраны
@@ -2369,10 +2377,12 @@
 21031	PID_22MM_SMG_DISK						// .22 SMG DM							 // Пистолет-пулемет .22 с диском
 21033	PID_SCOPED_HUNTING_RIFLE2				// Scoped Hunting Rifle					 // Охотничья винтовка
 21035	PID_MENDOZA								// Mendoza C-2075						 // Мендоза C-2075
+21036	PID_COGNAC								// Cognac								 // Коньяк
 21037	PID_OLD_ROCKWELL40MM					// Old Rockwell Grenade Launcher		 // Старый 40мм гранатомет
 21038	PID_HUNTING_RIFLE_NV					// Hunting Rifle NV						 // Охотничье ружье NV
 21039	PID_ROCKWELL40MM						// Rockwell Grenade Launcher			 // Гранатомет 40мм
 21040	PID_WINCHESTER_RIFLE					// "Winchester" rifle					 // Винтовка «Винчестер»
+21041	PID_COGNAC_PRT							// Cognac								 // Коньяк
 21043	PID_FLASHLIGHT_HELMET					// Mining Helmet						 // Шахтёрский шлем
 21044	PID_44_COLT_REVOLVER					// Colt Revolver						 // Револьвер Кольт M1873
 21045	PID_44_COLT_REVOLVER_LONG				// Colt Revolver (lng. brl.)			 // Револьвер Кольт M1873 (удл. ствол)
@@ -2480,7 +2490,7 @@
 22103	PID_CASH_TAPE							// Roll of paper cash register			 // Рулон бумажной кассовой ленты
 22104	PID_BOWLER_HAT							// Black Bowler Hat						 // Чёрный котелок
 22106	PID_PREWAR_DOLLAR_100					// Pre-war 100$ bill					 // Довоенные 100$
-22107	PID_PREWAR_DOLLAR_1						// Pre-war 1$ coin						 // Мексиканский песо
+22107	PID_PREWAR_DOLLAR_1						// Mexican Peso							 // Мексиканский песо
 22111	PID_CORN_FLOUR							// Corn flour							 // Кукурузная мука
 22114	PID_NUCLEAR_BLOCK						// Nuclear unit							 // Ядерный блок
 22116	PID_COFFEE								// Coffee								 // Кофе
