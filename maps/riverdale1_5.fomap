@@ -105689,60 +105689,6 @@ MapY                 206
 
 MapObjType           2
 ProtoId              3853
-MapX                 206
-MapY                 224
-Scenery_ToEntire     217
-
-MapObjType           2
-ProtoId              3853
-MapX                 219
-MapY                 219
-Scenery_ToEntire     217
-
-MapObjType           2
-ProtoId              3853
-MapX                 225
-MapY                 162
-Scenery_ToEntire     212
-
-MapObjType           2
-ProtoId              3853
-MapX                 176
-MapY                 158
-Scenery_ToEntire     212
-
-MapObjType           2
-ProtoId              3853
-MapX                 217
-MapY                 132
-Scenery_ToEntire     212
-
-MapObjType           2
-ProtoId              3853
-MapX                 154
-MapY                 147
-Scenery_ToEntire     201
-
-MapObjType           2
-ProtoId              3853
-MapX                 193
-MapY                 131
-Scenery_ToEntire     201
-
-MapObjType           2
-ProtoId              3853
-MapX                 167
-MapY                 178
-Scenery_ToEntire     227
-
-MapObjType           2
-ProtoId              3853
-MapX                 200
-MapY                 181
-Scenery_ToEntire     227
-
-MapObjType           2
-ProtoId              3853
 MapX                 197
 MapY                 210
 Scenery_ToEntire     1
@@ -105822,5 +105768,3 @@ MapX                 193
 MapY                 208
 Scenery_ToMapPid     268
 Scenery_ToEntire     1
-
-
