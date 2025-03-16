@@ -246,7 +246,7 @@ uint process_skinning( Critter@ cr, int& param0, int& param1, int& param2 )
 			if( cr.IsInjured() )
 			{
 				uint damage = INJURED_HP_DAMAGE - cr.Stat[ ST_ENDURANCE ];
-				InjureCritter( cr, damage, DAMAGE_UNCALLED, cr.Dir, cr.Id, HIT_LOCATION_NONE, false );
+				hurt( cr, damage );
 			}
 			
 			return cr.ParamBase[ ST_LTP_SEQUENCE_WAIT ];
@@ -372,8 +372,8 @@ bool Profit(  Critter& cr, Item@ tool, Critter& target, bool devour )
 		else
 		{
 			uint huntMod = cr.Skill[ SK_HUNTING ] * 10 / 30;
-			cr.StatBase[ ST_HUNGER ] += 100 + huntMod;
-			cr.StatBase[ ST_THIRST ] += 100 + huntMod;
+			cr.StatBase[ ST_HUNGER ] -= 100 + huntMod;
+			cr.StatBase[ ST_THIRST ] -= 100 + huntMod;
 		}
 	}
 	

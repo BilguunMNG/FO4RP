@@ -24,6 +24,7 @@
 #include "_npc_pids.fos"
 #include "teleports_h.fos"
 #include "mob_spawners_h.fos"
+#include "stdlib_h.fos"
 
 import void GM_brokeItem( Critter& player, int param0, int param1, int param2, string@ param3, int[] @ param4 ) from "gm_commands";
 
@@ -1467,7 +1468,7 @@ int[] sinf_menu_list =
 	STR_GM_MENU_CURSOR_SPRITES		, 	// SINF_SPRITES			( 0x00000080 )
 	STR_GM_MENU_HEAR_RADIOS			, 	// SINF_RADIO			( 0x00000100 )
 	STR_GM_MENU_HEAR_WHISPER		,	// SINF_WHISPER			( 0x00000200 )
-	STR_GM_MENU_INFO_DESC			, 	// SINF_DESC_INFO		( 0x00000400 )
+	STR_GM_MENU_FORMATION			, 	// SINF_FORMATION		( 0x00000400 )
 	STR_GM_MENU_GAS_MARKERS			,	// SINF_GAS_SIGN		( 0x00000800 )
 	STR_GM_MENU_LIGHT_MARKERS		, 	// SINF_LIGHT_SIGN		( 0x00001000 )
 	STR_GM_MENU_MOB_HP_PERCENT		, 	// SINF_MOB_HP_PERCENT 	( 0x00002000 )
@@ -2993,10 +2994,15 @@ void ask_setTimingParam( Critter& player, uint answerI, string& answerS )
 
 void FullHeal( Critter& cr ) //exported
 {
+	if( cr.IsDead() )
+	{
+		cr.ToLife();		
+	}
+	
 	cr.StatBase[ ST_CURRENT_HP ] = cr.Stat[ ST_MAX_LIFE ];
-	cr.StatBase[ ST_HUNGER ] = HUNGER_BASE;
-	cr.StatBase[ ST_THIRST ] = THIRST_BASE;
-	cr.StatBase[ ST_DYSPNEA ] = DYSPNEA_BASE;
+	cr.StatBase[ ST_HUNGER ] = 0;
+	cr.StatBase[ ST_THIRST ] = 0;
+	cr.StatBase[ ST_DYSPNEA ] = 0;
 	cr.StatBase[ ST_DRUNK ] = 0;
     cr.StatBase[ ST_GLOBAL_OVERDOSE ] = 0;
 	cr.StatBase[ ST_WETNESS ] = 0;
@@ -3561,9 +3567,9 @@ void answer_GM_PANNEL_CRITTER_PLAYER_STATS( Critter& player, uint answerI, strin
         player.Say( SAY_DIALOGBOX_BUTTON( 1 ), "" + cr.ParamBase[ ST_MAX_LIFE ] + " ST_MAX_LIFE" );
         player.Say( SAY_DIALOGBOX_BUTTON( 2 ), "" + cr.ParamBase[ ST_AGE ] + " ST_AGE" );
         player.Say( SAY_DIALOGBOX_BUTTON( 3 ), "" + cr.ParamBase[ ST_GENDER ] + " ST_GENDER" );
-        player.Say( SAY_DIALOGBOX_BUTTON( 4 ), "" + ( 1000 - cr.StatBase[ ST_DYSPNEA ] ) + " ST_DYSPNEA" );
-        player.Say( SAY_DIALOGBOX_BUTTON( 5 ), "" + ( 1000 - cr.StatBase[ ST_HUNGER ] ) + " ST_HUNGER" );
-        player.Say( SAY_DIALOGBOX_BUTTON( 6 ), "" + ( 1000 - cr.StatBase[ ST_THIRST ] ) + " ST_THIRST" );
+        player.Say( SAY_DIALOGBOX_BUTTON( 4 ), "" + cr.StatBase[ ST_DYSPNEA ] + " ST_DYSPNEA" );
+        player.Say( SAY_DIALOGBOX_BUTTON( 5 ), "" + cr.StatBase[ ST_HUNGER ] + " ST_HUNGER" );
+        player.Say( SAY_DIALOGBOX_BUTTON( 6 ), "" + cr.StatBase[ ST_THIRST ] + " ST_THIRST" );
         player.Say( SAY_DIALOGBOX_BUTTON( 7 ), "" + cr.StatBase[ ST_POISONING_LEVEL ] + " ST_POISONING_LEVEL" );
         player.Say( SAY_DIALOGBOX_BUTTON( 8 ), "" + cr.StatBase[ ST_RADIATION_LEVEL ] + " ST_RADIATION_LEVEL" );
 		player.Say( SAY_DIALOGBOX_BUTTON( 9 ), "" + ( cr.StatBase[ ST_DRUNK ] ) + " ST_DRUNK" );
@@ -4382,14 +4388,7 @@ void ask_GM_PANNEL_CRITTER_PLAYER_STATS_SPECIAL( Critter& player, uint answerI, 
 		int last_value_base = target.ParamBase[ parameter ];
 		int last_value = target.Param[ parameter ];
 		
-		if( parameter == ST_THIRST || parameter == ST_HUNGER || parameter == ST_DYSPNEA )
-		{
-			target.ParamBase[ parameter ] = 1000 - number;
-		}
-		else
-		{
-			target.ParamBase[ parameter ] = number;
-		}
+		target.ParamBase[ parameter ] = number;
 		
 		string text = "param " + parameter 
 						+ " from " + last_value_base + "/" + last_value 
@@ -4900,7 +4899,7 @@ void GM_ItemPanel( Critter& player, int itemId )
 	player.StatBase[ ST_VAR0 ] = itemId;
 	
 	bool isCont = item.GetType() == ITEM_TYPE_CONTAINER;
-	player.ShowScreen( SCREEN_DIALOGBOX, 6, "answer_GM_PANNEL_ITEM" );
+	player.ShowScreen( SCREEN_DIALOGBOX, 8, "answer_GM_PANNEL_ITEM" );
 	
 	player.Say( SAY_DIALOGBOX_TEXT, FullItemInfo(item) );
 	player.Say( SAY_DIALOGBOX_BUTTON( 0 ), "Variables" );
@@ -4908,13 +4907,15 @@ void GM_ItemPanel( Critter& player, int itemId )
 	player.Say( SAY_DIALOGBOX_BUTTON( 2 ), "Flags #1" );
 	player.Say( SAY_DIALOGBOX_BUTTON( 3 ), "Flags #2" );
 	player.Say( SAY_DIALOGBOX_BUTTON( 4 ), "Lex + Pic" );
+	player.Say( SAY_DIALOGBOX_BUTTON( 5 ), "OFFSET( " + item.OffsetX + ", " + item.OffsetY + " )" );
+	player.Say( SAY_DIALOGBOX_BUTTON( 6 ), "CLEAR OFFSET" );
 	if( isCont )
 	{
-		player.Say( SAY_DIALOGBOX_BUTTON( 5 ), "Contents" );
+		player.Say( SAY_DIALOGBOX_BUTTON( 7 ), "Contents" );
 	}
 	else
 	{
-		player.Say( SAY_DIALOGBOX_BUTTON( 5 ), "Break for %" );
+		player.Say( SAY_DIALOGBOX_BUTTON( 7 ), "Break for %" );
 	}
 }
 
@@ -5013,7 +5014,8 @@ void show_GM_VAL_PANNEL( Critter& player, Item& item )
 
 void answer_GM_PANNEL_ITEM( Critter& player, uint answerI, string& answerS )
 {
-    Item@ item = GetItem( player.StatBase[ ST_VAR0 ] );
+    uint itemId = player.StatBase[ ST_VAR0 ];
+	Item@ item = GetItem( itemId );
     if( !valid( item ) )
 	{
 		return;
@@ -5062,8 +5064,20 @@ void answer_GM_PANNEL_ITEM( Critter& player, uint answerI, string& answerS )
 	{
 		showFakingMenu( player );
 	}
-
+	
 	if( answerI == 5 )
+	{
+		player.ShowScreen( SCREEN_SAY, 0, "gm@ask_GM_PANNEL_ITEM_OFFSET" );
+		player.Say( SAY_SAY_TITLE, "dx dy" );
+	}
+	
+	if( answerI == 6 )
+	{
+		offset( item, 0, 0 );
+		GM_ItemPanel( player, itemId );
+	}
+
+	if( answerI == 7 )
 	{
 		if( item.GetType() == ITEM_TYPE_CONTAINER )
 		{
@@ -5075,6 +5089,27 @@ void answer_GM_PANNEL_ITEM( Critter& player, uint answerI, string& answerS )
 			player.Say( SAY_SAY_TITLE, "Break for %:" );
 		}
 	}
+}
+
+void ask_GM_PANNEL_ITEM_OFFSET( Critter& player, uint answerI, string& answerS )
+{
+    uint itemId = player.StatBase[ ST_VAR0 ];
+    Item@ item = GetItem( itemId );
+    if( !valid( item ) )
+	{
+		return;
+	}
+	
+	int dx = 0, dy = 0;
+	string@[]@ parts = splitEx( answerS, " " );
+	if( answerS.length() < 1 || !valid(parts) || parts.length() != 2 || !StrToInt( parts[0], dx ) || !StrToInt( parts[1], dy ) )
+	{
+		player.Say( SAY_NETMSG, RED + "Wrong input!" + YELLOW + " Enter two numbers in format:\n\t'" + WHITE + "X Y" + YELLOW + "'" );
+		return;
+	}
+	
+	offset( item, dx, dy );
+	GM_ItemPanel( player, itemId );
 }
 
 void ask_GM_PANNEL_ITEM_BREAK( Critter& player, uint answerI, string& answerS )
@@ -6083,14 +6118,14 @@ class MenuSelectMobSpawnerGroup: DefaultMenuHandler
 
 		if(group_num == RADSCORPIONS_BEGIN)
 		{
-			if(menu.Button("Ordinary Scorp"))
+			if(menu.Button("Desert Scorp"))
 			{
 				gm.ParamBase[CR_VAL4] = RADSCORPIONS_BEGIN;
 				gm.ParamBase[CR_VAL5] = NPC_PID_TOUGH_RADSCORPION;
 				return false;
 			}
 
-			if(menu.Button("Nigga Scorp"))
+			if(menu.Button("Black Scorp"))
 			{
 				gm.ParamBase[CR_VAL4] = NPC_PID_SMALL_BLACK_SCORPION;
 				gm.ParamBase[CR_VAL5] = NPC_PID_BLACK_RADSCORPION;
