@@ -1296,6 +1296,10 @@ class GUIScreen : IGUIScreenOpt
 			{
 				uint16 hexX = 0, hexY = 0;
 				GetMonitorHex( __MouseX, __MouseY, hexX, hexY );
+				if( isGM(chosen) && FLAG( chosen.Param[ PLAYER_FLAGS ], PLAYER_FLAG_RTS ) )
+				{
+					RunServerScriptUnsafe( "mobcontrol@unsafe_rotateMob", hexX, hexY, 0, null, control() );
+				}
 				RunServerScriptUnsafe( "general_unsafe@unsafe_turn_critter", hexX, hexY, 0, null, null );
 				return true;
 			}
@@ -1787,8 +1791,16 @@ class GUIScreen : IGUIScreenOpt
 					int mx = 0, my = 0;
 					GetHexPos( hexX, hexY, mx, my );
 					ItemCl@ target_item = GetMonitorItem( __MouseX, __MouseY );
-					int target_item_id = valid( target_item ) ? target_item.Id : 0;
-					int[] data = { int( __SpritesZoom * 1000 ), __MouseX - mx, __MouseY - my, hexX, hexY, target_item_id };
+					
+					uint16 target_item_id = valid( target_item ) ? target_item.Id : 0;
+					uint16 target_item_id_extra = 0;
+					if( valid( target_item ) && target_item.Id != target_item_id )
+					{
+						target_item_id 			= uint16( target_item.Id >> 16 );
+						target_item_id_extra	= uint16( target_item.Id );
+					}
+					
+					int[] data = { int( __SpritesZoom * 1000 ), __MouseX - mx, __MouseY - my, hexX, hexY, target_item_id, target_item_id_extra };
 					
 					int alt_flag = ( __altDown ? 1 : 0 );
 					RunServerScriptUnsafe ( "general_unsafe@unsafe_itemthrow", hexX, hexY, alt_flag, null, data );

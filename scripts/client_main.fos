@@ -1002,7 +1002,7 @@ bool key_down( FOWindow@ window, uint8 key )
 			}
 		}
 
-		if( !( FLAG( chosen.Param[ PLAYER_FLAGS ], PLAYER_FLAG_RTS ) && __mobhotkeys ) && !__ConsoleActive && WASDInputKeyState( key, true ) )
+		if( (GUI_GetActiveScreen() != CLIENT_SCREEN_INVENTORY && GUI_GetActiveScreen() != CLIENT_SCREEN_PICKUP) && !( FLAG( chosen.Param[ PLAYER_FLAGS ], PLAYER_FLAG_RTS ) && __mobhotkeys ) && !__ConsoleActive && WASDInputKeyState( key, true ) )
 		{
 			return true;
 		}
@@ -1051,6 +1051,13 @@ bool key_down( FOWindow@ window, uint8 key )
 				RunServerScriptUnsafe( "ltp@unsafe_StopProcess",  0, 0, 0, null, null );
 			}
 			
+			if( key == DIK_LMENU || key == DIK_RMENU ||
+				key == DIK_LCONTROL || key == DIK_RCONTROL ||
+				key == DIK_LSHIFT || key == DIK_RSHIFT )
+			{
+				return false;
+			}
+
 			return true;
 		}
 	}
@@ -1123,7 +1130,7 @@ bool key_up( FOWindow@ window, uint8 key )
 		return false;
 	}
 	
-    if( WASDInputKeyState( key, false ) )
+    if( (GUI_GetActiveScreen() != CLIENT_SCREEN_INVENTORY && GUI_GetActiveScreen() != CLIENT_SCREEN_PICKUP) && WASDInputKeyState( key, false ) )
 	{
         return true;
     }
@@ -1145,6 +1152,13 @@ bool key_up( FOWindow@ window, uint8 key )
 	
     if( __waiting )
 	{
+		if( key == DIK_LMENU || key == DIK_RMENU ||
+			key == DIK_LCONTROL || key == DIK_RCONTROL ||
+			key == DIK_LSHIFT || key == DIK_RSHIFT )
+		{
+			return false;
+		}
+
         return !__ConsoleActive;
 	}
 	
@@ -1242,6 +1256,8 @@ void critter_in( CritterCl& cr )
 	}
 	
 	checkCritterControl( cr );
+
+	cr.SpriteZoom = cr.Param[ ST_SCALE_FACTOR ] * 0.01f;
 
    // if( __fastPanel )
 	//{
@@ -4157,6 +4173,11 @@ string critter_description_stats( CritterCl& cr )
 		truecomma = true;
 		switch( cr.Stat[ ST_CHARISMA ] )
 		{
+			case( 15 ):
+			case( 14 ):
+			case( 13 ):
+			case( 12 ):
+			case( 11 ):
 			case( 10 ):
 				look += female ? comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_F_IRRESISTIBLE ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_IRRESISTIBLE );
 				break;
@@ -4194,6 +4215,11 @@ string critter_description_stats( CritterCl& cr )
 		truecomma = true;
 		switch( cr.Stat[ ST_STRENGTH ] )
 		{
+			case( 15 ):
+			case( 14 ):
+			case( 13 ):
+			case( 12 ):
+			case( 11 ):
 			case( 10 ):
 				look += female ? comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_F_VSTRONG ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_VSTRONG );
 				break;
@@ -4221,6 +4247,11 @@ string critter_description_stats( CritterCl& cr )
 		truecomma = true;
 		switch( cr.Stat[ ST_ENDURANCE ] )
 		{
+			case( 15 ):
+			case( 14 ):
+			case( 13 ):
+			case( 12 ):
+			case( 11 ):
 			case( 10 ):
 				look += female ? comma +  GetMsgStr( TEXTMSG_GAME, STR_DESC_F_TOUGH ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_TOUGH );
 				break;
@@ -4248,6 +4279,11 @@ string critter_description_stats( CritterCl& cr )
 		truecomma = true;
 		switch( cr.Stat[ ST_AGILITY ] )
 		{
+			case( 15 ):
+			case( 14 ):
+			case( 13 ):
+			case( 12 ):
+			case( 11 ):
 			case( 10 ):
 				look += female ? comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_F_AGILE ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_AGILE );
 				break;
@@ -4360,6 +4396,11 @@ string corpse_description( Item& corpse )
 	truecomma = true;
 	switch( corpse.Val4 )
 	{
+		case( 15 ):
+		case( 14 ):
+		case( 13 ):
+		case( 12 ):
+		case( 11 ):
 		case( 10 ):
 			look += female ? comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_F_IRRESISTIBLE ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_IRRESISTIBLE );
 			break;
@@ -4393,6 +4434,11 @@ string corpse_description( Item& corpse )
 	truecomma = true;
 	switch( corpse.Val5 )
 	{
+		case( 15 ):
+		case( 14 ):
+		case( 13 ):
+		case( 12 ):
+		case( 11 ):
 		case( 10 ):
 			look += female ? comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_F_VSTRONG ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_VSTRONG );
 			break;
@@ -4419,6 +4465,11 @@ string corpse_description( Item& corpse )
 	truecomma = true;
 	switch( corpse.Val6 )
 	{
+		case( 15 ):
+		case( 14 ):
+		case( 13 ):
+		case( 12 ):
+		case( 11 ):
 		case( 10 ):
 			look += female ? comma +  GetMsgStr( TEXTMSG_GAME, STR_DESC_F_TOUGH ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_TOUGH );
 			break;
@@ -4445,6 +4496,11 @@ string corpse_description( Item& corpse )
 	truecomma = true;
 	switch( corpse.Val7 )
 	{
+		case( 15 ):
+		case( 14 ):
+		case( 13 ):
+		case( 12 ):
+		case( 11 ):
 		case( 10 ):
 			look += female ? comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_F_AGILE ) : comma + GetMsgStr( TEXTMSG_GAME, STR_DESC_M_AGILE );
 			break;

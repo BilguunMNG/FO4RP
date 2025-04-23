@@ -174,16 +174,28 @@ void PrepareFrying( Critter& cr, Item& fire, bool standing )
 bool BurnMeal(int skill, int value)
 {
     int delta = skill - value;
-    return (delta < 50) && (Random(1, 15) > delta);
+	
+	if( delta < 30 )
+	{
+		int roll = Random( 1, 100 );
+		if( roll <= 5 )
+		{
+			return true;
+		}
+	}
+	
+    return false;
 }
 
 bool CheckIngredients(Critter& cr, Recipe& recipe)
 {
-    for(uint b = 0; b < recipe.ingredients.length(); b++ )
+	uint need = 1;
+    for( uint b = 0; b < recipe.ingredients.length(); b++ )
     {
-        if( cr.CountItem( recipe.ingredients[b] ) == 0 )
+		need = recipe.ingredientsAmount[b];
+		if( cr.CountItem( recipe.ingredients[b] ) < need )
         {
-            cr.SayMsg(SAY_NETMSG, TEXTMSG_TEXT, recipe.missingMessages[b]);
+            cr.SayMsg(SAY_NETMSG, TEXTMSG_TEXT, recipe.missingMessage);
             return false;
         }
     }
@@ -209,6 +221,12 @@ void ProcessRecipe(Critter& cr, Recipe& recipe, int skill)
 
     if( isFailed )
     {
+		cr.AddItem( PID_SHIT_SMALL, 1 );
+		if( recipe.ingredients.find( PID_BOWL ) != -1 )
+		{
+			cr.AddItem( PID_DIRTY_BOWL, 1 );
+		}
+		
         cr.SayMsg(SAY_NETMSG, TEXTMSG_TEXT, recipe.failMessage);
     }
     else
