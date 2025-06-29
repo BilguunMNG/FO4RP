@@ -7908,6 +7908,7 @@ Type=11
 PicMap=art\scenery\bladsign.frm
 PicInv=art\inven\reserved.frm
 Flags=33554460
+DisableEgg=1
 SoundId=48
 Material=3
 
@@ -7917,6 +7918,7 @@ Type=11
 PicMap=art\scenery\bshowr1.frm
 PicInv=art\inven\reserved.frm
 Flags=268440092
+DisableEgg=1
 SoundId=48
 Material=1
 
@@ -7926,6 +7928,7 @@ Type=11
 PicMap=art\scenery\bshowr2.frm
 PicInv=art\inven\reserved.frm
 Flags=268440092
+DisableEgg=1
 SoundId=48
 Material=1
 
@@ -19816,6 +19819,7 @@ Type=11
 PicMap=art\scenery\grid_wall.frm
 PicInv=art\inven\reserved.frm
 Flags=3
+Material=6
 
 [Proto]
 ProtoId=5622
@@ -19823,6 +19827,7 @@ Type=11
 PicMap=art\scenery\grid_wall_light.frm
 PicInv=art\inven\reserved.frm
 Flags=19
+Material=1
 
 [Proto]
 ProtoId=8266

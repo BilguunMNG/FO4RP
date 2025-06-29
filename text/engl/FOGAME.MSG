@@ -427,8 +427,8 @@
 {664}{}{|0xFF0000 Skill disabled.}
 
 # NPC Icons
-{665}{}{|0xFFFFFF NPC icons enabled.}
-{666}{}{|0x606060 NPC icons disabled.}
+{665}{}{|0xFFFFFF Quest icons enabled.}
+{666}{}{|0x606060 Quest icons disabled.}
 
 # Compas use
 {667}{}{You looking at compass arrow and it points at:}
@@ -1857,7 +1857,10 @@ Confirm?}
 {101921}{}{AP Regeneration}
 {101922}{}{The number of regenerated AP. Regeneration occurs every 250 game ticks.}
 {101923}{}{AP Regen}
+
+# Consumables effects
 {101931}{}{Drunk %}
+{101941}{}{Drunk Points}
 {101951}{}{Overdose %}
 {101991}{}{Crit resistance %}
 

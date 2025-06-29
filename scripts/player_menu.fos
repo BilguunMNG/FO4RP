@@ -125,9 +125,9 @@ class PlayerMenu: DefaultMenuHandler
 		string wallAlpha = player.Param[ WALL_ALPHA ];
 		if( menu.ButtonExtSay( "alpha", TEXTMSG_TEXT, STR_PLAYER_MENU_ALPHA, "$alpha" + wallAlpha, "$vals 0 .. 200", STR_PLAYER_MENU_ALPHA_SAYTEXT ) )
 		{
-			string rainStr = menu.GetSayValue();
+			string alphaStr = menu.GetSayValue();
 			int val = 0;
-			StrToInt( rainStr, val );
+			StrToInt( alphaStr, val );
 			val = CLAMP( val, 0, 200 );
 			player.ParamBase[ WALL_ALPHA ] = val;
 			return true;
@@ -425,7 +425,7 @@ class PlayerMenuSkillRolls: CenteredMenuHandler
 			@target = player;
 		}
 		
-		for( uint i = SKILL_BEGIN; i < SKILL_END; i++ )
+		for( uint i = SKILL_BEGIN, len = SKILL_END + 1; i < len; i++ )
 		{
 			if( i == 214 || i == 216 )
 			{
@@ -596,6 +596,13 @@ class PlayerMenuActions: CenteredMenuHandler
 		if( menu.ButtonMsg( STR_PLAYER_ACTION_NAME ) )
 		{
 			player.ParamBase[ CR_REMEMBERING_NAME ] = 1;
+			player.RunClientScript( "client_main@__InitUseSkillCursor", 0, 0, 0, null, null );
+			return false;
+		}
+
+		if( menu.ButtonMsg( STR_PLAYER_ACTION_COLOR ) )
+		{
+			player.ParamBase[ CR_REMEMBERING_NAME ] = 2;
 			player.RunClientScript( "client_main@__InitUseSkillCursor", 0, 0, 0, null, null );
 			return false;
 		}

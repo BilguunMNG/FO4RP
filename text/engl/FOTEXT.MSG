@@ -177,6 +177,12 @@ Page: |0xFFFF00 @lex currPage@/@lex maxPage@ |0x3CF800}
 {1231}{}{}
 {1232}{}{}
 
+# Dead bodies (Bones)
+{1233}{}{Corpse of }
+{1234}{}{The body is beheaded}
+{1235}{}{The body belongs to |0xFFFFFF }
+{1236}{}{Unidentified person}
+
 # Slots
 {2001}{}{|0xFFFF00 There is no money left in the machine.}
 {2002}{}{|0xFFFF00 There is not enough money in the machine to cover the bet.}
@@ -1213,12 +1219,9 @@ The pot is filled for |0xFFFF00 @lex current@ |0x3CF800 out of |0xFFFF00 @lex ma
 # ~naked - command
 {9952}{}{undresses}
 
-# ~desc - command
-{9953}{}{|0xFFFF00 Describe this spot.}
-{9954}{}{|0xFFFF00 Something about this spot catches your eye.}
-{9955}{}{|0xFFFF00 You did not manage to do anything.}
-{9956}{}{|0xFFFF00 You have removed everything that could have attracted attention to this spot.}
-{9957}{}{|0xFFFF00 You did not manage to clear the spot.}
+# #desc - command
+{9954}{}{|0xFFFF00 Something catches your eye:
+|0xABABAB @lex desc@}
 
 # Throw
 {9958}{}{|0xFFFF00 You can't throw that far.}
@@ -1365,6 +1368,7 @@ The pot is filled for |0xFFFF00 @lex current@ |0x3CF800 out of |0xFFFF00 @lex ma
 {20901}{}{0 - Command Deck}
 {20902}{}{1 - Entrance level}
 
+{21000}{}{PID_RED_PASS_KEY}
 {21001}{}{0 - Lobby}
 {21002}{}{1 - Level 1}
 {21003}{}{2 - Level 2}
@@ -1609,6 +1613,8 @@ If stat is chosen the result will be your current stat value + 2d6.}
 {100057}{}{Withdrawal} #TODO: REORDER PROPERTLY
 {100058}{}{Addiction} #TODO: REORDER PROPERTLY
 {100059}{}{Current effects:} #TODO: REORDER PROPERTLY
+
+{100060}{}{Colorize critter}
 
 #furnace.fos 100100 - 100110
 {100100}{}{|0xFFFF00 Power|0x3CF800 : [ |0xFFFF00 @lex powerStatus@ |0x3CF800 ] |0xFFFF00 temp|0x3CF800 : @lex temp@C.
@@ -2462,6 +2468,9 @@ Choose Begin Game to start!}
 {101611}{}{Teleport terminal.
 
 Select the starting location!}
+{101612}{}{Change Height}
+{101613}{}{Height tuning:
+Current Height: |0xFFFF00 @lex crHeight@|0x3CF800  cm.}
 
 #recorder 101650 - 101669
 {101651}{}{Tape recorder.
@@ -2541,7 +2550,7 @@ Select a charging method.
 {102223}{}{FISHING}
 {102233}{}{FARMING}
 {102243}{}{COOKING}
-{102253}{}{SEX}
+{102253}{}{HERBALISM}
 
 # Headbag
 {102254}{}{puts bag on your head}

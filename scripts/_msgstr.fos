@@ -1004,12 +1004,8 @@
 // ~naked - command
 #define STR_EMOTE_UNDRESS					 ( 9952 )
 
-// ~desc - command
-#define STR_MAKE_DESC						 ( 9953 )
+// #desc - command
 #define STR_NOTICE_DESC						 ( 9954 )
-#define STR_FAILED_DESC						 ( 9955 )
-#define STR_REMOVED_DESC					 ( 9956 )
-#define STR_FAILED_REMOVE_DESC				 ( 9957 )
 
 // Throw
 #define STR_TOO_FAR_TO_THROW				 ( 9958 )
@@ -1265,6 +1261,8 @@
 #define STR_ACTIVE_DRUGS_STAGE_2			( 100057 ) //TODO: reorder lines
 #define STR_ACTIVE_DRUGS_STAGE_ADDICTION	( 100058 ) //TODO: reorder lines
 #define STR_ACTIVE_DRUGS_EFFECTS_LABEL		( 100059 ) //TODO: reorder lines
+
+#define STR_PLAYER_ACTION_COLOR				( 100060 )
 
 #define STR_FURNACE_MENU_ENERGY_MAIN		( 100100 )
 #define STR_FURNACE_MENU_MAIN				( 100101 )
@@ -1952,6 +1950,8 @@
 #define STR_MAP_START_MENU_ARENA_DESC			( 101609 )
 #define STR_MAP_START_MENU_START_DESC			( 101610 )
 #define STR_MAP_START_MENU_TELEPORT_DESC		( 101611 )
+#define STR_MAP_START_MENU_CHANGE_HEIGHT		( 101612 )
+#define STR_MAP_START_MENU_HEIGHT_DESC			( 101613 )
 
 #define STR_RECORDER_MENU_MAIN					( 101651 )
 #define STR_RECORDER_MENU_INSERT_BATTERY		( 101652 )
@@ -2428,6 +2428,11 @@
 #define STR_SP_LOAD_FAIL                     ( 1073 )
 #define STR_SP_NEW_GAME_SUCCESS              ( 1074 )
 #define STR_SP_NEW_GAME_FAIL                 ( 1075 )
+
+#define STR_CORPSE_OF						 ( 1233 )
+#define STR_CORPSE_BEHEADED					 ( 1234 )
+#define STR_CORPSE_BELONGS_TO				 ( 1235 )
+#define STR_UNIDENTIFIED_PERSON				 ( 1236 )
 
 // Combat
 #define STR_EMOTE_GRAPPLES					 ( 2000 )

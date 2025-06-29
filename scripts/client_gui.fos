@@ -9,6 +9,8 @@
 #include "fofmod_h.fos"
 #include "critter_item_movement_h.fos"
 #include "hitchance_h.fos"
+#include "client_controls.fos"
+#include "client_screen_palette_h.fos"
 
 import void SwitchCraftScreen() from "client_screen_fixboy";
 
@@ -992,11 +994,11 @@ class GUIScreen : IGUIScreenOpt
 				if( FLAG( chosen.Param[ PLAYER_FLAGS ], PLAYER_FLAG_STA ) )
 				{
 					CritterCl@[] targets;
-					
+					CritterCl@ target = null;
 					GetCritters( 0, FIND_LIFE_AND_KO|FIND_ALL, targets );
-					for( uint i = 0; i < targets.length(); i ++ )
+					for( uint i = 0, len = targets.length(); i < len; i ++ )
 					{
-						CritterCl@ target = targets[i];
+						@ target = targets[i];
 						if( !valid( target ) )
 						{
 							continue;
@@ -1012,16 +1014,14 @@ class GUIScreen : IGUIScreenOpt
 							continue;
 						}
 						
-						uint8 r0 = 0xFF, g0 = 0x00, b0 = 0x00;
-						if( SameFaction( chosen, target ) )
-						{
-							r0 = 0x3C; 
-							g0 = 0xF8;
-							b0 = 0x00;
-						}
+						uint8 a0 = 0xFF, r0 = 0xFF, g0 = 0x00, b0 = 0x00;
+						uint crColor = target.ContourColor;
+						__GetColor(a0, r0, g0, b0, crColor);
 						
 						OutlineCritter( target, r0, g0, b0 );
 					}
+					
+					targets.resize(0);
 				}
 			}
         }
@@ -1135,16 +1135,23 @@ class GUIScreen : IGUIScreenOpt
                 return false;
             }
 			else if( click == MOUSE_CLICK_LEFT && GetCurrentCursor() == CURSOR_USE_SKILL && chosen.Param[ CR_REMEMBERING_NAME ] > 0 )
-			{
-				RunServerScriptUnsafe( "general_unsafe@unsafe_StopNamingState", 0, 0, 0, null, null );
-				CritterCl@ target = MouseCritter;
-				if( valid( target ) )
-				{
-					CharClick( target );
-				}
-				
-                return true;
-            }
+            {
+                CritterCl@ target = MouseCritter;
+                if( valid( target ) )
+                {
+                    if( chosen.Param[ CR_REMEMBERING_NAME ] == 1 )
+                    {
+                        CharClick( target );
+                    }
+                    else if( chosen.Param[ CR_REMEMBERING_NAME ] == 2 )
+                    {
+                        OpenPaletteScreen( PALETTE_TYPE_CRITTER, target.Id, 0 );
+                    }
+                    
+                    RunServerScriptUnsafe( "general_unsafe@unsafe_StopNamingState", 0, 0, 0, null, null );
+                }
+            	return true;
+			}
 			else if( click == MOUSE_CLICK_LEFT && GetCurrentCursor() == CURSOR_RTSA && chosen.Param[ CR_SELECT_PET_TARGET ] > 0 )
 			{
 				CritterCl@ target = MouseCritter;
@@ -1207,7 +1214,7 @@ class GUIScreen : IGUIScreenOpt
 
 							if( hexX != 0 && hexY != 0 )
 							{
-								if( !FLAG( chosen.Param[ PLAYER_FLAGS ], PLAYER_FLAG_STA ) || chosen.Param[ CR_STA_EQUIPPED ] == 0 )
+								if( KeyPressed[ DIK_LCONTROL ] )
 								{
 									RunServerScriptUnsafe( "general_unsafe@unsafe_hex_attack", hexX, hexY, ProtoWeapon.ProtoId, null, null );
 								}
@@ -3549,7 +3556,8 @@ void drawHexRange( int x, int y, int radius, uint RGBA )
 {
 	int[] drawData;
 	int hx = 0, hy = 0;
-	if( radius == 0 )
+	
+	if( radius < 1 )
 	{
 		radius = 1;
 	}
@@ -3572,6 +3580,12 @@ void drawFanRange( int x, int y, int radius, uint RGBA )
 {
 	int[] drawData;
 	int hx = 0, hy = 0;
+	
+	if( radius < 1 )
+	{
+		radius = 1;
+	}
+	
 	for( uint8 i = 0; i < 6; i++ )
 	{
 		uint16 tx = x, ty = y;
@@ -3584,7 +3598,5 @@ void drawFanRange( int x, int y, int radius, uint RGBA )
 	
 	DrawPrimitive( DRAW_PRIMITIVE_TRIANGLEFAN, drawData );
 }
-
-#include "client_controls.fos"
 
 #endif //CLIENT_GUI

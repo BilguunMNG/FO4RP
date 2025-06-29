@@ -611,10 +611,10 @@
 650		PID_BALL								// Soccer ball							 // Футбольный мяч
 651		PID_BALL_DEAD							// Tainted Soccer Ball					 // Испорченный футбольный мяч
 660		PID_FLASH_GRENADE						// Flashbang							 // Светошумовая граната
-661		PID_DATABASE1							
-662		PID_DATABASE2							
-663		PID_DATABASE3							
-664		PID_DATABASE4							
+661		PID_DATABASE1							// Database								 // База данных
+662		PID_DATABASE2							// Database								 // База данных
+663		PID_DATABASE3							// Database								 // База данных
+664		PID_DATABASE4							// Database								 // База данных
 666		PID_DEATH_HEX							// DEATH HEX							 // Смертельный гекс
 670		PID_REANIMATION_KIT						// Reanimation kit						 // Реанимационный набор
 671		PID_BOOKCASE_11							// Bookcase								 // Книжный шкаф
@@ -681,7 +681,6 @@
 831		PID_WELGLASSES							// Welding Goggles						 // Сварочные очки
 832		PID_SLOT_MACHINE						// Slot Machine							 // Игровой автомат
 834		PID_SLOT_MACHINE2						// Slot Machine							 // Игровой автомат
-835		PID_TRAP_KNIFES							// Trap knives							 // Ловушка ножи
 836		PID_CR_OF_CHAIR_2						// Office Chair							 // Офисное кресло
 837		PID_CR_JNK_SOFA							// Craft Sofa							 // Кустарный диванчик
 838		PID_CR_CARPET							// Carpet								 // Ковер
@@ -694,6 +693,7 @@
 845		PID_CR_CART								// Cart									 // Тачка
 846		PID_CR_ARM_CHAIR						// Large chair							 // Большое кресло
 847		PID_TERMINAL							// Terminal								 // Терминал
+848		PID_DESC_MARKER							// DESC									 // DESC
 849		PID_RADIATION_MARKER					// Radiation Marker						 // Маркер радиации
 850		PID_EB_EMITTER_HOR0						// Force Field Generator				 // Генератор силового поля
 851		PID_EB_EMITTER_VERT0					// Force Field Generator				 // Генератор силового поля
@@ -764,14 +764,13 @@
 922		PID_STRING								// Fishing line							 // Леска
 923		PID_ROD_STRING							// Fishing Rod with the Line			 // Удочка с леской
 924		PID_ROD_STRING_HOOK						// Fishing rod with the line and the hook // Удочка с леской и крючком
-925		PID_TRAP_ELECTRIC						// Gass Marker							 // Маркер Газов
-926		PID_TRAP_ITEM_BREAKER					// Ore marker							 // Маркер руды
-927		PID_TRAP_FIRE_BREATH					// Junk Marker							 // Маркер мусора
-928		PID_TRAP_POISON_BLADE					// Mob Spawner							 // Спавнер Мобов
-929		PID_TRAP_CANISTER_SHOT					// Buckshot Trap						 // Ловушка картечь
-930		PID_TRAP_STAKE							// Trap stake							 // Ловушка кол
-931		PID_TRAP_SLEDGE_HAMMER					// Sledgehammer Trap					 // Ловушка кувалда
-932		PID_TRAP_STUNNER						// Shocker Trap							 // Ловушка шоккер
+925		PID_GAS_MARKER							// Gass Marker							 // Маркер Газов
+926		PID_ORE_MARKER							// Ore marker							 // Маркер руды
+927		PID_JUNK_MARKER							// Junk Marker							 // Маркер мусора
+928		PID_MOB_SPAWNER							// Mob Spawner							 // Спавнер Мобов
+929		PID_CUP_EMPTY							// Cup									 // Кружка
+930		PID_GLASS_EMPTY							// Glass								 // Стакан
+931		PID_KETTLE								// Kettle								 // Чайник
 939		PID_ALGAE								// Seaweed								 // Плотоядные водоросли
 940		PID_FISH_SMALLEST						// Fishy								 // Рыбешка
 941		PID_FISH_SMALL							// Fish									 // Рыбка
@@ -1098,6 +1097,7 @@
 1601	PID_PLANT_RADCVET						// Radcvet								 // Росток радцвета
 1602	PID_PLANT_RADCVET_DEAD					// Decayed Sprout						 // Сгнивший радцвет
 1603	PID_RADCVET								// Radcvet Fruit						 // Плод радцвета.
+1604	PID_PLANTBARREL_POTATO					// Growing Potato						 // Растущий картофель
 1606	PID_PLANT_FIVELEAF_SEED					// Fiveleaf seed						 // Семечка пятилистника
 1607	PID_PLANT_FIVELEAF						// Fiveleaf								 // Пятилистник
 1608	PID_PLANT_FIVELEAF_DEAD					// Decayed Fiveleaf						 // Разложившийся Пятилистник
@@ -1171,7 +1171,7 @@
 1683	PID_BAGC								// Travel Bag							 // Дорожная сумка
 1684	PID_Bankes								// Cans									 // Банки
 1685	PID_CAT									// Cat's Paw Special Edition			 // Коллекционная кошачья лапка
-1686	PID_porno								// Pre-War Porn Magazine				 // Довоенный порножурнал
+1686	PID_PORNO								// Pre-War Porn Magazine				 // Довоенный порножурнал
 1687	PID_chimcnin							// Dangerous Predator's Teeth			 // Зубы опасного хищника
 1688	PID_ColaFish							// Casino Chip							 // Фишка казино
 1689	PID_COMICS								// Comic Book							 // Комикс
@@ -1261,7 +1261,7 @@
 1774	PID_CENTRF								// CL 3000								 // CL 3000
 1775	PID_COMPUTER							// Computer details						 // Детали компьютера
 1776	PID_POLYMER_PLATE						// Polymer armor plates					 // Полимерные пластины
-1777	PID_Emulgat								// Chemical Reagent						 // Химический реагент
+1777	PID_REAGENT								// Chemical Reagent						 // Химический реагент
 1778	PID_OVERDOSE							// Overdose								 // "Овердоз"
 1779	PID_BLOOD_CLEANER						// "Blood Cleaner"						 // "Кровочист"
 1780	PID_FPRESS								// Ammo Rig								 // Станок для снаряжения патронов
@@ -1792,7 +1792,7 @@
 15007	PID_SWITCH3_DIR3						// Switch								 // Рубильник
 15008	PID_LIGHT_SOURCE						// Light source - tech item				 // Источник света - тех айтем
 15009	PID_AXE2								// Quality Axe							 // Качественный топор
-15010	PID_PREWAR_DOLLAR_20					// Rare silver coin						 // Редкая серебряная монета
+15010	PID_PREWAR_DOLLAR_20					// Rare silver coin						 // Довоенная монета
 15011	PID_audiop								// Audio Equipment						 // Аудиооборудование
 15012	PID_bcoin								// Silver coin							 // Серебряная монета
 15013	PID_blucat								// Cat's Paw Special Edition			 // Спецвыпуск "Кошачьей лапки"
@@ -2344,7 +2344,7 @@
 20586	PID_CA_LGRAY_MK3						// Combat Armor Mk.3					 // Боевая броня МК3
 20587	PID_CA_REBERA							// "Reber" Combat Armor					 // Боевая броня "Ребера"
 20588	PID_CA_REBERA_MK_II						// "Reber" Combat Armor Mk.2			 // Боевая броня "Ребера" МК2
-20589	PID_CA_BLUE_MK2							// Combat Armor Mk.2					 // Боевая броня МК2-Б
+20589	PID_CA_BLUE_MK2							// Combat Armor Mk.2					 // Боевая броня МК2
 20591	PID_RANGER_DUSTER						// Ranger's Duster						 // Пыльник рейнджера
 20592	PID_TOUGH_LEATHER_JACKET				// Heavy Leather Jacket					 // Плотная кожаная куртка
 20593	PID_CIRCLE_ARMOR						// Sewer Hatch							 // Люк на лямках
@@ -2492,7 +2492,7 @@
 22103	PID_CASH_TAPE							// Roll of paper cash register			 // Рулон бумажной кассовой ленты
 22104	PID_BOWLER_HAT							// Black Bowler Hat						 // Чёрный котелок
 22106	PID_PREWAR_DOLLAR_100					// Pre-war 100$ bill					 // Довоенные 100$
-22107	PID_PREWAR_DOLLAR_1						// Mexican Peso							 // Мексиканский песо
+22107	PID_PREWAR_DOLLAR_1						// Mexican Peso							 // Довоенные монеты
 22111	PID_CORN_FLOUR							// Corn flour							 // Кукурузная мука
 22114	PID_NUCLEAR_BLOCK						// Nuclear unit							 // Ядерный блок
 22116	PID_COFFEE								// Coffee								 // Кофе
@@ -2622,4 +2622,5 @@
 23717	PID_BINOCULARS							// Binoculars							 // Бинокль
 23718	PID_COMPACT_MIRROR						// Compact mirror						 // Карманное зеркало
 23719	PID_LIPSTICK							// Lipstick								 // Помада
-23720	PID_PANT_POT							// Plant in the pot						 // Растение в горшке
+23720	PID_PANT_POT							// Plant in the pot						 // Цветок в горшке
+

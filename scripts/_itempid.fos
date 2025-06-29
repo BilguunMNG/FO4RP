@@ -10,6 +10,9 @@
 /**************************************************************
 **************		INTERACTIVE MAP OBJECTS		***************
 ***************************************************************/
+// Desc indicator
+#define PID_DESC_MARKER 							( 848 )							// Marker for descs
+
 // Dynamic Radiation
 #define PID_RADIATION_MARKER						( 849 )							// Radiation Marker - Tech item
 
@@ -25,16 +28,6 @@
 // Dynamic Mob Spawner
 #define PID_MOB_SPAWNER								( 928 )							// Mob Spawner
 
-// Cups & Glasses
-#define PID_CUP_EMPTY								( 929 )							// Empty Cup
-#define PID_GLASS_EMPTY								( 930 )							// Empty Glass
-#define PID_CUP_COFFEE								( 931 )							// Cup of Coffee
-#define PID_CUP_TEA									( 932 )							// Cup of Tea
-#define PID_GLASS_BEER								( 933 )							// Glass of Beer
-#define PID_GLASS_BEER_DARK							( 934 )							// Glass of dark Beer
-#define PID_GLASS_BEER_LIGHT						( 935 )							// Glass of light Beer
-#define PID_GLASS_WHISKEY							( 936 )							// Glass of Whiskey
-
 // Laser fence
 #define PID_LAZER_FENCE_NS							( 803 )							// Laser fence
 #define PID_LAZER_FENCE_WE							( 804 )							// Laser fence
@@ -48,11 +41,11 @@
 #define PID_ARENA_TERMINAL                          ( 88 )							// Arena teleport terminal for startmap
 #define PID_START_TERMINAL                          ( 533 )							// Terminal for startmap
 #define PID_REAL_HOLODISK							( 568 )							// Holodisk for terminal data
-#define PID_TERMINAL                          		( 847 )							// Multifunction terminal
 #define PID_DATABASE1								( 661 )							// Glow database, East-North to West-South
 #define PID_DATABASE2								( 662 )							// Glow database, West-North to East-South
 #define PID_DATABASE3								( 663 )							// BOS database, East-North to West-South
 #define PID_DATABASE4								( 664 )							// BOS database, West-North to East-South
+#define PID_TERMINAL                          		( 847 )							// Multifunction terminal
 
 // Generators
 #define PID_COAL_POWERGEN                      		( 1830 )						// Coal Generator
@@ -193,7 +186,10 @@
 **************	FLASKS AND OTHER LIQUID HOLDERS	***************
 ***************************************************************/
 
-#define PID_WATER_FLASK                     		( 126 )							// NO DESC
+#define PID_WATER_FLASK                     		( 126 )							// Vault 13 Flask
+#define PID_CUP_EMPTY								( 929 )							// Empty Cup
+#define PID_GLASS_EMPTY								( 930 )							// Empty Glass
+#define PID_KETTLE									( 931 )							// Kettle
 #define PID_WATER_BARREL							( 1531 ) 						// NO DESC
 #define PID_WATER_BARREL_DIRTY						( 1532 ) 						// NO DESC
 #define PID_FLASKB		                       		( 1709 )						// Simple flask
@@ -394,6 +390,8 @@
 #define PID_PLANT_RADCVET_SEED 						( 1600 )						// Radcvet seed
 #define PID_PLANT_RADCVET       					( 1601 )						// Radcvet
 #define PID_PLANT_RADCVET_DEAD          			( 1602 )						// Decayed Sprout
+
+#define PID_PLANTBARREL_POTATO						( 1604 )						// Growing Potato
 
 #define PID_PLANT_FIVELEAF_SEED						( 1606 )						// Fiveleaf seed
 #define PID_PLANT_FIVELEAF							( 1607 )						// Fiveleaf
@@ -1267,6 +1265,8 @@
 #define PID_HN_NEEDLER_CARTRIDGE              		( 361 )							// Needler Cartridge
 #define PID_HN_AP_NEEDLER_CARTRIDGE           		( 362 )							// Needler AP Cartridge
 #define PID_FLAMETHROWER_FUEL_MK_II           		( 382 )							// Improved Flamethrower Fuel
+#define PID_NAPALM_40MM								( 481 )							// Napalm grenade 40MM
+#define PID_FLASHNADE_40MM							( 482 )							// Flashbang grenade 40MM
 #define PID_NEED_CART_POISON                  		( 907 )							// Poisoned Needer Cartridge
 #define PID_NEED_CART_NT                      		( 908 )							// Neurotoxin Needler Cartridge
 #define PID_40MM_HE									( 1035 )						// 40mm grenades high explosive
@@ -2069,12 +2069,9 @@
 #define PID_EXPLOSIVE_SWITCH                  		( 454 )							// 
 #define PID_ROBOT_MOTIVATOR                   		( 364 )							// 
 #define PID_NAVCOM_PARTS                      		( 479 )							// 
+
 // BBS
 #define PID_BBS_BOARD								( 480 )							// Bulletin Board
-
-// 40MM special nades
-#define PID_NAPALM_40MM								( 481 )							// Napalm grenade 40MM
-#define PID_FLASHNADE_40MM							( 482 )							// Flashbang grenade 40MM
 
 #define PID_K9_MOTIVATOR                      		( 488 )							// 
 
@@ -2352,15 +2349,6 @@
 #define PID_TNT_PACK_ACTIVE          				( 209 )							//
 #define PID_REMOTE_DETONATOR                   		( 222 )							//
 #define PID_GM_REMOTE_DETONATOR						( 496 )							// 
-#define PID_TRAP_KNIFES                       		( 835 )							// 
-#define PID_TRAP_ELECTRIC                     		( 925 )							// 
-#define PID_TRAP_ITEM_BREAKER                 		( 926 )							// 
-#define PID_TRAP_FIRE_BREATH                  		( 927 )							// 
-#define PID_TRAP_POISON_BLADE                 		( 928 )							// 
-#define PID_TRAP_CANISTER_SHOT                		( 929 )							// 
-#define PID_TRAP_STAKE                        		( 930 )							// 
-#define PID_TRAP_SLEDGE_HAMMER                		( 931 )							// 
-#define PID_TRAP_STUNNER                      		( 932 )							// 
 
 // Manufacture, Still
 #define PID_POT_ALCO                   				( 807 )							// Homebrew pot
@@ -2556,7 +2544,7 @@
 #define PID_BALL                              		( 650 )							// Soccer ball
 #define PID_Bankes                            		( 1684 )						// Cans
 #define PID_CAT                               		( 1685 )						// Cat's Paw Special Edition
-#define PID_porno                             		( 1686 )						// Pre-War Porn Magazine
+#define PID_PORNO                             		( 1686 )						// Pre-War Porn Magazine
 #define PID_chimcnin                          		( 1687 )						// Dangerous Predator's Teeth
 #define PID_ColaFish                          		( 1688 )						// Casino Chip
 #define PID_COMICS                            		( 1689 )						// Comic Book
@@ -2621,7 +2609,7 @@
 #define PID_CARTNT                            		( 1773 )						// Explosive parts
 #define PID_COMPUTER                          		( 1775 )						// Computer details
 #define PID_POLYMER_PLATE                      		( 1776 )						// Polymer armor plates
-#define PID_Emulgat                           		( 1777 )						// Chemical Reagent
+#define PID_REAGENT                           		( 1777 )						// Chemical Reagent
 #define PID_FPRESS                            		( 1780 )						// Ammo Rig
 #define PID_SALTPETER                           	( 1781 )						// Saltpeter
 #define PID_itbarrei                          		( 1783 )						// Tank 

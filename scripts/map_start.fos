@@ -138,7 +138,7 @@ void TeleportToGameZone( Critter& cr, int val )
     cr.SetEvent( CRITTER_EVENT_ATTACK, null );
     cr.SetEvent( CRITTER_EVENT_DEAD, null );	
 	
-	cr.TransitToMap( map.Id, Random( 110, 215 ), Random( 105, 235 ), 0 );
+	cr.TransitToMap( map.Id, Random( 184, 247 ), Random( 172, 242 ), 0 );
 	cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_START_GREETING );
 	return;
 }
@@ -171,11 +171,13 @@ class MenuStart: CenteredMenuHandler
 {
 	Item@ terminal;
 	Map@ map;
+	uint level;
 	
     MenuStart( Item& terminal, Map& map )
 	{
 		@this.terminal = @terminal;
         @this.map = @map;
+		this.level = 0;
     }
 
     bool MenuUpdate( Critter& cr, iDialogBox& menu )
@@ -242,6 +244,13 @@ class MenuStart: CenteredMenuHandler
 				cr.ChangeCrType( cr.StatBase[ ST_BASE_CRTYPE ] );
 				return true;
 			}
+
+			if( menu.ButtonMsg( STR_MAP_START_MENU_CHANGE_HEIGHT ) )
+			{
+				MenuStartHeight@ heightMenu = MenuStartHeight();
+				heightMenu.level = level + 1;
+				return menu.OpenChild( "Level " + heightMenu.level, heightMenu );
+			}
 		}	
 		
 		if( terminal.START_TERMINAL_MODE == MODE_ENTRY_TERMINAL )
@@ -256,7 +265,7 @@ class MenuStart: CenteredMenuHandler
 			DeleteItems( items );
 			
 			cr.ParamBase[ QST_GAMEMODE ] = GAME_SURVIVAL;
-			TeleportToGameZone( cr, LOCATION_sdale_station );
+			TeleportToGameZone( cr, LOCATION_Frisco );
 			return false;
 			
 		}
@@ -319,7 +328,63 @@ class MenuStart: CenteredMenuHandler
 	{
 		return null;
     }
+}
 
+class MenuStartHeight: CenteredMenuHandler 
+{
+    uint level;
+
+    MenuStartHeight() 
+	{
+        level = 0;
+    }
+
+    bool MenuUpdate( Critter& cr, iDialogBox& menu ) 
+	{
+        if( !valid(cr) ) 
+		{
+            return false;
+        }
+
+		if( menu.ButtonMsg( STR_PLUS ) )
+		{
+			if( cr.Stat[ ST_SCALE_FACTOR ] < 105 ) cr.StatBase[ ST_SCALE_FACTOR ]++;
+			return true;
+		}
+
+		if( menu.ButtonMsg( STR_MINUS ) )
+		{
+			if( cr.Stat[ ST_SCALE_FACTOR ] > 95 ) cr.StatBase[ ST_SCALE_FACTOR ]--;
+			return true;
+		}
+
+		if( menu.ButtonMsg( STR_PREVIOUS ) )
+		{
+			return false;
+		}
+    
+        return true;
+    }
+
+	int getDescriptionFile()
+    {
+    	return TEXTMSG_TEXT;
+    }
+
+	int getDescriptionLine()
+	{
+		return STR_MAP_START_MENU_HEIGHT_DESC;
+	}
+	
+    string@ Description( Critter& cr )
+	{
+		if(!valid(cr)) return null;
+
+		int humanHeight = 175 + ( (cr.Param[ ST_SCALE_FACTOR ] - 100 ) * 5 );
+		string info = "$crHeight" + humanHeight;
+
+		return info;
+    }
 }
 
 bool TryTeleport( Critter& cr, Map& map )
