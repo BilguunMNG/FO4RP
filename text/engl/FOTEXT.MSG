@@ -537,7 +537,8 @@ The pot is filled for |0xFFFF00 @lex current@ |0x3CF800 out of |0xFFFF00 @lex ma
 {6480}{}{|0xFFFF00 You realize the fish has taken the hook with it!}
 
 # Taste
-{6487}{}{This beverage has a taste of }
+{6486}{}{This beverage has a taste of }
+{6487}{}{|0xFFFF00 Potato}
 {6488}{}{|0xFFFF00 Cabbage}
 {6489}{}{|0xFFFF00 Nuts}
 {6490}{}{|0xFFFF00 Bread}
@@ -1437,10 +1438,22 @@ The pot is filled for |0xFFFF00 @lex current@ |0x3CF800 out of |0xFFFF00 @lex ma
 {22702}{}{2 - Level 2}
 
 {22801}{}{0 - Surface}
-{22802}{}{-1 - Level -1}
+{22802}{}{1 - Level 1}
 
-{22901}{}{-1 - Level -1}
-{22902}{}{-2 - Level -2}
+{22901}{}{1 - Level 1}
+{22902}{}{2 - Level 2}
+
+#Scav demo vault
+
+{23001}{}{1 - Level 1}
+{23002}{}{2 - Level 2}
+
+{23100}{}{PID_TERMINAL_ADVANCED_KEY}
+{23101}{}{1 - Level 2}
+{23102}{}{2 - Level 3}
+
+{23201}{}{1 - Уровень 1}
+{23202}{}{2 - Уровень 2}
 
 
 # =========================

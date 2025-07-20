@@ -2478,6 +2478,8 @@ The glasses help correct bad eye-sight, boosting vision to an equivalent of PE 5
 {167401}{}{Peel, boil, turn into a homogeneous mass with the addition of oil... Then add the fried piece of twisted meat, molded into a cutlet. Any food from Modoc farmers}
 {167500}{}{Pancakes}
 {167501}{}{Homemade pancakes, the recipe for which spread throughout California from New Reno. Very tasty and nutritious. And the sweet syrup that was poured on top of these pancakes... Fantastic}
+{167700}{}{Elevator}
+{167701}{}{An elevator seamingly in a good working condition}
 {167800}{}{Elevator}
 {167801}{}{An elevator seamingly in a good working condition}
 {167900}{}{Carbon Filter}
@@ -12008,7 +12010,7 @@ advantage}
 {2000300}{}{Police Club}
 {2000301}{}{A non-lethal melee weapon made of rubber and steel used by law enforcement}
 {2000400}{}{Hunting Rifle}
-{2000401}{}{Colt Rangemaster semi-automatic carbine, caliber .223. Single shots only}
+{2000401}{}{Colt Rangemaster semi-automatic carbine, caliber 30-06. Single shots only}
 {2000500}{}{Caravanner Carbine}
 {2000501}{}{Old Varmint Rifle. The barrel is shortened, and the stock is lightweight as much as possible, which makes the weapon lighter and more comfortable, albeit at the expense of accuracy}
 {2000600}{}{"Striker" Shotgun}

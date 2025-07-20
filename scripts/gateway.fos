@@ -74,8 +74,14 @@ void ToggleDoorBlocker( Map& map, Item& door, bool create )
 			dir = 0;
 			blocker_count = 3;
 			break;
+		case( PID_TEMPLE_DOOR_NS ):	
+			dir = 0;
+			blocker_count = 2;
+			break;
 		case( PID_GAS_GATE_EW ):
 		case( PID_VAULTTEC_GATE_EW ):
+		case( PID_VAULTTEC_GATE2_EW ):
+		case( PID_TEMPLE_DOOR_EW ):
 			dir = 1;
 			blocker_count = 2;
 			break;
@@ -107,6 +113,10 @@ void ToggleDoorBlocker( Map& map, Item& door, bool create )
 		case( PID_LIFT_DOOR_5_EW ):
 		case( PID_LIFT_DOOR_6_EW ):
 		case( PID_LIFT_DOOR_7_EW ):
+		case( PID_ROUND_DOOR1_EW ):
+		case( PID_ROUND_DOOR2_EW ):
+		case( PID_ROUND_DOOR3_EW ):
+		case( PID_ROUND_DOOR4_EW ):
 		case( PID_SECRET_METAL_DOOR_EW ):
 		case( PID_VAULT_GATE_EW ):
 		case( PID_VAULT_GATE_NEW_EW ):
@@ -115,6 +125,8 @@ void ToggleDoorBlocker( Map& map, Item& door, bool create )
 			break;
 		case( PID_GARAGE_GATE_SMALL_NS ):
 		case( PID_HIDDEN_DOOR_NS ):
+		case( PID_ROUND_DOOR1_NS ):
+		case( PID_ROUND_DOOR2_NS ):
 		case( PID_VAULT_MAIN_GATE ):
 		case( PID_VAULT_GATE_NS ):
 		case( PID_VAULT_GATE_NEW_NS ):
@@ -465,7 +477,7 @@ uint CreateDoorEvent( Item @item, uint &duration, uint[] &values )
 {
 	uint[] values_array = { item.Id, 1, 0 };
 	duration = REAL_SECOND( 1 );
-	item.DOOR_EVENT = CreateTimeEvent( AFTER( duration ), "e_CloseSecurityDoor", values_array, false );
+	item.DOOR_EVENT = CreateTimeEvent( AFTER( duration ), "gateway@e_CloseSecurityDoor", values_array, false );
 	values = values_array;
 	values[EVENT_ID] = item.DOOR_EVENT;
 
