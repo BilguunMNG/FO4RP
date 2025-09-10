@@ -1279,7 +1279,7 @@ bool LockRemoval( Critter& cr, Item& item, Item& targetItem )
 						break;
 				}
 				
-				cr.AddItem( PID_CRAFT_M_BARS, Random( 1, amount ) );
+				cr.AddItem( PID_IRON_PARTS, Random( 1, amount ) );
 			}
 		}
 		
@@ -1368,23 +1368,23 @@ bool TryInstallLock( Critter& cr, Item& item, Item& onItem )
 			Item@ used = null;
 			if( pid == PID_LOCK_CODE )
 			{
-				if( !hasItem( cr, PID_COPPER_WIRE ) )
+				if( !hasItem( cr, PID_WIRE ) )
 				{
 					cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_REQUIRES_WIRE );
 					return true;
 				}
 				
-				@used = cr.GetItem( PID_COPPER_WIRE, -1 ); 
+				@used = cr.GetItem( PID_WIRE, -1 ); 
 			}
 			else
 			{
-				if( !hasItem( cr, PID_CRAFT_M_BARS ) )
+				if( !hasItem( cr, PID_IRON_PARTS ) )
 				{
 					cr.SayMsg( SAY_NETMSG, TEXTMSG_TEXT, STR_NEED_METAL_PART );
 					return true;
 				}
 				
-				@used = cr.GetItem( PID_CRAFT_M_BARS, -1 ); 
+				@used = cr.GetItem( PID_IRON_PARTS, -1 ); 
 			}
 			
 			if( onItem.LockerCondition != LOCKER_LOCKED && onItem.LockerComplexity == 0 && !FLAG( onItem.LockerCondition, LOCKER_ELECTRO ) && onItem.ENTERED_CODE == 0 )

@@ -6,6 +6,7 @@
 
 #ifdef __CLIENT
 	#include "_client_defines.fos"
+	#include "client_karma_h.fos"
 	import void SetChosenTabLevelUp( bool enable )  from "chosen_tabs";
 	import int  GUI_GetActiveScreen() from "client_gui";
 #endif // __CLIENT
@@ -225,7 +226,7 @@
 		
 		cr.SkillBase[ SK_SMALL_GUNS ]		-= 20 * sign;
 		cr.SkillBase[ SK_MEDIUM_GUNS ] 		-= 20 * sign;
-		cr.SkillBase[ SK_BIG_GUNS ]	-= 20 * sign;
+		cr.SkillBase[ SK_BIG_GUNS ]			-= 20 * sign;
 		cr.SkillBase[ SK_UNARMED ] 			-= 20 * sign;
 		cr.SkillBase[ SK_MELEE_WEAPONS ] 	-= 20 * sign;
 		cr.SkillBase[ SK_THROWING ] 		-= 20 * sign;
@@ -574,6 +575,33 @@
 		cr.SpriteZoom = value * 0.01f;
 	}
 
+void changedParam_QthreeMedium( CritterCl& cr, uint param, int oldValue )
+{
+	CritterCl@ ch = GetChosen();
+	// Default color
+	cr.ContourColor = ( cr.IsPlayer() ? COLOR_CONTOUR_YELLOW : COLOR_CONTOUR_RED );
+
+	if( valid( ch ) )
+	{
+		if( SameFaction( ch, cr ) )
+		{
+			cr.ContourColor = ( cr.IsPlayer() ? COLOR_CONTOUR_GREEN : COLOR_CONTOUR_BLUE );
+		}
+		else if( cr.Stat[ ST_FOLLOW_CRIT ] == int( ch.Id ) || cr.Param[ PET_OWNER_ID ] == int( ch.Id ) || cr.Param[ PET_PROTECT_ID ] == int( ch.Id ) )
+		{
+			cr.ContourColor = ( cr.IsPlayer() ? COLOR_CONTOUR_GREEN : COLOR_CONTOUR_MNBLUE );
+		}
+		else if( ABS( cr.Param[ QST_MEDIUM ] ) != 2 )
+		{
+			uint crColor = GetCritterColor(cr);
+			if(crColor != 0)
+			{
+				cr.ContourColor = crColor;
+			}
+		}
+	}
+}
+
 #endif // __CLIENT
 
 #ifndef __CLIENT
@@ -617,24 +645,24 @@
 	
 		_param_[ ST_ARMOR_CLASS ] += ARMOR_CLASS_BASE + _param_[ ST_AGILITY ] * ARMORCLASS_PER_AGI;
 		
-		_param_[ SK_SMALL_GUNS ]	+= 5 * _param_[ ST_PERCEPTION ]	+ 3 * _param_[ ST_AGILITY ]		+ 2 * _param_[ ST_STRENGTH ]	;
-		_param_[ SK_MEDIUM_GUNS ]	+= 5 * _param_[ ST_STRENGTH ]	+ 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_AGILITY ]		;
-		_param_[ SK_BIG_GUNS ]		+= 5 * _param_[ ST_PERCEPTION ] + 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_AGILITY ]		;
-		_param_[ SK_UNARMED ]		+= 5 * _param_[ ST_STRENGTH ]	+ 3 * _param_[ ST_AGILITY ]		+ 2 * _param_[ ST_ENDURANCE ]	;
-		_param_[ SK_MELEE_WEAPONS ]	+= 5 * _param_[ ST_AGILITY ]	+ 3 * _param_[ ST_STRENGTH ]	+ 2 * _param_[ ST_ENDURANCE ]	;
-		_param_[ SK_THROWING ]		+= 5 * _param_[ ST_AGILITY ]	+ 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_STRENGTH ]	;
-		_param_[ SK_FIRST_AID ]		+= 5 * _param_[ ST_AGILITY ]	+ 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_PERCEPTION ]	;
-		_param_[ SK_DOCTOR ]		+= 5 * _param_[ ST_INTELLECT ]	+ 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_AGILITY ]		;
-		_param_[ SK_SNEAK ]			+= 5 * _param_[ ST_INTELLECT ]	+ 3 * _param_[ ST_AGILITY ]		+ 2 * _param_[ ST_PERCEPTION ]	;
-		_param_[ SK_LOCKPICK ]		+= 5 * _param_[ ST_AGILITY ]	+ 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_INTELLECT ]	;
-		_param_[ SK_STEAL ]			+= 5 * _param_[ ST_PERCEPTION ]	+ 3 * _param_[ ST_AGILITY ]		+ 2 * _param_[ ST_INTELLECT ]	;
-		_param_[ SK_TRAPS ]			+= 5 * _param_[ ST_PERCEPTION ] + 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_INTELLECT ]	;
-		_param_[ SK_SCIENCE ]		+= 5 * _param_[ ST_INTELLECT ]  + 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_LUCK ]		;
-		_param_[ SK_REPAIR ]		+= 5 * _param_[ ST_INTELLECT ]	+ 3 * _param_[ ST_AGILITY ]		+ 2 * _param_[ ST_STRENGTH ]	;
-		_param_[ SK_SPEECH ]		=  0																							;
-		_param_[ SK_BARTER ]		+= 5 * _param_[ ST_CHARISMA ]	+ 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_PERCEPTION ]	;
+		_param_[ SK_SMALL_GUNS ]	+= 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_AGILITY ]		+ 1 * _param_[ ST_STRENGTH ]	;
+		_param_[ SK_MEDIUM_GUNS ]	+= 3 * _param_[ ST_STRENGTH ]	+ 2 * _param_[ ST_PERCEPTION ]	+ 1 * _param_[ ST_AGILITY ]		;
+		_param_[ SK_BIG_GUNS ]		+= 3 * _param_[ ST_PERCEPTION ] + 2 * _param_[ ST_INTELLECT ]	+ 1 * _param_[ ST_AGILITY ]		;
+		_param_[ SK_UNARMED ]		+= 3 * _param_[ ST_STRENGTH ]	+ 2 * _param_[ ST_AGILITY ]		+ 1 * _param_[ ST_ENDURANCE ]	;
+		_param_[ SK_MELEE_WEAPONS ]	+= 3 * _param_[ ST_AGILITY ]	+ 2 * _param_[ ST_STRENGTH ]	+ 1 * _param_[ ST_ENDURANCE ]	;
+		_param_[ SK_THROWING ]		+= 3 * _param_[ ST_AGILITY ]	+ 2 * _param_[ ST_PERCEPTION ]	+ 1 * _param_[ ST_STRENGTH ]	;
+		_param_[ SK_FIRST_AID ]		+= 3 * _param_[ ST_AGILITY ]	+ 2 * _param_[ ST_INTELLECT ]	+ 1 * _param_[ ST_PERCEPTION ]	;
+		_param_[ SK_DOCTOR ]		+= 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_PERCEPTION ]	+ 1 * _param_[ ST_AGILITY ]		;
+		_param_[ SK_SNEAK ]			+= 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_AGILITY ]		+ 1 * _param_[ ST_PERCEPTION ]	;
+		_param_[ SK_LOCKPICK ]		+= 3 * _param_[ ST_AGILITY ]	+ 2 * _param_[ ST_PERCEPTION ]	+ 1 * _param_[ ST_INTELLECT ]	;
+		_param_[ SK_STEAL ]			+= 3 * _param_[ ST_PERCEPTION ]	+ 2 * _param_[ ST_AGILITY ]		+ 1 * _param_[ ST_INTELLECT ]	;
+		_param_[ SK_TRAPS ]			+= 3 * _param_[ ST_PERCEPTION ] + 2 * _param_[ ST_PERCEPTION ]	+ 1 * _param_[ ST_INTELLECT ]	;
+		_param_[ SK_SCIENCE ]		+= 3 * _param_[ ST_INTELLECT ]  + 2 * _param_[ ST_PERCEPTION ]	+ 1 * _param_[ ST_LUCK ]		;
+		_param_[ SK_REPAIR ]		+= 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_AGILITY ]		+ 1 * _param_[ ST_STRENGTH ]	;
+		_param_[ SK_CRAFT ]			+= 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_AGILITY ]		+ 1 * _param_[ ST_PERCEPTION ]	;
+		_param_[ SK_BARTER ]		+= 3 * _param_[ ST_CHARISMA ]	+ 2 * _param_[ ST_INTELLECT ]	+ 1 * _param_[ ST_PERCEPTION ]	;
 		_param_[ SK_GAMBLING ]		=  0																							;
-		_param_[ SK_OUTDOORSMAN ]	+= 5 * _param_[ ST_STRENGTH ]	+ 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_PERCEPTION ]	;
+		_param_[ SK_OUTDOORSMAN ]	=  0																							;
 		_param_[ SK_MINING ]		+= 5 * _param_[ ST_STRENGTH ] 	+ 3 * _param_[ ST_AGILITY ]		+ 2 * _param_[ ST_PERCEPTION ]	;
 		_param_[ SK_CHOPPING ]		+= 5 * _param_[ ST_STRENGTH ]	+ 3 * _param_[ ST_AGILITY ]		+ 2 * _param_[ ST_PERCEPTION ]	;
 		_param_[ SK_SCAVENGING ]	+= 5 * _param_[ ST_LUCK ]		+ 3 * _param_[ ST_INTELLECT ]	+ 2 * _param_[ ST_PERCEPTION ]	;
@@ -707,6 +735,12 @@
 		_param_[ ST_THIRST ] = 0;
 		_param_[ ST_DYSPNEA ] = 0;
 		_param_[ ST_SPEED_MOD ] = 100;
+
+		_param_[ PE_CRAFT_LIMIT ] = INITIAL_PROFESSION_POINTS;
+		_param_[ PE_CRAFTSMAN ] = DEFAULT_PROFESSION_LEVEL;
+		_param_[ PE_MECHANIC ] = DEFAULT_PROFESSION_LEVEL;
+		_param_[ PE_CHEMIST ] = DEFAULT_PROFESSION_LEVEL;
+		_param_[ PE_ELECTRICIAN ] = DEFAULT_PROFESSION_LEVEL;
 		
 		if( _param_[ ST_SCALE_FACTOR ] == 0 )
 		{

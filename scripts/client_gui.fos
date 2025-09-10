@@ -479,6 +479,7 @@ class GUIElement : IGUIElementOpt
     // Info
     int     GetPosX() { return PosX; }
     int     GetPosY() { return PosY; }
+	void    GetSize( int& w, int& h ) { w = Surface.Width; h = Surface.Height; }
     string@ GetText() { return Label; }
 // @pm menu
     bool   GetVisible()       { return Visible; }
@@ -1143,7 +1144,7 @@ class GUIScreen : IGUIScreenOpt
                     {
                         CharClick( target );
                     }
-                    else if( chosen.Param[ CR_REMEMBERING_NAME ] == 2 )
+                    else if( chosen.Param[ CR_REMEMBERING_NAME ] == 2 && ABS( target.Param[ QST_MEDIUM ] ) != 2 )
                     {
                         OpenPaletteScreen( PALETTE_TYPE_CRITTER, target.Id, 0 );
                     }
@@ -1683,7 +1684,6 @@ class GUIScreen : IGUIScreenOpt
 			if( Index == CLIENT_SCREEN_NEW_FIXBOY || Index == CLIENT_MAIN_SCREEN_GAME || Index == CLIENT_MAIN_SCREEN_GLOBAL_MAP )
 			{
 				SwitchCraftScreen();
-				return true;
 			}
 		}
 

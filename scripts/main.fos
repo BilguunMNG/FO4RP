@@ -31,6 +31,7 @@
 #include "item_h.fos"
 #include "lockers_h.fos"
 #include "map_lights_h.fos"
+#include "milling_h.fos"
 #include "npc_names_holder_h.fos"
 #include "npc_planes_h.fos"
 #include "paralysis_h.fos"
@@ -60,6 +61,8 @@
 #include "wildplant_h.fos"
 #include "consumables_h.fos"
 #include "BBS_h.fos"
+#include "gasses_h.fos"
+#include "prof_books_h.fos"
 
 // Imports
 import void InitializeGame() from "config";
@@ -82,6 +85,8 @@ import NpcNamesHolder@ getNpcNamesHolder() from "npc_names_holder";
 import void hotkey_critter_anim( Critter& cr, int param0 ) from "general_unsafe";
 
 import void StopDragging( Critter& cr, Item& item ) from "furniture";
+
+import void InitCraftList() from "craft_recipes";
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////
 // Called before world generation.
@@ -248,6 +253,7 @@ bool start()
     WorldmapInit();
 
 	// Inits
+	InitCraftList();
 
 	SetGvar(GVAR_is_first_time, 0);
 
@@ -1003,9 +1009,13 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 			return TryUseCompass(cr, item);
 		case( PID_PERFUME ):
 			return TryUsePerfume( cr, item );
-		case( PID_SMALL_ENERGY_CELL ):
 		case( PID_STEALTH_BOY ):
+		case( PID_ACTIVE_STEALTH_BOY ):
 			return TryUseStealthboy( cr, item );
+		case( PID_MOTION_SENSOR ):
+		case( PID_ACTIVE_MOTION_SENSOR ):
+			return TryUseSensor( cr, item );
+		case( PID_SMALL_ENERGY_CELL ):
 		case( PID_CUENCELL_LOW ):
 		{
 			Item@ flashlight = _CritGetItemHand( cr );
@@ -1027,6 +1037,11 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 				if( hand_pid == PID_REANIMATION_KIT )
 				{
 					ChargeDefib( cr, item, hand );
+					return true;
+				}
+				else if( hand_pid == PID_MOTION_SENSOR || hand_pid == PID_ACTIVE_MOTION_SENSOR )
+				{
+					ChargeSensor( cr, item, hand );
 					return true;
 				}
 			}
@@ -1081,7 +1096,16 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 			}
 		}
 	}
-
+	//Profession perk books
+	if( IsProfBook( item ) )
+	{
+		return TryUseProfBook( cr, item );
+	}
+	//Airtanks 
+	if( isAirtank( pid ) )
+	{
+		return useAirTank( cr, item );
+	}
 	//Show single Card
 	if( Cards.find( pid ) != -1 )
 	{
@@ -1111,7 +1135,7 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 		return true;
 	}
 	//Blood wrapping
-	if( ( pid == PID_CRAFT_L_RAGS || pid == PID_BANDAGE || pid == PID_TOWEL || pid == PID_OLD_TOWEL ) && valid( targetItem ) && ( targetItem.GetProtoId() >= PID_BLOOD_TINY_0 && targetItem.GetProtoId() <= PID_BLOOD_LARGE_3 ) )
+	if( ( pid == PID_CLOTH || pid == PID_BANDAGE || pid == PID_TOWEL || pid == PID_OLD_TOWEL ) && valid( targetItem ) && ( targetItem.GetProtoId() >= PID_BLOOD_TINY_0 && targetItem.GetProtoId() <= PID_BLOOD_LARGE_3 ) )
 	{
 		cr.SayMsg( SAY_EMOTE, TEXTMSG_TEXT, STR_EMOTE_WIPE_BLOOD );
 		cr.Animate( 0, ANIM2_PICKUP, null, false, true );
@@ -1509,7 +1533,6 @@ bool critter_use_item( Critter& cr, Item& item, Critter@ targetCr, Item@ targetI
 	{
 		return UseItemOnLocker( cr, targetItem, item );
 	}
-
     // Take process to engine
     return false;
 }
@@ -1716,6 +1739,38 @@ bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetI
 				}
 				return true;
 			}
+			// Mill interface
+			if( Pid == PID_BASIC_MILL )
+			{
+				switch( skill )
+				{
+					case( SK_REPAIR ):
+						LockInPlace( cr, targetItem );
+						break;
+					case( SKILL_PICK_ON_GROUND ):
+						StartMenuMill( cr, targetItem );
+						break;
+					default:
+						break;
+				}
+				return true;
+			}
+			// Power generator
+			if( Pid == PID_COAL_POWERGEN )
+			{
+				switch( skill )
+				{
+					case( SK_REPAIR ):
+						LockInPlace( cr, targetItem );
+						break;
+					case( SKILL_PICK_ON_GROUND ):
+						StartMenuPowerGen( cr, targetItem );
+						break;
+					default:
+						break;
+				}
+				return true;
+			}
 			// Smelter interface
 			if( Pid == PID_FURNACE_SMALL || Pid == PID_ARC_FURNACE )
 			{
@@ -1732,7 +1787,7 @@ bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetI
 
 							_InitFurniture( targetItem, true );
 							targetItem.Update();
-							StartMenuFuriture( cr, targetItem );
+							StartMenuFurniture( cr, targetItem );
 							break;
 						}
 					}
@@ -1760,7 +1815,7 @@ bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetI
 
 							_InitFurniture( targetItem, true );
 							targetItem.Update();
-							StartMenuFuriture( cr, targetItem );
+							StartMenuFurniture( cr, targetItem );
 							break;
 						}
 					}
@@ -1786,7 +1841,7 @@ bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetI
 
 						_InitFurniture( targetItem, true );
 						targetItem.Update();
-						StartMenuFuriture( cr, targetItem );
+						StartMenuFurniture( cr, targetItem );
 						break;
 					}
 					case( SKILL_PICK_ON_GROUND ):
@@ -1898,12 +1953,6 @@ bool critter_use_skill( Critter& cr, int skill, Critter@ targetCr, Item@ targetI
 				if( Pid == PID_FIREBARREL || Pid == PID_BRAZIER || Pid == PID_STOVE_01 )
 				{
 					StartMenuFireBarrel( cr, targetItem );
-					return true;
-				}
-				// Power generator
-				if( Pid == PID_COAL_POWERGEN )
-				{
-					StartMenuPowerGen( cr, targetItem );
 					return true;
 				}
 				// Light Switches
@@ -2895,13 +2944,17 @@ void critter_init( Critter& cr, bool firstTime )
 					{
 						if( ( GetDeteriorationProcent( item ) >= 100 || item.ITEM_STATE == 0 ) && cr.Stat[ ST_SCALE_FACTOR ] == 1 )
 						{
-							stealthboy_off( cr, item );
+							Stealthboy_off( cr, item );
 						}
 						else if( item.ITEM_STATE == 1 )
 						{
 							uint[] values = { cr.Id, item.Id };
 							item.ITEM_EVENT = CreateTimeEvent( AFTER( REAL_SECOND( 1 ) ), "item@e_DepleteStealthboyCharge", values, true );
 						}
+					} 
+					else if( pid == PID_MOTION_SENSOR && ( item.ITEM_CHARGE == 0 || item.ITEM_STATE == 0 ) )
+					{
+						Sensor_off( item );
 					}
 				}
 			}
@@ -3181,15 +3234,6 @@ void critter_dead( Critter& cr, Critter@ killer )
 void critter_respawn( Critter& cr )
 {
     cr.TimeoutBase[ TO_REPLICATION ] = 0;
-    if( cr.CrType == 115 )
-    {
-        uint body = cr.Stat[ ST_BASE_CRTYPE ];
-        if( body == 0 )
-		{
-            body = ( cr.Stat[ ST_GENDER ] == GENDER_MALE ? CRTYPE_DEFAULT_M : CRTYPE_DEFAULT_F );
-        }
-		cr.ChangeCrType( body );
-    }
 
     if( cr.Param[ ST_PARALYSIS_LEVEL ] != 0 )
 	{
@@ -3213,10 +3257,11 @@ void critter_respawn( Critter& cr )
 		{
             DeleteItem( block );
         }
+		
 		cr.StatBase[ ST_DEAD_BLOCKER_ID ] = 0;
     }
 
-	cr.StatBase[ CR_DEATH_STAGE ] = 0; 
+	cr.ParamBase[ CR_DEATH_STAGE ] = 0; 
 	
     manager_critter_respawn( cr );
 }
@@ -4139,7 +4184,7 @@ void LookDataRefresh( Critter& cr )
 		look.HideHearDirMultiplier_5 = 100;
 
 		look.HideViewMultiplier = IsSneaking ? int( 100 - ( skill / 20 ) ) : 100;
-		look.HideHearMultiplier = int( 100 * ArmorNoisePenalty( cr ) * ( IsSneaking ? ( 300 - skill ) / 300 : 1 ) + ( cr.Param[ CR_TYPING_TIME ] > 0 ? cr.Param[ ST_SPEECH_VOLUME ] * 2 : 0 ) );
+		look.HideHearMultiplier = int( 100 * ArmorNoisePenalty( cr ) * ( IsSneaking ? ( 300 - skill ) / 300 : 1 ) + ( cr.Param[ CR_SPOKEN ] > 0 ? cr.Param[ ST_SPEECH_VOLUME ] * 2 : 0 ) );
 	}
 
 	cr.LookData_Update();
@@ -4161,7 +4206,7 @@ float ArmorNoisePenalty( Critter& cr )
 			case( MATERIAL_ARMORED_LEATHER ):
 				modifier = 1.1;
 				break;
-			case( MATERIAL_METAL ):
+			case( MATERIAL_IRON ):
 				modifier = 1.5;
 				break;
 			case( MATERIAL_POLYMER ):

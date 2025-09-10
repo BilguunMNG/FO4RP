@@ -13,15 +13,15 @@
 13		PID_ROCKET_LAUNCHER						// Rocket Launcher						 // Гранатомет
 14		PID_EXPLOSIVE_ROCKET					// Explosive Rocket						 // Разрывная ракета
 15		PID_PLASMA_CANNON						// Plasma Cannon						 // Плазменное ружье
-16		PID_LASER_PISTOL						// Laser Pistol							 // Лазерный пистолет
+16		PID_LASER_PISTOL						// Laser Pistol							 // Ваттс 1000
 17		PID_COMBAT_ARMOR_MK1					// Combat Armor							 // Боевая броня
 18		PID_DESERT_EAGLE						// Desert Eagle							 // Дезерт Игл
 19		PID_ROCK								// Rock									 // Камень
 20		PID_CROWBAR								// Crowbar								 // Монтировка
 21		PID_BRASS_KNUCKLES						// Brass Knuckles						 // Кастет
 22		PID_14MM_PISTOL							// 14mm Pistol							 // Пистолет 14 мм
-23		PID_ASSAULT_RIFLE						// AK-112 Assault Rifle					 // Штурмовая винтовка
-24		PID_PLASMA_PISTOL						// Plasma Pistol						 // Плазменный пистолет
+23		PID_ASSAULT_RIFLE						// AK-112 Assault Rifle					 // АК-112
+24		PID_PLASMA_PISTOL						// Plasma Pistol						 // Глок 86
 25		PID_FRAG_GRENADE						// Frag Grenade							 // Осколочная граната
 26		PID_PLASMA_GRENADE						// Plasma Grenade						 // Плазменная граната
 27		PID_PULSE_GRENADE						// Pulse Grenade						 // Импульсная граната
@@ -115,7 +115,7 @@
 115		PID_SUPER_SLEDGE						// Super Sledge							 // Суперкувалда
 116		PID_RIPPER								// The Ripper							 // Потрошитель
 117		PID_FLOWER								// Flower								 // Цветочек
-118		PID_LASER_RIFLE							// Laser Rifle							 // Лазерное ружье
+118		PID_LASER_RIFLE							// Laser Rifle							 // Ваттс 2000
 119		PID_NECKLACE							// Necklace								 // Ожерелье
 120		PID_ALIEN_LASER_PISTOL					// Alien Blaster						 // Бластер пришельцев
 121		PID_9MM_LUGER							// 9mm Luger Round						 // Патроны 9мм Люгер
@@ -283,7 +283,7 @@
 283		PID_TOMMY_GUN							// Tommy Gun							 // Томмиган
 284		PID_MEAT_JERKY							// Meat Jerky							 // Вяленое мясо
 285		PID_RADSCORPION_PINCERS					// Radscorpion Pincers					 // Клешни радскорпиона
-286		PID_FIREWOOD							// Logs									 // Дрова
+286		PID_LOGS								// Logs									 // Бревна
 287		PID_SCOPED_HUNTING_RIFLE				// Scoped Hunting Rifle					 // Охотничье ружье с опт. прицелом
 288		PID_CAR_FUEL_CELL						// Fuel cells for the car				 // Топливные элементы для машины
 289		PID_SHOVEL								// Shovel								 // Лопата
@@ -383,7 +383,7 @@
 383		PID_SHIV								// Shiv									 // Шило
 384		PID_WRENCH								// Wrench								 // Гаечный ключ
 385		PID_SAWED_OFF_SHOTGUN					// Sawn-off shotgun						 // Обрез
-386		PID_LOUISVILLE_SLUGGER					// Louisville Bat						 // Луисвилльская бита
+386		PID_LOUISVILLE_SLUGGER					// Baseball Bat							 // Бейсбольная бита
 387		PID_M60									// M60 Machine Gun						 // Пулемет М60
 388		PID_NEEDLER_PISTOL						// Needler Pistol						 // Пистолет-инъектор
 389		PID_AVENGER_MINIGUN						// Avenger Minigun						 // Миниган "Мститель"
@@ -398,12 +398,12 @@
 398		PID_44_MAGNUM_SPEEDLOADER				// .44 Magnum Revolver SR				 // Револьвер Магнум 0.44 (уск. заряжания)
 399		PID_SUPER_CATTLE_PROD					// Super Electro Prod					 // Суперэлектрокнут
 400		PID_IMPROVED_FLAMETHROWER				// Improved Flamethrower				 // Усовершенствованный огнемет
-401		PID_LASER_RIFLE_EXT_CAP					// Laser Rifle EM						 // Лазерное ружье (увел. магазин)
-402		PID_MAGNETO_LASER_PISTOL				// Magnetic Laser Pistol				 // Магнито-лазерный пистолет
+401		PID_LASER_RIFLE_EXT_CAP					// Laser Rifle EM						 // Улучшенный Ваттс 2000
+402		PID_MAGNETO_LASER_PISTOL				// Magnetic Laser Pistol				 // Улучшенный Ваттс 1000
 403		PID_FN_FAL_NIGHT_SCOPE					// FN FAL NV							 // FN FAL ПНВ
 404		PID_DESERT_EAGLE_EXT_MAG				// Desert Eagle EM						 // Дезерт Игл (увел. магазин.)
-405		PID_ASSAULT_RIFLE_EXT_MAG				// AK-112 Assault Rifle EM				 // Штурмовая винтовка (увел. магазин)
-406		PID_PLASMA_PISTOL_EXT_CART				// Plasma Pistol EM						 // Плазменный пистолет (увел. магазин)
+405		PID_ASSAULT_RIFLE_EXT_MAG				// AK-112 Assault Rifle EM				 // АК-112 ув. маг.
+406		PID_PLASMA_PISTOL_EXT_CART				// Plasma Pistol EM						 // Улучшенный Глок 86
 407		PID_MEGA_POWER_FIST						// Mega Power Fist						 // Силовой суперкастет
 408		PID_FIELD_MEDIC_KIT						// Military First Aid Kit				 // Аптечка первой помощи военфельдшера
 409		PID_PARAMEDICS_BAG						// Paramedic bag						 // Сумка парамедика
@@ -472,7 +472,7 @@
 472		PID_ELRON_MEMBER_HOLO					// Hubologists Disk						 // Диск хабологов
 473		PID_MUTATED_TOE							// Mutated Toe							 // Мутировавший палец ноги
 474		PID_DAISIES								// Daisies								 // Маргаритки
-475		PID_CRAFT_M_BARS						// Iron Parts							 // Железяки
+475		PID_IRON_PARTS							// Iron Parts							 // Железяки
 476		PID_ENLIGHTENED_ONE_LETTER				// Letter from the Enlightened One		 // Письмо Просветленной
 477		PID_BROADCAST_HOLODISK					// Disc with a message					 // Диск с сообщением
 478		PID_SIERRA_MISSION_HOLODISK				// Sierra Mission Disc					 // Диск с заданием Сьерра
@@ -532,7 +532,7 @@
 533		PID_START_TERMINAL						// Start Terminal						 // Стартовый Терминал
 534		PID_PART_OF_ROPE						// Piece of Rope						 // Кусок веревки
 535		PID_GUNPOWDER							// Gunpowder							 // Порох
-536		PID_METAL_ORE							// Iron Ore								 // Железная руда
+536		PID_IRON_ORE							// Iron Ore								 // Железная руда
 537		PID_MINERAL								// Minerals								 // Минералы
 538		PID_TUBE								// Tube									 // Труба
 539		PID_MEAT								// Meat									 // Мясо
@@ -567,7 +567,7 @@
 568		PID_REAL_HOLODISK						// Tape									 // Плёнка
 570		PID_VENDING_NUKA						// Nuka Cola Vending Machine			 // Вендинговый аппарат Нюк-кола
 571		PID_HUBOLOGIST_BOOK						// Book of the Hub						 // Книга Хаба
-572		PID_CRAFT_L_RAGS						// Piece of Cloth						 // Кусок ткани
+572		PID_CLOTH								// Cloth								 // Ткань
 573		PID_NITROGLYCERIN						// Nitroglycerin						 // Нитроглицерин
 574		PID_CHEMICALS							// Chemicals							 // Химикаты
 575		PID_TNT									// TNT									 // Тротил
@@ -644,13 +644,13 @@
 704		PID_CASE_WITH_BAD_PAY					// Small Bounty Case					 // Кейс с малой наградой
 705		PID_CASE_WITH_NORMAL_PAY				// Case with decent reward				 // Кейс с неплохой наградой
 706		PID_CASE_WITH_GOOD_PAY					// Case with a decent reward			 // Кейс с достойной наградой
-793		PID_NO_SHOOT_WOOD_BLOCKER				
-794		PID_NO_SHOOT_METAL_BLOCKER				
-795		PID_NO_COVER_BLOCKER					
-796		PID_GENERIC_BLOCKER						
-797		PID_WOOD_BLOCKER						
-798		PID_METAL_BLOCKER						
-799		PID_STONE_BLOCKER						
+793		PID_NO_SHOOT_WOOD_BLOCKER				// Blocker wood ns						 // Блокиратор дерево нп
+794		PID_NO_SHOOT_METAL_BLOCKER				// Blocker metal ns						 // Блокиратор металл нп
+795		PID_NO_COVER_BLOCKER					// Blocker void							 // Блокиратор без укрытия
+796		PID_GENERIC_BLOCKER						// Blocker generic						 // Блокиратор база
+797		PID_WOOD_BLOCKER						// Blocker wood							 // Блокиратор дерево
+798		PID_METAL_BLOCKER						// Blocker metal						 // Блокиратор металл
+799		PID_STONE_BLOCKER						// Blocker stone						 // Блокиратор камень
 800		PID_HUMMER								// Hummer								 // Хаммер
 801		PID_HUMMER_BAG							// Hummer's trunk						 // Багажник Хаммера
 802		PID_BUGGY								// Buggy								 // Багги
@@ -745,20 +745,10 @@
 898		PID_CR_JNK_CAB							// Rusty Locker							 // Ржавый шкафчик
 899		PID_CR_OF_CHAIR							// Cloth office chair					 // Тканевое офисное кресло
 900		PID_FIRERESIST_LEATHER_ARMOR			// Fireproof Armor						 // Огнеупорная броня
-903		PID_ZAPLATKA_CRAFT_FURNITURE			// |0x3CF800 ========================= FURNITURE ============================ // |0x3CF800 ==========================МЕБЕЛЬ===========================
 905		PID_SKIN_CHANGER						// Appearance Changer Kit				 // Комплект для изменения внешнего вида
 907		PID_NEED_CART_POISON					// Poisoned Needer Cartridge			 // Картридж с ядом
 908		PID_NEED_CART_NT						// Neurotoxin Needler Cartridge			 // Картридж с нейротоксином
 909		PID_POPUP								// 										 // Технический айтем для текста на гексе по команде ~desc
-911		PID_ZAPLATKA_CRAFT_BASIC				// |0x3CF800 ====================== MATERIALS ========================== // |0x3CF800 =======================МАТЕРИАЛЫ==========================
-912		PID_ZAPLATKA_CRAFT_MISC					// |0x3CF800 ===================== USEFUL STUFF ======================= // |0x3CF800 ======================ПОЛЕЗНЫЕ ВЕЩИ=======================
-913		PID_ZAPLATKA_CRAFT_TOOLS				// |0x3CF800 ===================== TOOL ====================== // |0x3CF800 ======================ИНСТРУМЕНТЫ=========================
-914		PID_ZAPLATKA_CRAFT_CHEM					// |0x3CF800 ========================= CHEMISTRY ============================ // |0x3CF800 =========================ХИМИЯ============================
-915		PID_ZAPLATKA_CRAFT_AMMO					// |0x3CF800 ======================= AMMUNITION ========================= // |0x3CF800 =======================БОЕПРИПАСЫ=========================
-916		PID_ZAPLATKA_CRAFT_PISTOLS				// |0x3CF800 ====================== PISTOLS ========================== // |0x3CF800 =======================ПИСТОЛЕТЫ==========================
-917		PID_ZAPLATKA_CRAFT_BIG					// |0x3CF800 ====================== BIG GUNS ================================ // |0x3CF800 ======================БОЛЬШИЕ ПУШКИ=======================
-918		PID_ZAPLATKA_CRAFT_ENERGY				// |0x3CF800 =================== ENERGY GUNS =================== // |0x3CF800 ===================ЭНЕРГЕТИЧЕСКИЕ ПУШКИ===================
-919		PID_ZAPLATKA_CRAFT_ARMOUR				// |0x3CF800 ======================== ARMOUR ============================ // |0x3CF800 =========================БРОНЯ============================
 920		PID_ROD									// Fishing Rod							 // Удочка
 921		PID_HOOK								// Hook									 // Крючок
 922		PID_STRING								// Fishing line							 // Леска
@@ -855,15 +845,7 @@
 1303	PID_OBJECT_AUTODOC_F					// Autodock								 // Автодок
 1304	PID_OBJECT_AUTODOC						// Autodoc								 // Автодок
 1305	PID_OBJECT_LIGHT						// Light source							 // Источник света.
-1306	PID_ZAPLATKA_CRAFT_SMG					// |0x3CF800 ===================== SUBMACHINE GUNS ===================== // |0x3CF800 ===================ПИСТОЛЕТЫ-ПУЛЕМЕТЫ====================
-1307	PID_ZAPLATKA_CRAFT_RIFLES				// |0x3CF800 ======================== RIFLES =========================== // |0x3CF800 =========================ВИНТОВКИ=========================
-1308	PID_ZAPLATKA_CRAFT_SHOTGUNS				// |0x3CF800 ======================== SHOTGUNS ========================= // |0x3CF800 ========================ДРОБОВИКИ=========================
-1309	PID_ZAPLATKA_CRAFT_MELEE				// |0x3CF800 ================= CLOSE COMBAT WEAPONS ==================== // |0x3CF800 ==================ОРУЖИЕ БЛИЖНЕГО БОЯ====================
-1310	PID_ZAPLATKA_CRAFT_THROWING				// |0x3CF800 =================== THROWING WEAPONS ====================== // |0x3CF800 ===================МЕТАТЕЛЬНОЕ ОРУЖИЕ====================
-1311	PID_ZAPLATKA_CRAFT_TRAPS				// |0x3CF800 ========================= TRAPS =========================== // |0x3CF800 =========================ЛОВУШКИ==========================
-1312	PID_ZAPLATKA_CRAFT_DETAILS				// |0x3CF800 ====================== DETAILS ============================ // |0x3CF800 ========================ДЕТАЛИ============================
 1313	PID_BLANK_KEY							// Key									 // Ключ
-1315	PID_ZAPLATKA_CRAFT_CAMO					// |0x3CF800 ====================== DISGUISE =========================== // |0x3CF800 ======================МАСКИРОВКА==========================
 1316	PID_HEADPHONES							// Headphones							 // Наушники
 1317	PID_LOCK_LOW							// Padlock								 // Навесной замок
 1318	PID_LOCK_MED							// Door Lock							 // Дверной замок
@@ -873,11 +855,10 @@
 1322	PID_ANTISEPTIC							// Antiseptic							 // Антисептик
 1323	PID_MEDCLIP								// Clamp								 // Зажим
 1324	PID_MEDSPLINT							// Medical Brace						 // Медицинская шина
-1325	PID_MEDTHREAD							// Thread								 // Нить
-1326	PID_MEDNEEDLE							// Needle								 // Игла
+1325	PID_THREAD								// Thread								 // Нить
+1326	PID_NEEDLE								// Needle								 // Игла
 1327	PID_LEAD_BALL							// Lead Ball							 // Свинцовый шарик
 1328	PID_MLKCAN								// Can									 // Бидон
-1329	PID_ZAPLATKA_WEAPON_PARTS				// |0x3CF800 ==================== WEAPON PARTS ====================== // |0x3CF800 ===================ОРУЖЕЙНЫЕ ДЕТАЛИ=====================
 1330	PID_CR_CHEST							// Chest								 // Сундук
 1331	PID_HOUND_ARMOR							// "Hound" armor						 // Бронекомплект "Гончая"
 1332	PID_FIRE_COAT							// "Fire Cloak"							 // "Огнеплащ"
@@ -931,7 +912,7 @@
 1422	PID_AUTOGUN_LOW							// Handmade Assault Rifle				 // Самодельный автомат
 1423	PID_IRON_PROD							// Armature								 // Арматура
 1424	PID_GOLF_CLUB							// Golf Club							 // Клюшка для гольфа
-1425	PID_WOOD_PLANK							// Rough Wood Plank						 // Грубая деревянная доска
+1425	PID_BOARD								// Boards								 // Доска
 1426	PID_WATER_TUBE							// Pipe Piece							 // Кусок трубы
 1427	PID_SPEARTHROWER1						// Spearthrower							 // Копьемет
 1428	PID_HEAVY_BOLTTHROWER					// Heavy Bolthrower						 // Тяжелый копьемет
@@ -974,7 +955,7 @@
 1470	PID_GOLDEN_BAR							// Gold Ingot							 // Золотой слиток
 1471	PID_GOLDEN_JEWELRY						// Jewelry Blank						 // Ювелирная заготовка
 1472	PID_GOLDEN_COIN							// Golden Coins							 // Золотые монеты
-1473	PID_METAL_SHEET							// Iron Sheet							 // Лист железа
+1473	PID_IRON_SHEET							// Iron Sheet							 // Лист железа
 1474	PID_IRON_BAR							// Iron Bar								 // Железный брус
 1475	PID_IRON_DETALS							// Iron Stock							 // Железная заготовка
 1476	PID_LEAD_ORE							// Galena								 // Галенит
@@ -990,7 +971,7 @@
 1486	PID_LINZA								// Lens									 // Линза
 1487	PID_MIRROR								// Mirror								 // Зеркало
 1488	PID_WOOD_PART							// Wooden plank							 // Деревянная доска
-1489	PID_WOOD_PLANK2							// Plank								 // Планка
+1489	PID_BOARD2								// Plank								 // Планка
 1490	PID_JOINT								// Joint								 // Косяк
 1494	PID_FLUTE								// Flute								 // Флейта
 1495	PID_HARMONICA							// Harmonica							 // Губная гармошка
@@ -1029,7 +1010,7 @@
 1531	PID_WATER_BARREL						// Heavy Pistol							 // Тяжелый пистолет
 1532	PID_WATER_BARREL_DIRTY					// Light Pistol							 // Легкий пистолет
 1533	PID_ADV_FLAMER							// Advanced Flamethrower				 // Усовершенствованный огнемет (с комп.соплом)
-1534	PID_PUTI								// Ties									 // Путы
+1534	PID_TIES								// Ties									 // Путы
 1535	PID_AMMO_PACK							// Ammo Pack							 // Ранец с боеукладкой
 1536	PID_SLAVE_COLLAR						// Slave Collar							 // Ошейник
 1537	PID_ACTIVE_SLAVE_COLLAR					// Mushrooms							 // Грибы
@@ -1163,6 +1144,7 @@
 1673	PID_POTATO_CHIPS						// Potato Chips							 // Картофельный чипсы
 1674	PID_POTATO_MASHED_CUTLET				// Mashed Potatoes with Cutlet			 // Картофельное пюре с котлетой
 1675	PID_PANCAKES							// Pancakes								 // Панкейк
+1677	PID_LIFT_3								// Elevator								 // Лифт
 1678	PID_LIFT_2								// Elevator								 // Лифт
 1679	PID_BOTTLE_FILTER						// Carbon Filter						 // Угольный фильтр
 1680	PID_REVOLVER_PART						// Revolver Drum						 // Револьверный барабан
@@ -1179,7 +1161,7 @@
 1691	PID_DARTS								// Dart									 // Дротик для дартса
 1692	PID_DinkiDa								// Canned Dog Food						 // Собачии консервы
 1693	PID_DlznsChk							// Commitment Document					 // Документ об обязательствах
-1694	PID_CHOPPED_FIREWOOD					// Firewood								 // Колотые дрова
+1694	PID_CHOPPED_FIREWOOD					// Firewood								 // Дрова
 1695	PID_EGGGECKO							// Gecko Egg							 // Яйцо гекко
 1696	PID_ENCODER								// Decoder								 // Дешифратор
 1697	PID_energtik							// Energy Drink							 // Энергетик
@@ -1244,7 +1226,7 @@
 1757	PID_PIROG								// Fish Pie								 // Пирог с рыбой
 1758	PID_plkclef1							// Monkey wrench						 // Разводной ключ
 1759	PID_FLASHLIGHT_OFF						// Flashlight							 // Фонарик
-1760	PID_HAMMER								// Ball Hammer							 // Молоток с шаровым бойком
+1760	PID_HAMMER								// Hammer								 // Молоток
 1761	PID_CIGAR_CASE							// Cigarette case						 // Портсигар
 1762	PID_WALLET								// Wallet								 // Портмоне
 1763	PID_prdhrntl							// Fuse									 // Предохранитель
@@ -1498,6 +1480,30 @@
 3852	PID_TRIGGER								
 3864	PID_ROBOT_ARMOR_10						// 10mm Armor Plating					 // Бронированная обшивка 10мм
 3865	PID_HELMET_RANGER						// NCR Ranger Helmet					 // Шлем рейнджера НКР
+3871	PID_BOOK_CRAFTSMAN_1					// Crafts textbook, vol.1				 // Учебник по ремеслу, том 1
+3872	PID_BOOK_CRAFTSMAN_2					// Crafts textbook, vol.2				 // Учебник по ремеслу, том 2
+3873	PID_BOOK_CRAFTSMAN_3					// Crafts textbook, vol.3				 // Учебник по ремеслу, том 3
+3874	PID_BOOK_CRAFTSMAN_4					// Crafts textbook, vol.4				 // Учебник по ремеслу, том 4
+3875	PID_BOOK_CRAFTSMAN_5					// Crafts textbook, vol.5				 // Учебник по ремеслу, том 5
+3876	PID_BOOK_CRAFTSMAN_6					// Crafts textbook, vol.6				 // Учебник по ремеслу, том 6
+3877	PID_BOOK_MECHANIC_1						// Mechanics textbook, vol.1			 // Учебник по механике, том 1
+3878	PID_BOOK_MECHANIC_2						// Mechanics textbook, vol.2			 // Учебник по механике, том 2
+3879	PID_BOOK_MECHANIC_3						// Mechanics textbook, vol.3			 // Учебник по механике, том 3
+3880	PID_BOOK_MECHANIC_4						// Mechanics textbook, vol.4			 // Учебник по механике, том 4
+3881	PID_BOOK_MECHANIC_5						// Mechanics textbook, vol.5			 // Учебник по механике, том 5
+3882	PID_BOOK_MECHANIC_6						// Mechanics textbook, vol.6			 // Учебник по механике, том 6
+3883	PID_BOOK_CHEMIST_1						// Chemistry textbook, vol.1			 // Учебник по химии, том 1
+3884	PID_BOOK_CHEMIST_2						// Chemistry textbook, vol.2			 // Учебник по химии, том 2
+3885	PID_BOOK_CHEMIST_3						// Chemistry textbook, vol.3			 // Учебник по химии, том 3
+3886	PID_BOOK_CHEMIST_4						// Chemistry textbook, vol.4			 // Учебник по химии, том 4
+3887	PID_BOOK_CHEMIST_5						// Chemistry textbook, vol.5			 // Учебник по химии, том 5
+3888	PID_BOOK_CHEMIST_6						// Chemistry textbook, vol.6			 // Учебник по химии, том 6
+3889	PID_BOOK_ELECTRICIAN_1					// Electronics textbook, vol.1			 // Учебник по электронике, том 1
+3890	PID_BOOK_ELECTRICIAN_2					// Electronics textbook, vol.2			 // Учебник по электронике, том 2
+3891	PID_BOOK_ELECTRICIAN_3					// Electronics textbook, vol.3			 // Учебник по электронике, том 3
+3892	PID_BOOK_ELECTRICIAN_4					// Electronics textbook, vol.4			 // Учебник по электронике, том 4
+3893	PID_BOOK_ELECTRICIAN_5					// Electronics textbook, vol.5			 // Учебник по электронике, том 5
+3894	PID_BOOK_ELECTRICIAN_6					// Electronics textbook, vol.6			 // Учебник по электронике, том 6
 3898	PID_AMMOBENCH_TOKEN						// Ammo Workbench						 // Патронный верстак
 3899	PID_HELMET_APA2							// Advanced Power Helmet MK2			 // Усовершенствованный силовой шлем MK2
 3902	PID_FARM_GATE_NS						// Gate									 // Ворота
@@ -1636,16 +1642,11 @@
 4764	PID_VAULT_DOOR2_EW						// Door									 // Дверь
 4765	PID_VAULT_DOOR3_EW						// Door									 // Дверь
 4766	PID_VAULT_DOOR4_EW						// Door									 // Дверь
-4767	PID_ZAPLATKA_CRAFT_ELECTRONIC_DETAILS	// |0x3CF800 ================= ELECTRONIC PARTS =================== // |0x3CF800 =================ДЕТАЛИ ДЛЯ ЭЛЕКТРОНИКИ===================
 4768	PID_GARAGE_GATE_EW						// Door									 // Дверь
 4769	PID_GARAGE_GATE_NS						// Door									 // Дверь
 4777	PID_EXPLODE_BULLET_SINGLE				
 4778	PID_EXPLODE_BULLET_BURST				
-4831	PID_ZAPLATKA_CRAFT_MEDS					// |0x3CF800 ===================== MEDICINE =========================== // |0x3CF800 ======================ПРЕПАРАТЫ===========================
-4908	PID_ZAPLATKA_CRAFT_FOOD					// |0x3CF800 ======================= COOKING ========================= // |0x3CF800 ========================КУЛИНАРИЯ=========================
 6531	PID_REGION_BOUNDARY_CORNER				// Region marker						 // Маркер региона
-6916	PID_ZAPLATKA_CRAFT_HEADWEAR				// |0x3CF800 ===================== HEADGEAR =========================== // |0x3CF800 ================== ГОЛОВНЫЕ УБОРЫ ========================
-6917	PID_ZAPLATKA_CRAFT_BAGS					// |0x3CF800 ======================= BAGS ============================= // |0x3CF800 ======================= СУМКИ ============================
 7900	PID_FIREBARREL							// Fire Barrel							 // Бочка для костра
 7901	PID_FIREPLACE							// Bonfire								 // Костер
 7902	PID_WELL_1								// Well									 // Колодец
@@ -1662,9 +1663,9 @@
 7913	PID_ORE_DEPOSIT_M						// Ore Vein								 // Рудоносная жила
 7914	PID_ORE_DEPOSIT_S						// Ore Vein								 // Рудоносная жила
 7915	PID_ORE_DEPOSIT_S2						// Ore Vein								 // Рудоносная жила
-7990	PID_CUPPER_ORE_S						// Copper Ore							 // Медная руда
-7991	PID_CUPPER_ORE_M						// Copper Ore							 // Медная руда
-7992	PID_CUPPER_ORE_L						// Copper Ore							 // Медная руда
+7990	PID_NF_METAL_ORE_S						// Non-ferrus metal Ore					 // Руда цветмета
+7991	PID_NF_METAL_ORE_M						// Non-ferrus metal Ore					 // Руда цветмета
+7992	PID_NF_METAL_ORE_L						// Non-ferrus metal Ore					 // Руда цветмета
 7993	PID_LED_ORE_S							// Lead Ore								 // Свинцовая руда
 7994	PID_LED_ORE_M							// Lead Ore								 // Свинцовая руда
 7995	PID_LED_ORE_L							// Lead Ore								 // Свинцовая руда
@@ -1767,10 +1768,10 @@
 13032	PID_CA_BROTHERHOOD						// Brotherhood Combat Armor				 // Боевая броня Братства
 13033	PID_CA_ENCLAVE							// Enclave Combat Armor					 // Боевая броня Анклава
 14001	PID_GATLING_PLASMA						// Plasma Gatling						 // Плазма-гатлинг
-14002	PID_ASSAULT_RIFLE_EXT_XXL_MAG			// AK-112 Assault Rifle DM				 // Штурмовая винтовка AK-112 барабанный
-14003	PID_ASSAULT_RIFLE_OPT					// AK-112 Assault Rifle					 // Штурмовая винтовка AK-112 с оптикой
-14004	PID_ASSAULT_RIFLE_EXT_MAG_OPT			// Scoped AK-112 Assault Rifle EM		 // Штурмовая винтовка AK-112 (увел) с оптикой
-14005	PID_ASSAULT_RIFLE_EXT_XXL_MAG_OPT		// Scoped AK-112 Assault Rifle DM		 // Штурмовая винтовка AK-112 барабанный с оптикой
+14002	PID_ASSAULT_RIFLE_EXT_XXL_MAG			// AK-112 Assault Rifle DM				 // AK-112 б. маг.
+14003	PID_ASSAULT_RIFLE_OPT					// AK-112 Assault Rifle					 // AK-112 с оптикой
+14004	PID_ASSAULT_RIFLE_EXT_MAG_OPT			// Scoped AK-112 Assault Rifle EM		 // AK-112 ув. маг. опт.
+14005	PID_ASSAULT_RIFLE_EXT_XXL_MAG_OPT		// Scoped AK-112 Assault Rifle DM		 // AK-112 б. маг. опт.
 14008	PID_SHI_SPEAR							// Shi Spear							 // Копье Ши
 14010	PID_SPADE								// Spade								 // Лопатка
 14011	PID_sickle								// Sickle								 // Серп
@@ -1839,7 +1840,7 @@
 15047	PID_BP_TRAUMATIN						// Traumatin Formula					 // Формула Травматина
 15048	PID_Blueprint1_energyguns				// Energy Weapon Blueprints				 // Чертежи энергетического оружия
 15049	PID_Blueprint1_smallguns				// Light Weapon Blueprint				 // Чертежи легкого оружия
-15050	PID_COPPER_ORE							// Copper Ore							 // Медная руда
+15050	PID_NF_METAL_ORE						// Non-ferrus metal Ore					 // Руда цветмета
 15051	PID_LEAD_NUGGET							// Lead Ore								 // Свинцовая руда
 15052	PID_GOLD_NUGGET							// Gold Nugget							 // Большой золотой самородок
 15053	PID_bugspray							// Parasite spray						 // Спрей против паразитов
@@ -1872,14 +1873,14 @@
 15081	PID_TOXIC_GECKO_PELT					// Toxic Gecko Pelt						 // Шкура токсичного гекко
 15082	PID_BLACK_GUNPOWDER						// Black Powder							 // Черный порох
 15083	PID_COAL								// Coal									 // Уголь
-15084	PID_COPPER_NUGGET						// Copper Nugget						 // Медный самородок
-15085	PID_COPPER_BAR							// Copper Bar							 // Медный брус
-15086	PID_COPPER_LEAF							// Copper Sheet							 // Лист меди
-15087	PID_COPPER_WIRE							// Copper Wire Roll						 // Моток медной проволоки
+15084	PID_NF_METAL_NUGGET						// Non-ferrus metal Nugget				 // Самородок цветных металлов
+15085	PID_NF_METAL_BAR						// Non-ferrus metal Bar					 // Сплав цветмета
+15086	PID_NF_METAL_LEAF						// Non-ferrus metal sheet				 // Лист цветмета
+15087	PID_WIRE								// Wire Roll							 // Моток медной проволоки
 15088	PID_BOLT								// Bolt									 // Болт
 15089	PID_MKLAPAN								// Valve								 // Клапан
-15090	PID_MPARTS								// Electronic trash						 // Электронный мусор
-15091	PID_MSPIRAL								// Spring								 // Пружина
+15090	PID_ELECTRONIC_PARTS					// Electronic trash						 // Электронный мусор
+15091	PID_SPRING								// Spring								 // Пружина
 15092	PID_MSTONE								// Sharp Stone							 // Острый камень
 15093	PID_MSUOMIG								// Branches with berries				 // Ветви с ягодами
 15094	PID_empty_paint_can						// Empty Paint Can						 // Пустая банка из-под краски
@@ -2161,7 +2162,7 @@
 20032	PID_10MM_PISTOL_MAGAZIN					// Colt 6520 EM							 // Кольт 6520(увел. магазин)
 20033	PID_STARIY_OBREZ						// Old Sawn-off shotgun					 // Старый обрез
 20034	PID_TESAK								// Chopper								 // Секач
-20036	PID_LASER_CHARGER						// Laser Charger						 // Лазерный разрядник
+20036	PID_LASER_CHARGER						// Laser Charger						 // Ваттс 1500
 20038	PID_COLT_SEQUOIA						// Colt "Sequoia"						 // Кольт "Секвоя"
 20042	PID_RAZOR								// Wits Razor							 // Бритва "Остряк"
 20044	PID_DEAGLE_GOLD							// Golden Desert Eagle					 // Золотой Пустынный Орёл
@@ -2178,8 +2179,8 @@
 20061	PID_10MM_GIFT							// Prize Colt 6520						 // Наградной пистолет
 20063	PID_SM_KNIFE							// Supermutant's Cleaver				 // Тесак супермутантов
 20066	PID_OLD_MINIGUN							// Old Minigun							 // Старый миниган
-20067	PID_GONZO								// Gonzo Combat Knife					 // Боевой нож "Гонзо"
-20068	PID_BIKER_KNIFE							// Switch Knife							 // Выкидной нож
+20067	PID_GONZO								// Army Combat Knife					 // Армейский боевой нож
+20068	PID_BIKER_KNIFE							// Combat switch Knife					 // Боевой выкидной нож
 20072	PID_REV_DETECTIVE						// "Detective" Revolver					 // Револьвер "Детектив"
 20073	PID_REGULATOR_PISTOL					// "Regulator" Pistol					 // Пистолет регулятора
 20074	PID_REV_SW500							// S&W 500 Revolver						 // Револьвер С&В 500
@@ -2247,7 +2248,7 @@
 20169	PID_GREY_SUIT							// Grey suit							 // Серый костюм
 20170	PID_TESLA_LANCE							// Technological Blacksmith Spear		 // Технологичное копье кузнеца
 20171	PID_FORGED_SPEAR						// Forged Spear							 // Кованое копье
-20172	PID_HUNTING_SPEAR						// Hunting Spear						 // Деревянное копье
+20172	PID_HUNTING_SPEAR						// Hunting Spear						 // Охотничье копье
 20173	PID_WINE								// Peyote wine							 // Пейотливое вино
 20174	PID_WINE_PRT							// Peyote wine							 // Пейотливое вино
 20175	PID_H_SPIKED_KNUCKLES					// Heavy Spiked Knuckles				 // Тяжелый шипованный кастет
@@ -2337,7 +2338,7 @@
 20570	PID_PARADE_UNIFORM						// Parade Uniform						 // Парадная форма
 20571	PID_LAB_COAT							// Lab Coat								 // Лабораторный Халат
 20572	PID_RANGER_ARMOR						// California Ranger Armor				 // Броня Калифорнийского рейнджера
-20573	PID_GEKKO_ARMOR							// Gecko Armor							 // Броня из Гекко
+20573	PID_TRIBAL_APPAREL							// Gecko Armor							 // Броня из Гекко
 20574	PID_TECH_ARMOR							// Technologist's Mail					 // Кольчуга технолога
 20575	PID_CHEM_ARMOR							// Environment armor					 // Природная броня
 20576	PID_CHEM_ARMOR_MK2						// Improved Environment armor			 // Улучшенная природная броня
@@ -2408,10 +2409,10 @@
 22007	PID_nozzle								// Nozzle								 // Сопло
 22008	PID_DTONATOR							// Detonator							 // Детонатор
 22009	PID_ttube								// Chemical Tubes						 // Химические трубки
-22010	PID_ttube2								// Tube stand							 // Штатив с трубками
+22010	CHEM_TRIPOD								// Tube stand							 // Штатив с трубками
 22011	PID_DISTILLATION_FLASK					// Flask								 // Колба
 22012	PID_SMOKING_PIPE						// Smoking pipe							 // Курительная трубка
-22013	PID_Helba_Grass							// Helba Grass							 // Трава Хельба
+22013	PID_PLANT_FIBERS						// Plant fibers							 // Органические волокна
 22014	PID_KAZAN								// Pot									 // Казан
 22015	PID_batch_AFR							// AFR Package							 // Пакет A.F.R
 22016	PID_Breaking_batch_AFR					// AFR Package (Opened)					 // Пакет A.F.R (вскрыт)
@@ -2460,10 +2461,10 @@
 22060	PID_PIPBOY2K_OFF						// Pip-Boy 2000							 // Пип-бой 2000
 22061	PID_INSULATING_TAPE						// Electrical tape						 // Изолента
 22062	PID_SYRINGE2							// Syringe without a needle				 // Шприц без иглы
-22063	PID_MPARTS3								// Large bottle							 // Большая бутылка
+22063	PID_ELECTRONIC_PARTS3								// Large bottle							 // Большая бутылка
 22064	PID_PIPBOY3K							// Pip-Boy 3000							 // Пип-бой 3000
 22065	PID_BALACLAV							// Balaclava							 // Балаклава
-22066	PID_ZOLA								// Ash									 // Зола
+22066	PID_MINERAL_DUST						// Mineral Dust							 // Минеральная пыль
 22067	PID_RBTRHAND							// Robot Manipulator					 // Манипулятор робота
 22068	PID_card2b								// Rusty Keycard						 // Ржавая ключ-карта
 22069	PID_GUNSMITH							// Weapon Cleaning Kit					 // Набор для чистки оружия

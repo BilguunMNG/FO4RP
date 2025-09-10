@@ -120,7 +120,7 @@
 {179}{}{Polymer}
 {180}{}{Composite}
 {181}{}{Fabric}
-{182}{}{Copper}
+{182}{}{NF_METAL}
 {183}{}{Lead}
 {184}{}{Gold}
 {185}{}{Organic}
@@ -895,18 +895,20 @@ Welcome to The Long Journey!}
 {7023}{}{Doctor}
 {7024}{}{Repair}
 {7025}{}{Science}
-{7026}{}{Overdose}
-{7027}{}{Wet}
-{7028}{}{Bandaged}
-{7029}{}{Dazed}
-{7030}{}{Stunned}
-{7031}{}{No Sneaking}
-{7032}{}{Painkiller}
-{7033}{}{Afterburner}
-{7034}{}{Antibiotic}
-{7035}{}{Drugged}
-{7036}{}{No KO}
-{7037}{}{Logoff}
+{7026}{}{Craft}
+{7027}{}{Overdose}
+{7028}{}{Wet}
+{7029}{}{Bandaged}
+{7030}{}{Dazed}
+{7031}{}{Stunned}
+{7032}{}{No Sneaking}
+{7033}{}{Painkiller}
+{7034}{}{Afterburner}
+{7035}{}{Antibiotic}
+{7036}{}{Drugged}
+{7037}{}{No KO}
+{7038}{}{Logoff}
+{7039}{}{Oxygen}
 
 # dyspnea
 {7400}{}{faints}
@@ -1919,18 +1921,18 @@ Confirm?}
 {102111}{}{Traps}
 {102112}{}{The finding and removal of traps. Also the setting of explosives for demolition purposes.}
 {102113}{}{Traps}
-# SK_SCIENCE
+# SK_SCIENCE 
 {102121}{}{Science}
-{102122}{}{Covers a variety of high technology skills, such as computers, biology, physics, and electronics. Can be used to hack computers.}
+{102122}{}{Hack terminals, dig into old-world knowledge, and figure out how stuff really ticks.}
 {102123}{}{Science}
 # SK_REPAIR
 {102131}{}{Repair}
-{102132}{}{The practical application of the Science skill for fixing broken equipment, machinery and electronics.}
+{102132}{}{If it’s busted, you can fix it. Guns, armor, gadgets — all in a day’s work.}
 {102133}{}{Repair}
-# SK_SPEECH
-{102141}{}{-}
-{102142}{}{Disabled.}
-{102143}{}{Speech}
+# SK_CRAFT
+{102141}{}{Craft}
+{102142}{}{Turn junk into treasures. Build gear through craft, mechanics, chemistry, and electrics.}
+{102143}{}{Craft}
 # SK_BARTER
 {102151}{}{Barter}
 {102152}{}{Trading and trade-related tasks. The ability to get better prices for items you sell, and lower prices for items you buy.}
@@ -1940,8 +1942,8 @@ Confirm?}
 {102162}{}{Disabled}
 {102163}{}{Gambling}
 # SK_OUTDOORSMAN
-{102171}{}{Outdoorsman}
-{102172}{}{Practical knowledge of the outdoors, and the ability to live off the land. The knowledge of plants and animals.}
+{102171}{}{-}
+{102172}{}{Disabled}
 {102173}{}{Outdoorsman}
 # SK_MINING
 {102181}{}{Mining}
@@ -2131,6 +2133,22 @@ Confirm?}
 # PE_MASTER_TRADER
 {103181}{}{Master Trader}
 {103182}{}{You have achieved real mastery in one of the aspects of trading, namely the ability to buy goods at low prices, haggling to exhaustion. You get a 25 percent discount on any purchase.}
+# PE_CRAFT_LIMIT
+{103191}{}{Profession Points}
+{103192}{}{Measure of how many points you can spend on learning the fine art of wasteland tinkering.}
+# PE_CRAFTSMAN
+{103201}{}{Craftsman}
+{103202}{}{Anyone can break junk. You know how to turn it into something useful. Craft better gear as your skill improves.}
+# PE_MECHANIC
+{103211}{}{Mechanic}
+{103212}{}{With a wrench and some duct tape, you can fix—or build—just about anything. Higher skill means more toys to make.}
+# PE_CHEMIST
+{103221}{}{Chemist}
+{103222}{}{Boom or cure, powder or potion—you know your way around chemicals. More skill, more recipes.}
+# PE_ELECTRICIAN
+{103231}{}{Electrician}
+{103232}{}{Circuits, wires, and sparks don’t scare you. In fact, they listen to you. More skill unlocks more gadgets.}
+
 # PE_QUICK_POCKETS
 {103491}{}{Optimization}
 {103492}{}{You managed to put your things in your pockets so that they were always at hand. Now manipulations with items in the inventory cost half as much.}

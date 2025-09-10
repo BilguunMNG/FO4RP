@@ -47,9 +47,6 @@
 #define PID_DATABASE4								( 664 )							// BOS database, West-North to East-South
 #define PID_TERMINAL                          		( 847 )							// Multifunction terminal
 
-// Generators
-#define PID_COAL_POWERGEN                      		( 1830 )						// Coal Generator
-
 // Sport
 #define PID_PUNCH_BAG								( 2537 )						// Punch bag
 
@@ -60,9 +57,10 @@
 #define PID_SEWERS_HATCH	    	          		( 2144 )						// Manhole cover
 #define PID_HIDDEN_DOOR_NS							( 2195 )						// Wall
 #define PID_CATHEDRAL_DOOR_EW	              		( 2346 )						// Door
-#define PID_TENT_DOOR_EW	             	 		( 2361)							// Curtains
+#define PID_TENT_DOOR_EW	             	 		( 2361 )						// Curtains
 #define PID_TENT_DOOR_NS	              			( 2362 )						// Curtains
 #define PID_ELEVATOR_DOOR_EW	              		( 2421 )						// Elevator door
+#define PID_CATHDOOR_NS								( 2438 )						// Cathedral door
 #define PID_ELEVATOR_DOOR_OLD_EW	           		( 2470 )						// Elevator door
 #define PID_TEMPLE_DOOR_EW            	   			( 2934 )						// Door
 #define PID_ROUND_DOOR1_EW							( 2981 )						// Vault5 round door
@@ -254,14 +252,14 @@
 #define PID_GOLD_ORE                      			( 423 )							// Gold Ore
 #define PID_URANIUM_ORE                       		( 426 )							// Uranium Ore
 #define PID_REFINED_ORE                       		( 486 )							// Refined Uranium Ore
-#define PID_METAL_ORE                         		( 536 )							// Iron Ore
+#define PID_IRON_ORE                         		( 536 )							// Iron Ore
 #define PID_MINERAL                           		( 537 )							// Mineral Ore
 #define PID_LEAD_ORE						  		( 1476 )                        // Galena
-#define PID_COPPER_ORE                         		( 15050 )   					// Copper Ore
+#define PID_NF_METAL_ORE                         	( 15050 )   					// NF_METAL Ore
 #define PID_LEAD_NUGGET                     		( 15051 )   					// Lead Ore
 #define PID_GOLD_NUGGET                        		( 15052 )   					// Gold Nugget
 #define PID_COAL                              		( 15083 )   					// Coal
-#define PID_COPPER_NUGGET							( 15084 )   					// Copper Nugget
+#define PID_NF_METAL_NUGGET							( 15084 )   					// NF_METAL Nugget
 
 #define PID_ORE_DEPOSIT_L					  		( 7909 ) 						// Ore Vein
 #define PID_BOULDER							  		( 7910 ) 						// Large Boulder
@@ -269,9 +267,9 @@
 #define PID_ORE_DEPOSIT_S					  		( 7914 ) 						// Ore Vein
 #define PID_ORE_DEPOSIT_S2					  		( 7915 ) 						// Ore Vein
 
-#define PID_CUPPER_ORE_S					  		( 7990 ) 						// Copper Ore
-#define PID_CUPPER_ORE_M					  		( 7991 ) 						// Copper Ore
-#define PID_CUPPER_ORE_L					  		( 7992 ) 						// Copper Ore
+#define PID_NF_METAL_ORE_S					  		( 7990 ) 						// NF_METAL Ore
+#define PID_NF_METAL_ORE_M					  		( 7991 ) 						// NF_METAL Ore
+#define PID_NF_METAL_ORE_L					  		( 7992 ) 						// NF_METAL Ore
 #define PID_LED_ORE_S						  		( 7993 ) 						// Lead Ore
 #define PID_LED_ORE_M						  		( 7994 ) 						// Lead Ore
 #define PID_LED_ORE_L						  		( 7995 ) 						// Lead Ore
@@ -504,6 +502,7 @@
 #define PID_GREY_SUIT		                       	( 20169 )						// Itallian suit
 #define PID_PARADE_UNIFORM                          ( 20570 )						// Parade Uniform
 #define PID_LAB_COAT                         		( 20571 )						// Lab coat
+#define PID_TRIBAL_APPAREL							( 20573 )						// Tribal Outfit
 #define PID_BLACK_DRESS		                       	( 20595 )						// Black dress
 #define PID_GEKKO_DRESS		                       	( 20596 )						// Gecko dress
 #define PID_BUSINESS_SUIT                       	( 20597 )						// Business suit
@@ -545,7 +544,6 @@
 #define PID_PERSONAL_JACKET                   		( 20207 )						// Personal tailoring Leather Jacket
 #define PID_REINFORCED_LEATHER                 		( 20543 )						// Reinforced Combat Leather Jacket
 #define PID_TRIBE_ARMOR1                            ( 20558 )						// Tribal Scout Armor
-#define PID_GEKKO_ARMOR							  	( 20573 )						// Gecko Armor
 #define PID_LEATHER_SHIRT							( 20579 )						// Combat Tank Top
 #define PID_CIRCLE_ARMOR							( 20593 ) 						// Sewer Hatch
 
@@ -1184,7 +1182,7 @@
 #define PID_REVCLUB1                          		( 1421 )						// Bladed Club
 #define PID_IRON_PROD                         		( 1423 )						// Armature
 #define PID_GOLF_CLUB                         		( 1424 )						// Golf Club
-#define PID_WOOD_PLANK                        		( 1425 )						// Rough Wood Plank
+#define PID_BOARD                        			( 1425 )						// Rough Wood Plank
 #define PID_LASH                                    ( 14028 )                       // Lash
 #define PID_PRIMITIVE_HAMMER 						( 14030 )                       // Primitive Hammer
 #define PID_POLICE_CLUB                          	( 20003 )						// Police Club
@@ -1290,34 +1288,6 @@
 // Special
 #define PID_ROBO_ROCKET_AMMO                  		( 274 )							// Robo Rocket
 
-/******************************************************************************
-***************				CRAFT SEPARATORS					***************
-*******************************************************************************/
-
-#define PID_ZAPLATKA_CRAFT_FURNITURE 				( 903 )
-#define PID_ZAPLATKA_CRAFT_BASIC 					( 911 )
-#define PID_ZAPLATKA_CRAFT_MISC 					( 912 )
-#define PID_ZAPLATKA_CRAFT_TOOLS 					( 913 )
-#define PID_ZAPLATKA_CRAFT_CHEM 					( 914 )
-#define PID_ZAPLATKA_CRAFT_AMMO 					( 915 )
-#define PID_ZAPLATKA_CRAFT_PISTOLS 					( 916 )
-#define PID_ZAPLATKA_CRAFT_BIG 						( 917 )
-#define PID_ZAPLATKA_CRAFT_ENERGY 					( 918 )
-#define PID_ZAPLATKA_CRAFT_ARMOUR 					( 919 )
-#define PID_ZAPLATKA_CRAFT_SMG 						( 1306 )
-#define PID_ZAPLATKA_CRAFT_RIFLES 					( 1307 )
-#define PID_ZAPLATKA_CRAFT_SHOTGUNS 				( 1308 )
-#define PID_ZAPLATKA_CRAFT_MELEE 					( 1309 )
-#define PID_ZAPLATKA_CRAFT_THROWING 				( 1310 )
-#define PID_ZAPLATKA_CRAFT_TRAPS 					( 1311 )
-#define PID_ZAPLATKA_CRAFT_DETAILS 					( 1312 )
-#define PID_ZAPLATKA_CRAFT_CAMO 					( 1315 )
-#define PID_ZAPLATKA_WEAPON_PARTS 					( 1329 )
-#define PID_ZAPLATKA_CRAFT_ELECTRONIC_DETAILS		( 4767 )
-#define PID_ZAPLATKA_CRAFT_MEDS 					( 4831 )
-#define PID_ZAPLATKA_CRAFT_FOOD      		        ( 4908 )
-#define PID_ZAPLATKA_CRAFT_HEADWEAR					( 6916 )
-#define PID_ZAPLATKA_CRAFT_BAGS 					( 6917 )
 
 /**************************************************************
 ***************				DRINKS	  		***************
@@ -1497,7 +1467,6 @@
 #define PID_COOKED_GECKO_MEAT                 		( 1555 )						// Grilled Gecko Meat
 #define PID_COOKED_FISH                       		( 1556 )						// Chunk of Fried Fish
 #define PID_FLAPJACK                          		( 1557 )						// Corn Tortilla
-#define PID_FLOUR                             		( 1558 )						// Flour
 #define PID_COOKED_MOLERAT_STOMATCH           		( 1559 )						// Stuffed Stomach
 #define PID_SALAD                             		( 1560 )						// Salad
 #define PID_RAGOUT                            		( 1563 )						// Stew
@@ -2054,7 +2023,7 @@
 #define PID_FLINT                             		( 278 )							// Flint
 #define PID_MEAT_JERKY                        		( 284 )							// Meat Jerky
 #define PID_RADSCORPION_PINCERS                 	( 285 )							// Rad Scorpion Pincers
-#define PID_FIREWOOD                          		( 286 )							// Firewood
+#define PID_LOGS      	                    		( 286 )							// Firewood
 #define PID_HYPODERMIC_NEEDLE                 		( 318 )							// Empty Syringe
 #define PID_OIL_CAN                           		( 412 ) 						// Technical Oil
 #define PID_EMPTY_JET                         		( 416 )							// Empty Jet Ampoule
@@ -2124,15 +2093,15 @@
 #define PID_CENTRF                            		( 1774 )						// CL 3000
 
 // Medical
-#define PID_BIO_GEL                           		( 440 ) 						// Biogel		         		//
+#define PID_BIO_GEL                           		( 440 ) 						// Biogel
 #define PID_REANIMATION_KIT                    		( 670 )							// Reanimation kit
 #define PID_ANESTETIC                         		( 1320 )						// Anesthetic
 #define PID_BANDAGE                           		( 1321 )						// Bandage
 #define PID_ANTISEPTIC                        		( 1322 )						// Antiseptic
 #define PID_MEDCLIP                           		( 1323 )						// Clamp
 #define PID_MEDSPLINT                         		( 1324 )						// Medical Brace
-#define PID_MEDTHREAD                         		( 1325 )						// Thread
-#define PID_MEDNEEDLE                         		( 1326 )						// Needle
+#define PID_THREAD                         			( 1325 )						// Thread
+#define PID_NEEDLE                         			( 1326 )						// Needle
 
 // Tools - Special
 #define PID_GEIGER_COUNTER                    		( 52 ) 							// Geiger counter
@@ -2178,6 +2147,32 @@
 #define PID_CATS_PAW_ISSUE_5                  		( 331 )							// 
 #define PID_BECKY_BOOK                        		( 471 )							// 
 #define PID_HUBOLOGIST_BOOK                   		( 571 )							// 
+
+// Profession leveling books
+#define PID_BOOK_CRAFTSMAN_1						( 3871 )
+#define	PID_BOOK_CRAFTSMAN_2						( 3872 )
+#define	PID_BOOK_CRAFTSMAN_3						( 3873 )
+#define	PID_BOOK_CRAFTSMAN_4						( 3874 )
+#define	PID_BOOK_CRAFTSMAN_5						( 3875 )
+#define	PID_BOOK_CRAFTSMAN_6						( 3876 )
+#define	PID_BOOK_MECHANIC_1							( 3877 )
+#define PID_BOOK_MECHANIC_2							( 3878 )
+#define PID_BOOK_MECHANIC_3							( 3879 )
+#define PID_BOOK_MECHANIC_4							( 3880 )
+#define PID_BOOK_MECHANIC_5							( 3881 )
+#define PID_BOOK_MECHANIC_6							( 3882 )
+#define PID_BOOK_CHEMIST_1							( 3883 )
+#define PID_BOOK_CHEMIST_2							( 3884 )
+#define PID_BOOK_CHEMIST_3							( 3885 )
+#define PID_BOOK_CHEMIST_4							( 3886 )
+#define PID_BOOK_CHEMIST_5							( 3887 )
+#define PID_BOOK_CHEMIST_6							( 3888 )
+#define PID_BOOK_ELECTRICIAN_1						( 3889 )
+#define PID_BOOK_ELECTRICIAN_2						( 3890 )
+#define PID_BOOK_ELECTRICIAN_3						( 3891 )
+#define PID_BOOK_ELECTRICIAN_4						( 3892 )
+#define PID_BOOK_ELECTRICIAN_5						( 3893 )
+#define PID_BOOK_ELECTRICIAN_6						( 3894 )
 
 // Dolls
 #define PID_SMALL_STATUETTE                   		( 224 )							//
@@ -2462,7 +2457,7 @@
 #define PID_GRAPPLE_HOOK                      		( 1524 )						// Grapple
 #define PID_MELEE_HOOK                        		( 1525 )						// Hook
 #define PID_HOLD_HOOK                         		( 1526 )						// Hold Hook
-#define PID_PUTI                              		( 1534 )						// Ties
+#define PID_TIES                              		( 1534 )						// Ties
 
 /**************************************************************
 ***************				QUEST ITEMS			***************
@@ -2489,10 +2484,10 @@
 // Smithing
 #define PID_LEAD_INGOT						  		( 1469 )                        // Lead Bar
 #define PID_GOLDEN_BAR						  		( 1470 )                        // Gold Ingot
-#define PID_METAL_SHEET                        		( 1473 )						// Iron Sheet
+#define PID_IRON_SHEET                        		( 1473 )						// Iron Sheet
 #define PID_IRON_BAR                          		( 1474 )						// Iron Bar
-#define PID_COPPER_BAR                        		( 15085 )   					// Copper Bar
-#define PID_COPPER_LEAF                       		( 15086 )   					// Copper Sheet
+#define PID_NF_METAL_BAR                        	( 15085 )   					// NF_METAL Bar
+#define PID_NF_METAL_LEAF                       	( 15086 )   					// NF_METAL Sheet
 
 // Generic
 #define PID_CRAFT_M_STEL                      		( 50 )	 						// Composite Mechanism
@@ -2502,8 +2497,8 @@
 #define PID_CRAFT_E_CHIP                      		( 377 )							// Microchips
 #define PID_EXCAVATOR_CHIP                    		( 422 )							// Homemade Capacitor
 #define PID_CRAFT_L_LINT                      		( 439 )	 						// Pocket Trash
-#define PID_CRAFT_M_BARS                      		( 475 )	 						// Iron Parts
-#define PID_CRAFT_L_RAGS                      		( 572 )							// Piece of Cloth
+#define PID_IRON_PARTS                      		( 475 )	 						// Iron Parts
+#define PID_CLOTH           		           		( 572 )							// Piece of Cloth
 #define PID_WATER_TUBE                        		( 1426 )						// Pipe Piece
 #define PID_RAD_LOW                           		( 1437 )						// Radioactive element
 #define PID_BULLET_TIP						  		( 1468 )                        // Bullet blank
@@ -2522,7 +2517,7 @@
 #define PID_GLASS						      		( 1485 )                        // Glass
 #define PID_LINZA						      		( 1486 )                        // Lens
 #define PID_MIRROR						  	  		( 1487 )                        // Mirror
-#define PID_WOOD_PLANK2						  		( 1489 )                        // Plank
+#define PID_BOARD2						  		( 1489 )                        // Plank
 #define PID_PERED_MEH                         		( 1502 )						// Gear Mechanism
 #define PID_SOED_MEH                          		( 1503 )						// Connector
 #define PID_OHLAD_MEH                         		( 1504 )						// Cooling Element
@@ -2543,11 +2538,11 @@
 #define PID_SHELL_CASING                            ( 1782 )						// Spent shell 
 #define PID_BRACING                         		( 1784 )						// Bolt assembly
 #define PID_servoeng                          		( 1791 )						// Crafted Rotary Gear
-#define PID_COPPER_WIRE                       		( 15087 )   					// Copper Wire Roll
+#define PID_WIRE                       				( 15087 )   					// NF_METAL Wire Roll
 #define PID_BOLT                              		( 15088 )   					// Bolt
 #define PID_MKLAPAN                                 ( 15089 )   					// Walve
-#define PID_MPARTS                                  ( 15090 )                       // Electronic trash
-#define PID_MSPIRAL                                 ( 15091 )                       // Spring
+#define PID_ELECTRONIC_PARTS                                  ( 15090 )                       // Electronic trash
+#define PID_SPRING                                 ( 15091 )                       // Spring
 
 /******************************************************************
 ***************				UNSORTED				***************
@@ -2816,9 +2811,9 @@
 #define PID_nozzle                            		( 22007 )   					// Nozzle
 #define PID_DTONATOR                          		( 22008 )   					// Detonator
 #define PID_ttube                             		( 22009 )   					// Chemical Tubes
-#define PID_ttube2                            		( 22010 )   					// Tube stand
+#define CHEM_TRIPOD                            		( 22010 )   					// Tube stand
 #define PID_DISTILLATION_FLASK                    	( 22011 )   					// Flask
-#define PID_Helba_Grass                       		( 22013 )   					// Helba Glass
+#define PID_PLANT_FIBERS                       		( 22013 )   					// Plant fibers
 #define PID_KAZAN                             		( 22014 )   					// Pot
 #define PID_batch_AFR                         		( 22015 )   					// AFR Package
 #define PID_Breaking_batch_AFR                		( 22016 )   					// AFR Package (opened)
@@ -2845,8 +2840,8 @@
 #define PID_PIROZ                           		( 22059 )   					// Searing Essence
 #define PID_INSULATING_TAPE                   		( 22061 )  					 	// Electrical tape
 #define PID_SYRINGE2                          		( 22062 )   					// Syringe without a needle
-#define PID_MPARTS3                            		( 22063 )   					// Large bottle
-#define PID_ZOLA                                    ( 22066 )                       // Ash
+#define PID_ELECTRONIC_PARTS3                            		( 22063 )   					// Large bottle
+#define PID_MINERAL_DUST                            ( 22066 )                       // Mineral dust
 #define PID_RBTRHAND                                ( 22067 )                       // Robot Manipulator
 #define PID_card2b                                  ( 22068 )                       // Rusty Keycard
 #define PID_GUNSMITH                                ( 22069 )                       // Weapon Cleaning Kit
@@ -3098,6 +3093,7 @@
 
 // Crafting
 #define PID_ARC_FURNACE 							( 1828 )						// Arc Furnace
+#define PID_COAL_POWERGEN                      		( 1830 )						// Coal Generator
 #define PID_CRUSHER_2000					  		( 1832 )						// Electric Grinder
 #define PID_AMMO_WORKBENCH							( 1835 )						// Ammo Workbench
 #define PID_FURNACE_SMALL 							( 1844 )						// Small Furnace

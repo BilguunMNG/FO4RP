@@ -167,7 +167,7 @@ int[] statsToList( Critter& cr )
 	result.insertLast( cr.ParamBase[ SK_TRAPS ] );
 	result.insertLast( cr.ParamBase[ SK_SCIENCE ] );
 	result.insertLast( cr.ParamBase[ SK_REPAIR ] );
-	result.insertLast( cr.ParamBase[ SK_SPEECH ] );
+	result.insertLast( cr.ParamBase[ SK_CRAFT ] );
 	result.insertLast( cr.ParamBase[ SK_BARTER ] );
 	result.insertLast( cr.ParamBase[ SK_GAMBLING ] );
 	result.insertLast( cr.ParamBase[ SK_OUTDOORSMAN ] );
@@ -193,24 +193,24 @@ void setSkillsBase( Critter& cr )
 	int A = cr.StatBase[ ST_AGILITY ];
 	int L = cr.StatBase[ ST_LUCK ];
 	
-	cr.SkillBase[ SK_SMALL_GUNS ]	= 5*P + 3*A	+ 2*S;
-	cr.SkillBase[ SK_MEDIUM_GUNS ]	= 5*S + 3*P	+ 2*A;
-	cr.SkillBase[ SK_BIG_GUNS ]		= 5*P + 3*I	+ 2*A;
-	cr.SkillBase[ SK_UNARMED ]		= 5*S + 3*A	+ 2*E;
-	cr.SkillBase[ SK_MELEE_WEAPONS ]= 5*A + 3*S	+ 2*E;
-	cr.SkillBase[ SK_THROWING ]		= 5*A + 3*P	+ 2*S;
-	cr.SkillBase[ SK_FIRST_AID ]	= 5*A + 3*I	+ 2*P;
-	cr.SkillBase[ SK_DOCTOR ]		= 5*I + 3*P	+ 2*A;
-	cr.SkillBase[ SK_SNEAK ]		= 5*I + 3*A	+ 2*P;
-	cr.SkillBase[ SK_LOCKPICK ]		= 5*A + 3*P	+ 2*I;
-	cr.SkillBase[ SK_STEAL ]		= 5*P + 3*A	+ 2*I;
-	cr.SkillBase[ SK_TRAPS ]		= 5*P + 3*P	+ 2*I;
-	cr.SkillBase[ SK_SCIENCE ]		= 5*I + 3*P	+ 2*L;
-	cr.SkillBase[ SK_REPAIR ]		= 5*I + 3*A	+ 2*S;
-	cr.SkillBase[ SK_SPEECH ]		= 0;
-	cr.SkillBase[ SK_BARTER ]		= 5*C + 3*I	+ 2*P;
+	cr.SkillBase[ SK_SMALL_GUNS ]	= 3*P + 2*A	+ 1*S;
+	cr.SkillBase[ SK_MEDIUM_GUNS ]	= 3*S + 2*P	+ 1*A;
+	cr.SkillBase[ SK_BIG_GUNS ]		= 3*P + 2*I	+ 1*A;
+	cr.SkillBase[ SK_UNARMED ]		= 3*S + 2*A	+ 1*E;
+	cr.SkillBase[ SK_MELEE_WEAPONS ]= 3*A + 2*S	+ 1*E;
+	cr.SkillBase[ SK_THROWING ]		= 3*A + 2*P	+ 1*S;
+	cr.SkillBase[ SK_FIRST_AID ]	= 3*A + 2*I	+ 1*P;
+	cr.SkillBase[ SK_DOCTOR ]		= 3*I + 2*P	+ 1*A;
+	cr.SkillBase[ SK_SNEAK ]		= 3*I + 2*A	+ 1*P;
+	cr.SkillBase[ SK_LOCKPICK ]		= 3*A + 2*P	+ 1*I;
+	cr.SkillBase[ SK_STEAL ]		= 3*P + 2*A	+ 1*I;
+	cr.SkillBase[ SK_TRAPS ]		= 3*P + 2*P	+ 1*I;
+	cr.SkillBase[ SK_SCIENCE ]		= 3*I + 2*P	+ 1*L;
+	cr.SkillBase[ SK_REPAIR ]		= 3*I + 2*A	+ 1*S;
+	cr.SkillBase[ SK_CRAFT ]		= 3*I + 2*A + 1*P;
+	cr.SkillBase[ SK_BARTER ]		= 3*C + 2*I	+ 1*P;
 	cr.SkillBase[ SK_GAMBLING ]		= 0;
-	cr.SkillBase[ SK_OUTDOORSMAN ]	= 5*S + 3*I	+ 2*P;
+	cr.SkillBase[ SK_OUTDOORSMAN ]	= 0;
 	cr.SkillBase[ SK_MINING ]		= 5*S + 3*A	+ 2*P;
 	cr.SkillBase[ SK_CHOPPING ]		= 5*S + 3*A	+ 2*P;
 	cr.SkillBase[ SK_SCAVENGING ]	= 5*L + 3*I	+ 2*P;
@@ -1191,13 +1191,13 @@ class MenuGMMain: CenteredMenuHandler
 			
 		}
 		
-		/*if( menu.ButtonMsg( STR_GMBTN_ACID_RAIN ) )
+		if( menu.ButtonMsg( STR_GMBTN_ACID_RAIN ) )
 		{
 			__AcidRain = __AcidRain == 1 ? 0 : 1;
 			string valInStr = __AcidRain == 1 ? "True" : "False";
 			gm.Say( SAY_NETMSG, "You have set Acid Rain to " + valInStr);
 			return true;
-		}*/
+		}
 		
 		if( menu.ButtonMsg( STR_GM_MENU_MUSIC ) )
 		{
@@ -3185,7 +3185,8 @@ void answer_GM_PANNEL_CRITTER_PLAYER_GIFT_PERK( Critter& player, uint answerI, s
         for(uint i=1; i<11; i++)
 			player.SayMsg( SAY_DIALOGBOX_BUTTON( i ), TEXTMSG_GAME, uint( ( 10000 + player.ParamBase[ ST_VAR1 ] + i ) * 10 + 1 ) );
         player.Say( SAY_DIALOGBOX_BUTTON( 11 ), "Forward" );		
-    }
+		return;
+	}
     if( answerI == 11 && player.ParamBase[ ST_VAR1 ] < int( PERK_END - 10 ) )
     {
 		player.ParamBase[ ST_VAR1 ] += 11;
@@ -3195,7 +3196,8 @@ void answer_GM_PANNEL_CRITTER_PLAYER_GIFT_PERK( Critter& player, uint answerI, s
         for(uint i=1; i<11; i++)
 			player.SayMsg( SAY_DIALOGBOX_BUTTON( i ), TEXTMSG_GAME, uint( ( 10000 + player.ParamBase[ ST_VAR1 ] + i ) * 10 + 1 ) );
         player.Say( SAY_DIALOGBOX_BUTTON( 11 ), "Forward" );		
-    }	
+		return;
+	}	
 	
 	if( player.Stat[ ST_VAR2 ] == 0 )
 	{
@@ -3482,7 +3484,7 @@ void answer_GM_PANNEL_CRITTER_PLAYER_STATS( Critter& player, uint answerI, strin
         player.Say( SAY_DIALOGBOX_BUTTON( 12 ), "" + cr.SkillBase[ SK_TRAPS ] + " - traps" );
         player.Say( SAY_DIALOGBOX_BUTTON( 13 ), "" + cr.SkillBase[ SK_SCIENCE ] + " - science" );
         player.Say( SAY_DIALOGBOX_BUTTON( 14 ), "" + cr.SkillBase[ SK_REPAIR ] + " - repair" );
-        player.Say( SAY_DIALOGBOX_BUTTON( 15 ), "" + cr.SkillBase[ SK_SPEECH ] + " - speach" );
+        player.Say( SAY_DIALOGBOX_BUTTON( 15 ), "" + cr.SkillBase[ SK_CRAFT ] + " - craft" );
         player.Say( SAY_DIALOGBOX_BUTTON( 16 ), "" + cr.SkillBase[ SK_BARTER ] + " - trade" );
         player.Say( SAY_DIALOGBOX_BUTTON( 17 ), "" + cr.SkillBase[ SK_GAMBLING ] + " - gambling" );
         player.Say( SAY_DIALOGBOX_BUTTON( 18 ), "" + cr.SkillBase[ SK_OUTDOORSMAN ] + " - outdorsman" );
@@ -6675,8 +6677,9 @@ class MenuGMHexGas: DefaultMenuHandler
 		{
 			if( menu.Button( "Gas Hex" ) )
 			{
-				GasHex( gm, map.Id, hex_X, hex_Y, gm.Param[ CR_VAL2 ], gm.Param[ CR_VAL3], gm.Param[ CR_VAL4 ] );
-				unsafe_log_2( gm, 0, 0, 0, gm.Name + " " + gm.Id + " Created Gas source hex on map: " + map.Id + " hex_X: " + hex_X + " hex_Y: " + hex_Y, null );
+				GasHex( gm, map.Id, hex_X, hex_Y, gm.Param[ CR_VAL2 ], gm.Param[ CR_VAL3], gm.Param[ CR_VAL4 ], gm.Param[ CR_VAL5 ] );
+				string info = "[" + gasTypeName( gm.ParamBase[ CR_VAL5 ] ) + "] Gas";
+				unsafe_log_2( gm, 0, 0, 0, gm.Name + " " + gm.Id + " Created " + info + " source hex on map: " + map.Id + " hex_X: " + hex_X + " hex_Y: " + hex_Y, null );
 				return true;
 			}
 		}
@@ -6697,6 +6700,13 @@ class MenuGMHexGas: DefaultMenuHandler
 				gm.ParamBase[ CR_VAL2 ] = 0;
 				gm.Say( SAY_NETMSG, "|0xFFFF00 The value must be positive!" );
 			}
+			return true;
+		}		
+
+		string gas_type = gasTypeName( gm.ParamBase[ CR_VAL5 ] );
+		if( menu.Button( "Type: " + gas_type ) )
+		{
+			gm.ParamBase[ CR_VAL5 ] = ( gm.ParamBase[ CR_VAL5 ] + 1 ) % GAS_TYPE_MAX;
 			return true;
 		}
 		
@@ -6746,9 +6756,12 @@ class MenuGMHexGas: DefaultMenuHandler
 
     string@ Description( Critter& gm )
 	{	
-		string info = "Gas hex spawn menu. \nSelect options and press [ |0xFFFF00 Gas Hex |0x3CF800 ]. \nStrength: [|0xFFFF00 " + gm.Param[ CR_VAL2 ] + " |0x3CF800 ] points"
-					+ "\nTick: [ |0xFFFF00 " + gm.Param[ CR_VAL3 ] + " |0x3CF800 ] seconds.\nRadius: [ |0xFFFF00 " 
-					+ gm.Param[ CR_VAL4 ] + " |0x3CF800 ] hex ";
+		string info = "Gas hex spawn menu. " + 
+			"\n" + "Select options and press [ |0xFFFF00 Gas Hex |0x3CF800 ]" +
+			"\n" + "Type: [ |0xFFFF00 " + gasTypeName( gm.ParamBase[ CR_VAL5 ] ) + " |0x3CF800 ]" +
+			"\n" + "Strength: [ |0xFFFF00 " + gm.Param[ CR_VAL2 ] + " |0x3CF800 ] points" +
+			"\n" + "Tick: [ |0xFFFF00 " + gm.Param[ CR_VAL3 ] + " |0x3CF800 ] seconds." + 
+			"\n" + "Radius: [ |0xFFFF00 " + gm.Param[ CR_VAL4 ] + " |0x3CF800 ] hex ";
 		return info;
 	}
 		
@@ -6758,7 +6771,7 @@ class MenuGMHexGas: DefaultMenuHandler
     }
 }
 
-const string[] oreNames = {"Boulders", "Copper", "Lead", "Minerals", "Coal", "Gold", "Iron", "Uranium"};
+const string[] oreNames = {"Boulders", "NF_METAL", "Minerals", "Coal", "Gold", "Iron", "Uranium"};
 
 //Menu for Ore zone spawn
 class MenuGMHexOre: DefaultMenuHandler

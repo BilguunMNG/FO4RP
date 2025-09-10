@@ -348,7 +348,7 @@ class MenuCrusher: CenteredMenuHandler
 
 		if( locked_in_place( crusher ) )
 		{
-			if( crusher.STATE == STATE_OFF )
+			if( crusher.SMITHING_STATE == STATE_OFF )
 			{
 				if( menu.ButtonMsg( STR_FURNITURE_MENU_EXAMINE ) )
 				{
@@ -362,17 +362,18 @@ class MenuCrusher: CenteredMenuHandler
 					PlayGenericSound( map, cr.HexX, cr.HexY, "BUTIN1.mp3", 5 );
 					if( MapHasPower( map ) )
 					{
-						crusher.STATE = STATE_ON;
+						crusher.SMITHING_STATE = STATE_ON;
 						crusher.PicMap = PIC_CRUSHER_ANIM_ON;
 						UNSETFLAG( crusher.Flags, ITEM_SHOW_ANIM_EXT );
 						crusher.Update();
 						
 						uint[] vals = { crusher.Id, map.Id };
-						crusher.EVENT = CreateTimeEvent( AFTER( REAL_MS( 1500 ) ),"e_CrusherWork", vals, true );
+						crusher.SMITHING_EVENT = CreateTimeEvent( AFTER( REAL_MS( 1500 ) ),"e_CrusherWork", vals, true );
 					}
 					
 					return true;
 				}
+				
 				if( cr.Param[ CR_YOU_DRAG ] > 0 && menu.ButtonMsg( STR_CRUSHER_MENU_PUT_SOMEONE_IN ) )
 				{
 					Critter@ victim = GetCritter( cr.Param[ CR_YOU_DRAG ] );
@@ -391,9 +392,9 @@ class MenuCrusher: CenteredMenuHandler
 				if( menu.ButtonMsg( STR_DEVICE_DEACTIVATE ) )
 				{
 					PlayGenericSound( map, cr.HexX, cr.HexY, "BUTIN1.mp3", 5 );
-					crusher.STATE = STATE_OFF;
-					EraseTimeEvent( crusher.EVENT );
-					crusher.EVENT = 0;
+					crusher.SMITHING_STATE = STATE_OFF;
+					EraseTimeEvent( crusher.SMITHING_EVENT );
+					crusher.SMITHING_EVENT = 0;
 					
 					crusher.PicMap = crusher.Proto.PicMap;
 					SETFLAG( crusher.Flags, ITEM_SHOW_ANIM_EXT );
@@ -404,12 +405,12 @@ class MenuCrusher: CenteredMenuHandler
 			}
 		}
 		
-		if( crusher.STATE == STATE_OFF && menu.ButtonMsg( STR_FURNITURE_MENU_BUTTON ) )
+		if( crusher.SMITHING_STATE == STATE_OFF && menu.ButtonMsg( STR_FURNITURE_MENU_BUTTON ) )
 		{
 			{
 				_InitFurniture( crusher, true );
 				crusher.Update();
-				StartMenuFuriture( cr, crusher );
+				StartMenuFurniture( cr, crusher );
 				return false;
 			}		
 		}
@@ -440,8 +441,20 @@ class MenuCrusher: CenteredMenuHandler
 		Item@[] MaterialsCheck;
 		uint count = crusher.GetItems( uint( -1 ), MaterialsCheck );
 		Item@ material = null;
-		string info = "$contains";
+		
+		string info;
+		if( MapHasPower( map ) )
+		{
+			info += STR_CHECK_DEVICE_FLAG( "powerStatus", true );
+		}
+		else
+		{
+			info += STR_CHECK_DEVICE_FLAG( "powerStatus", false );
+		}
+		
+		info += "$contains";
 		uint16 materialPid;
+		
 		if( count == 0 )
 		{ 
 			info += STR_INSERT_TEXT_LINE( STR_CRUSHER_MENU_EMPTY ); 
@@ -469,10 +482,7 @@ class MenuCrusher: CenteredMenuHandler
 					 + "$amount" + material.GetCount();
 			}
 		}		
-
-		info += "$power";
-		MapHasPower( map ) ? info += STR_INSERT_TEXT_LINE( STR_CRUSHER_MENU_CONNECED_POWER ) : STR_INSERT_TEXT_LINE( STR_CRUSHER_MENU_NO_POWER );
-		
+	
 		return info;
     }
 	
@@ -500,7 +510,7 @@ uint e_CrusherWork( uint[]@ values )
 	Item@ crusher = GetItem( values[0] );
 	if( valid( crusher ) )    
 	{
-		if( crusher.STATE == STATE_OFF )
+		if( crusher.SMITHING_STATE == STATE_OFF )
 		{
 			return 0;
 		}
@@ -557,12 +567,12 @@ void CrushIt( Item& crusher, Item& crushed, Map& map )
 		resultPid = ResultList[ index ];
 		amount = Amount[ index ];
 	}
-	else if( crushed.Proto.Material == MATERIAL_METAL || crushed.Proto.Material == MATERIAL_POLYMER || crushed.Proto.Material == MATERIAL_COMPOSITE )
+	else if( crushed.Proto.Material == MATERIAL_IRON )
 	{
 		uint weight = crushed.Proto.Weight;
 		if( weight >= 300 )
 		{
-			resultPid = PID_CRAFT_M_BARS;
+			resultPid = PID_IRON_SHEET;
 			ProtoItem@ protoitem = GetProtoItem( resultPid );
 			amount = weight / protoitem.Weight / 10;
 		}
@@ -609,7 +619,7 @@ void CrushIt( Item& crusher, Item& crushed, Map& map )
 			uint roll = Random( 1, CRUSH_CHANCE );
 			if( roll <= 65 && roll >= 55 )
 			{
-				resultPid = PID_COPPER_NUGGET;
+				resultPid = PID_NF_METAL_NUGGET;
 			}
 			else if( roll <= 54 && roll >= 45 )
 			{
@@ -625,7 +635,7 @@ void CrushIt( Item& crusher, Item& crushed, Map& map )
 			}
 			else if( roll <= 32 && roll >= 28 )
 			{
-				resultPid = PID_COPPER_ORE;
+				resultPid = PID_NF_METAL_ORE;
 			}
 			else if( roll <= 27 && roll >= 23 )
 			{
@@ -637,7 +647,7 @@ void CrushIt( Item& crusher, Item& crushed, Map& map )
 			}
 			else if( roll <= 12 && roll >= 3 )
 			{
-				resultPid = PID_METAL_ORE;
+				resultPid = PID_IRON_ORE;
 			}
 			else if( roll == 2 )
 			{
@@ -712,92 +722,95 @@ void BlockCrusher( Item& crusher )
 		return;
 	}
 	
+	UNSETFLAG( crusher.Flags, ITEM_NO_BLOCK );
+	UNSETFLAG( crusher.Flags, ITEM_CAN_PICKUP );
+	
 	map.MoveHexByDir( hx, hy, 5, 1 );
-	Item@ blocker0 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker0 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker0 ) )
 	{
 		blocker0.PARENT_ITM_ID = crusher.Id;
 	}
-	
+
 	map.MoveHexByDir( hx, hy, 1, 1 );
-	Item@ blocker1 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker1 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker1 ) )
 	{
 		blocker1.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 0, 1 );
-	Item@ blocker2 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker2 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker2 ) )
 	{
 		blocker2.PARENT_ITM_ID = crusher.Id;
 	}
-	
+
 	map.MoveHexByDir( hx, hy, 1, 1 );
-	Item@ blocker3 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker3 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker3 ) )
 	{
 		blocker3.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 0, 1 );
-	Item@ blocker4 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker4 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker4 ) )
 	{
 		blocker4.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 2, 1 );
-	Item@ blocker5 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker5 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker5 ) )
 	{
 		blocker5.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 2, 1 );
-	Item@ blocker6 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker6 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker6 ) )
 	{
 		blocker6.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 3, 1 );
-	Item@ blocker7 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker7 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker7 ) )
 	{
 		blocker7.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 4, 1 );
-	Item@ blocker8 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker8 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker8 ) )
 	{
 		blocker8.PARENT_ITM_ID = crusher.Id;
 	}
-	
+
 	map.MoveHexByDir( hx, hy, 2, 1 );
-	Item@ blocker9 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker9 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker9 ) )
 	{
 		blocker9.PARENT_ITM_ID = crusher.Id;
 	}
-	
+
 	map.MoveHexByDir( hx, hy, 4, 1 );
-	Item@ blocker10 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker10 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker10 ) )
 	{
 		blocker10.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 4, 1 );
-	Item@ blocker11 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker11 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker11 ) )
 	{
 		blocker11.PARENT_ITM_ID = crusher.Id;
 	}
 	
 	map.MoveHexByDir( hx, hy, 0, 1 );
-	Item@ blocker12 = map.AddItem( hx, hy, PID_METAL_BLOCKER, 1 );
+	Item@ blocker12 = map.AddItem( hx, hy, PID_NO_SHOOT_METAL_BLOCKER, 1 );
 	if( valid( blocker12 ) )
 	{
 		blocker12.PARENT_ITM_ID = crusher.Id;

@@ -582,8 +582,6 @@
 #define HEAD_PERK_31								( 0x40000000 )	// 31
 #define HEAD_PERK_32								( 0x80000000 )	// 32
 
-// 
-
 // Misc Item Perks
 #define SLOT_PERK_COSMETIC_CASE                  	( 0x02 ) // +1 charisma to female
 #define SLOT_PERK_MOTION_SENSOR                  	( 0x04 ) // +20 outdoorsman
@@ -690,6 +688,7 @@
 #define CTE_NPC_FOLLOW								( 38 )		// NPC following target marker
 #define CTE_SHIT									( 39 )		// delay before shitting
 #define CTE_SOAP_CHARISMA							( 40 )		// delay before soap effect disabling
+#define CTE_BREATHING								( 41 )		// oxygen tank breathing
 
 // Parameters
 // Stats
@@ -895,10 +894,10 @@
 #define SK_TRAPS                                 	( 211 ) 	// Hardcoded
 #define SK_SCIENCE                               	( 212 ) 	// Hardcoded
 #define SK_REPAIR                                	( 213 )		// Hardcoded
-#define SK_SPEECH                                	( 214 )		// Hardcoded - disabled
+#define SK_CRAFT                                	( 214 )		// Hardcoded
 #define SK_BARTER                                	( 215 )		// Hardcoded
 #define SK_GAMBLING                              	( 216 ) 	// - disabled
-#define SK_OUTDOORSMAN                           	( 217 )
+#define SK_OUTDOORSMAN                           	( 217 )		// - disabled
 #define SK_MINING                           	 	( 218 ) 	// Skill trained by use
 #define SK_CHOPPING                           	 	( 219 ) 	// Skill trained by use
 #define SK_SCAVENGING                          	 	( 220 ) 	// Skill trained by use
@@ -938,7 +937,7 @@
 #define TO_HEALING                               	( 244 )
 #define TO_PILLS									( 245 )
 #define TO_KNOCKOUT									( 246 )
-// 247
+#define TO_SK_CRAFT									( 247 )
 #define TO_STEALING                              	( 248 )
 #define TO_AGGRESSOR                             	( 249 )
 #define TO_DAMAGE                                	( 250 )
@@ -976,7 +975,12 @@
 #define PE_SILENT_RUNNING                        	( 316 )		// Hardcoded
 // 317
 #define PE_MASTER_TRADER                         	( 318 )		// Hardcoded
-// 319..348
+#define PE_CRAFT_LIMIT								( 319 )
+#define PE_CRAFTSMAN								( 320 )
+#define PE_MECHANIC									( 321 )
+#define PE_CHEMIST									( 322 )
+#define PE_ELECTRICIAN								( 323 )
+// 324..348
 #define PE_QUICK_POCKETS                         	( 349 )		// Hardcoded
 #define PE_SMOOTH_TALKER                         	( 350 )		// Hardcoded
 // 351..448
@@ -1177,7 +1181,7 @@
 #define CR_ROULETTE_START_MONEY					 	( 718 )
 #define CR_DRUGS_COUNT							 	( 719 )
 #define BP_ROBOT_SELF_REPAIR                     	( 720 )		// If robot can repare self - REVISE with entire robot repare code
-//721
+// 721
 #define CR_STRENGTH                              	( 722 )		// Saves stat before Neurotoxin used
 #define CR_PERCEPTION                            	( 723 )		// Saves stat before Neurotoxin used
 #define CR_AGILITY                               	( 724 )		// Saves stat before Neurotoxin used
@@ -1201,10 +1205,13 @@
 #define CR_TALKING_TARGET_ID					 	( 741 )		// CrId for critter talked by a player
 #define CR_IS_SHOOTING                           	( 742 ) 	// Protection from doubletapping, stacking attacks
 #define CR_IS_SNIPER                           		( 743 ) 	// Marker for Sniper shooter
-// 744..747
+#define CR_SPOKEN								 	( 744 )		// Marker for sending message
+// 745
+#define CR_AIR_TANK_CHARGE						 	( 746 )		// Current air tank charge
+#define CR_AIR_TANK_ID							 	( 747 )		// Current air tank in use
 #define CR_TRUST_LEVEL							 	( 748 )		// Truest level for drug pusher dialogue
 #define CR_EXP_LOCK								 	( 749 )		// Triggers once on gaining experience, to ignore SKILLED 50% debuff.
-// 750
+// 750 
 #define CR_ITEMS_WEIGHT	  						 	( 751 )		// Current weight of all items in inventory
 
 #define DRAGGING_CARRY_WEIGHT_MULTIPLIER			( 1.5f )	// Dragging carry weight multiplier
@@ -1933,7 +1940,7 @@
 
 // material types in item's proto
 #define MATERIAL_GLASS                           	( 0 )
-#define MATERIAL_METAL                           	( 1 )
+#define MATERIAL_IRON	                          	( 1 )
 #define MATERIAL_PLASTIC                         	( 2 )
 #define MATERIAL_WOOD                            	( 3 )
 #define MATERIAL_DIRT                            	( 4 )
@@ -1944,8 +1951,8 @@
 #define MATERIAL_POLYMER                         	( 9 )
 #define MATERIAL_COMPOSITE                       	( 10 )
 #define MATERIAL_FABRIC	                         	( 11 )
-#define MATERIAL_COPPER	                         	( 12 )
-#define MATERIAL_LEAD	                         	( 13 )
+#define MATERIAL_NF_METAL                         	( 12 )
+//#define MATERIAL_LEAD	                         	( 13 ) - Depreciated
 #define MATERIAL_GOLD	                         	( 14 )
 #define MATERIAL_ORGANIC                         	( 15 )
 #define MATERIAL_PAPER	                         	( 16 )
@@ -2046,6 +2053,11 @@
 #define CMD_CHANGE_PASSWORD          				( 35 )
 #define CMD_DROP_UID                 				( 36 )
 #define CMD_LOG                      				( 37 )
+
+#define DEFAULT_PROFESSION_LEVEL					( 2 ) // Second level
+#define PROFESSIONS_COUNT							( 4 )
+#define MAX_PROFESSION_LEVELS						( 18 ) // 18 to prevent maxxing all professions, since the cap is 6 level, and there's 4 profs
+#define INITIAL_PROFESSION_POINTS					( MAX_PROFESSION_LEVELS - (DEFAULT_PROFESSION_LEVEL * PROFESSIONS_COUNT) )
 
 // inputbox flags
 #define INPUTBOX_CLOSE_ON_ENTER                  	( 0x00000001 )
@@ -2177,7 +2189,7 @@
 //padding 20 bytes
 # pragma bindfield "const int    ProtoItem::Item_DtMod                  -> 192"
 // HeadItem
-# pragma bindfield "const uint  ProtoItem::HeadItem_Perk         		-> 196"
+# pragma bindfield "const uint  ProtoItem::HeadItem_Perk       			-> 196"
 // Weapon
 # pragma bindfield "const int    ProtoItem::Weapon_DmgType_0            -> 200"
 # pragma bindfield "const int    ProtoItem::Weapon_DmgType_1            -> 204"

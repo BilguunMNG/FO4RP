@@ -43,7 +43,7 @@
 #define STR_MAKE_BET						 ( 2007 )
 
 //Stat roll
-#define STR_STAT_ROLL	   # (num)        ( 2020 + ( num ) )
+#define STR_STAT_ROLL	   # (num)           ( 2020 + ( num ) )
 #define STR_STAT_ROLL_STRENGTH				 ( 2021 )
 #define STR_STAT_ROLL_PERCEPTION			 ( 2022 )
 #define STR_STAT_ROLL_ENDURANCE				 ( 2023 )
@@ -276,6 +276,11 @@
 #define STR_REQUIRE_WATER_FOR_FIRE			 ( 6407 )
 #define STR_REQUIRE_LIGHTER					 ( 6408 )
 #define STR_REQUIRE_FIREFUEL_2				 ( 6409 )
+
+// Milling
+#define STR_MILL_EMPTY						 ( 6410 )
+#define STR_MILL_NO_RESOURCE				 ( 6411 )
+#define STR_FINISH_MILLING					 ( 6412 )
 
 // Furnace
 #define STR_FURNACE_OFF_REQUIRED			 ( 6413	)
@@ -511,6 +516,13 @@
 #define STR_YOU_CRAFTED_PID					 ( 9021 )
 #define STR_EMOTE_CRAFT_SOMETHING			 ( 9022 )
 #define STR_YOU_COLLECTED					 ( 9023 )
+
+// Book reading
+#define	STR_BOOK_CRAFT_LIMIT				 ( 9430 )
+#define	STR_BOOK_FAIL_HIGH				 	 ( 9431 )
+#define	STR_BOOK_FAIL_LOW				 	 ( 9432 )
+#define STR_EMOTE_BOOK_START				 ( 9433 )
+#define STR_BOOK_RESUT						 ( 9434 )
 
 // Locks
 #define STR_CANT_LOCK						 ( 9440 )
@@ -773,6 +785,21 @@
 #define STR_NO_MORE_WATER					 ( 9766 )
 #define STR_NEED_BOTTLE_IN_HAND				 ( 9767 )
 #define STR_FILLED_BOTTLE					 ( 9768 )
+
+// Oxygen Tank
+#define STR_OXYGEN_ON						 ( 9769 )
+#define STR_OXYGEN_OFF						 ( 9770 )
+#define STR_OXYGEN_DEPLETED					 ( 9771 )
+#define STR_OXYGEN_NO_OXYGEN				 ( 9772 )
+#define STR_OXYGEN_CHARGE					 ( 9773 )
+#define STR_OTHER_TANK_FIRST				 ( 9774 )
+#define STR_OXYGEN_MSG_2					 ( 9775 )
+
+// Motion Sensor
+#define STR_SENSOR_MAP_PING					 ( 9780 )
+#define STR_SENSOR_NO_CHARGE				 ( 9781 )
+#define STR_EMOTE_SENSOR_ENABLE			 	 ( 9782 )
+#define STR_EMOTE_SENSOR_DISABLE		 	 ( 9783 )
 
 // Smoking
 #define STR_EMOTE_IGNITE_SMOKER				 ( 9786 )
@@ -1270,7 +1297,7 @@
 #define STR_FURNACE_MENU_IRON_WEIGHT		( 100102 )
 #define STR_FURNACE_MENU_GOLD_WEIGHT		( 100103 )
 #define STR_FURNACE_MENU_LED_WEIGHT			( 100104 )
-#define STR_FURNACE_MENU_COPPER_WEIGHT		( 100105 )
+#define STR_FURNACE_MENU_NF_METAL_WEIGHT	( 100105 )
 #define STR_FURNACE_MENU_GLASS_WEIGHT		( 100106 )
 
 
@@ -1279,14 +1306,17 @@
 #define STR_ANVIL_MENU_NO_METAL				( 100113 )
 #define STR_ANVIL_MENU_CONTAINS				( 100114 )
 
+#define STR_MILL_MENU_MAIN					( 100131 )
+#define STR_MILL_MENU_MILL					( 100132 )
+#define STR_MILL_MENU_NO_RESOURCE			( 100133 )
+#define STR_MILL_MENU_CONTAINS				( 100134 )
+
 
 #define STR_CRUSHER_MENU_MAIN				( 100121 )
 #define STR_CRUSHER_MENU_PUT_SOMEONE_IN		( 100122 )
-#define STR_CRUSHER_MENU_CONNECED_POWER		( 100123 )
-#define STR_CRUSHER_MENU_NO_POWER			( 100124 )
-#define STR_CRUSHER_MENU_EMPTY				( 100125 )
-#define STR_CRUSHER_MENU_CONTAINS			( 100126 )
-#define STR_CRUSHER_MENU_CONTAINS_JUNK		( 100127 )
+#define STR_CRUSHER_MENU_EMPTY				( 100123 )
+#define STR_CRUSHER_MENU_CONTAINS			( 100124 )
+#define STR_CRUSHER_MENU_CONTAINS_JUNK		( 100125 )
 
 #define STR_STILL_MENU						#( number ) STR_PLAYER_MENU(150 + number )
 #define STR_STILL_MENU_MAIN					( 100151 )
@@ -2430,10 +2460,10 @@
 #define STR_SP_NEW_GAME_SUCCESS              ( 1074 )
 #define STR_SP_NEW_GAME_FAIL                 ( 1075 )
 
-#define STR_CORPSE_OF						 ( 1233 )
-#define STR_CORPSE_BEHEADED					 ( 1234 )
-#define STR_CORPSE_BELONGS_TO				 ( 1235 )
-#define STR_UNIDENTIFIED_PERSON				 ( 1236 )
+#define STR_CORPSE_OF						 ( 1933 )
+#define STR_CORPSE_BEHEADED					 ( 1934 )
+#define STR_CORPSE_BELONGS_TO				 ( 1935 )
+#define STR_UNIDENTIFIED_PERSON				 ( 1936 )
 
 // Combat
 #define STR_EMOTE_GRAPPLES					 ( 2000 )
@@ -2588,18 +2618,20 @@
 #define STR_DOCTOR_TITLE					 ( 7023 )
 #define STR_REPAIR_TITLE					 ( 7024 )
 #define STR_SCIENCE_TITLE					 ( 7025 )
-#define STR_OVERDOSE_TITLE                   ( 7026 )
-#define STR_WETNESS_TITLE                    ( 7027 )
-#define STR_BANDAGE_TITLE                    ( 7028 )
-#define STR_DAZED_TITLE						 ( 7029 )
-#define STR_STUNNED_TITLE                    ( 7030 )
-#define STR_SNEAK_TO_TITLE				 	 ( 7031 )
-#define STR_PAINKILLER_TITLE				 ( 7032 )
-#define STR_AFTERBURNER_TITLE				 ( 7033 )
-#define STR_PILLS_TITLE						 ( 7034 )
-#define STR_ACTIVE_DRUGS                     ( 7035 )
-#define STR_KNOCKOUT_TITLE					 ( 7036 )
-#define STR_LOGOFF_TITLE					 ( 7037 )
+#define STR_CRAFT_TITLE						 ( 7026 )
+#define STR_OVERDOSE_TITLE                   ( 7027 )
+#define STR_WETNESS_TITLE                    ( 7028 )
+#define STR_BANDAGE_TITLE                    ( 7029 )
+#define STR_DAZED_TITLE						 ( 7030 )
+#define STR_STUNNED_TITLE                    ( 7031 )
+#define STR_SNEAK_TO_TITLE				 	 ( 7032 )
+#define STR_PAINKILLER_TITLE				 ( 7033 )
+#define STR_AFTERBURNER_TITLE				 ( 7034 )
+#define STR_PILLS_TITLE						 ( 7035 )
+#define STR_ACTIVE_DRUGS                     ( 7036 )
+#define STR_KNOCKOUT_TITLE					 ( 7037 )
+#define STR_LOGOFF_TITLE					 ( 7038 )
+#define STR_AIR_TANK_TITLE					 ( 7039 )
 
 // Dyspnea
 #define STR_EMOTE_FAINT						 ( 7400 )

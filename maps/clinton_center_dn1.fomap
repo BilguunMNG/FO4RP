@@ -2,8 +2,8 @@
 Version              4
 MaxHexX              1000
 MaxHexY              1000
-WorkHexX             404
-WorkHexY             419
+WorkHexX             478
+WorkHexY             409
 ScriptModule         -
 ScriptFunc           -
 NoLogOut             0
@@ -100632,13 +100632,6 @@ MapObjType           2
 ProtoId              5680
 MapX                 457
 MapY                 421
-
-MapObjType           2
-ProtoId              2650
-MapX                 455
-MapY                 423
-OffsetX              17
-OffsetY              -3
 
 MapObjType           2
 ProtoId              6597
@@ -331330,26 +331323,6 @@ MapX                 482
 MapY                 372
 
 MapObjType           2
-ProtoId              2067
-MapX                 454
-MapY                 422
-
-MapObjType           2
-ProtoId              2067
-MapX                 455
-MapY                 422
-
-MapObjType           2
-ProtoId              2067
-MapX                 453
-MapY                 423
-
-MapObjType           2
-ProtoId              2067
-MapX                 453
-MapY                 422
-
-MapObjType           2
 ProtoId              5236
 MapX                 431
 MapY                 408
@@ -338567,6 +338540,7 @@ OffsetX              -1
 OffsetY              -2
 Scenery_ToMapPid     500
 Scenery_ToEntire     23
+Scenery_ToDir        1
 
 MapObjType           2
 ProtoId              5622
@@ -338614,6 +338588,7 @@ MapX                 410
 MapY                 367
 Scenery_ToMapPid     500
 Scenery_ToEntire     24
+Scenery_ToDir        1
 
 MapObjType           2
 ProtoId              1624
@@ -346155,5 +346130,179 @@ MapObjType           2
 ProtoId              5621
 MapX                 490
 MapY                 378
+
+MapObjType           2
+ProtoId              4779
+MapX                 378
+MapY                 364
+OffsetX              6
+OffsetY              243
+
+MapObjType           2
+ProtoId              3853
+MapX                 383
+MapY                 367
+Scenery_ToEntire     222
+
+MapObjType           2
+ProtoId              2141
+MapX                 476
+MapY                 394
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 475
+MapY                 399
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 470
+MapY                 404
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 459
+MapY                 405
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 450
+MapY                 402
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 450
+MapY                 394
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 458
+MapY                 392
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 468
+MapY                 394
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 450
+MapY                 417
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 455
+MapY                 417
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 461
+MapY                 417
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 456
+MapY                 425
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 456
+MapY                 430
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 466
+MapY                 424
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 469
+MapY                 416
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 479
+MapY                 417
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 491
+MapY                 417
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 495
+MapY                 408
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 494
+MapY                 395
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 487
+MapY                 395
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 483
+MapY                 402
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 485
+MapY                 411
+LightDistance        8
+LightIntensity       30
+
+MapObjType           2
+ProtoId              2141
+MapX                 474
+MapY                 407
+LightDistance        8
+LightIntensity       30
 
 
